@@ -1,38 +1,16 @@
 import { Tabs } from 'expo-router';
-import { Icon, type IconName } from '@/components/Icon';
-import { F } from '@/theme/fonts';
+import { FloatingTabBar, TAB_META } from '@/components/FloatingTabBar';
 import { useTheme } from '@/theme/ThemeProvider';
-
-const TABS: { name: string; title: string; icon: IconName }[] = [
-  { name: 'index', title: 'Start', icon: 'home' },
-  { name: 'odkrywaj', title: 'Odkrywaj', icon: 'compass' },
-  { name: 'os-czasu', title: 'Oś czasu', icon: 'timeline' },
-  { name: 'mapa', title: 'Mapa', icon: 'pin' },
-  { name: 'wyzwania', title: 'Wyzwania', icon: 'trophy' },
-];
 
 export default function TabsLayout() {
   const { t } = useTheme();
   return (
     <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: t.active,
-        tabBarInactiveTintColor: t.textMuted,
-        tabBarStyle: { backgroundColor: t.tabBar, borderTopColor: t.border, borderTopWidth: 1 },
-        tabBarLabelStyle: { fontFamily: F.bodyBold, fontSize: 11 },
-        sceneStyle: { backgroundColor: t.bg },
-      }}
+      tabBar={(props) => <FloatingTabBar state={props.state} navigation={props.navigation as never} />}
+      screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: t.bg } }}
     >
-      {TABS.map((tab) => (
-        <Tabs.Screen
-          key={tab.name}
-          name={tab.name}
-          options={{
-            title: tab.title,
-            tabBarIcon: ({ color }) => <Icon name={tab.icon} color={color} size={22} />,
-          }}
-        />
+      {Object.entries(TAB_META).map(([name, meta]) => (
+        <Tabs.Screen key={name} name={name} options={{ title: meta.title }} />
       ))}
     </Tabs>
   );

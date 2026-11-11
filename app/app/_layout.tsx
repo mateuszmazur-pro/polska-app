@@ -22,7 +22,7 @@ function Root() {
       <StatusBar style={t.statusBar} />
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: t.bg } }}>
         <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="ustawienia" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="quiz" />
       </Stack>
     </>
   );

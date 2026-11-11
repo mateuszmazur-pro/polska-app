@@ -1,126 +1,144 @@
-import { Link, useRouter, type Href } from 'expo-router';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Link, type Href } from 'expo-router';
+import type { ReactNode } from 'react';
+import { Pressable, ScrollView, Text, View, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, { Text as SvgText } from 'react-native-svg';
-import { Emblem, Icon, type IconName } from '@/components/Icon';
-import { Card, Eyebrow, IconButton, Medallion } from '@/components/ui';
-import { postacDnia } from '@/data/postacie';
-import { dataPoPolsku, swietoNaDzien } from '@/data/swieta';
+import Svg, { Circle, Defs, Pattern, Rect } from 'react-native-svg';
+import { TAB_BAR_SPACE } from '@/components/FloatingTabBar';
+import { Emblem, Icon } from '@/components/Icon';
+import { postacDnia, postacie } from '@/data/postacie';
+import { dataKrotka, swietoNaDzien } from '@/data/swieta';
 import { F } from '@/theme/fonts';
 import { useTheme } from '@/theme/ThemeProvider';
 
-const KAFLE: { label: string; icon: IconName; href: Href; highlight?: boolean }[] = [
-  { label: 'Postacie', icon: 'person', href: '/odkrywaj' },
-  { label: 'Miejsca', icon: 'castle', href: '/mapa' },
-  { label: 'Oś czasu', icon: 'timeline', href: '/os-czasu' },
-  { label: 'Symbole', icon: 'crown', href: '/odkrywaj' },
-  { label: 'Kultura', icon: 'music', href: '/odkrywaj' },
-  { label: 'Quiz', icon: 'quiz', href: '/wyzwania', highlight: true },
-];
+const R = 28; // zaokrąglenie kafli
+const GAP = 10;
+
+/** Kafel = cały klikalny prostokąt, prowadzący do sekcji. */
+function Kafel({ href, label, style, children }: { href: Href; label: string; style: ViewStyle; children: ReactNode }) {
+  return (
+    <Link href={href} asChild>
+      <Pressable
+        accessibilityRole="link"
+        accessibilityLabel={label}
+        style={({ pressed }) => [{ borderRadius: R, overflow: 'hidden', transform: [{ scale: pressed ? 0.98 : 1 }] }, style]}
+      >
+        {children}
+      </Pressable>
+    </Link>
+  );
+}
 
 export default function Start() {
   const { t } = useTheme();
   const insets = useSafeAreaInsets();
-  const router = useRouter();
   const dzis = new Date();
   const swieto = swietoNaDzien(dzis);
   const postac = postacDnia(dzis);
+  const lata = swieto?.rok ? dzis.getFullYear() - swieto.rok : undefined;
+  const stos = [postac, ...postacie.filter((p) => p.id !== postac.id)].slice(0, 3);
 
   return (
     <ScrollView
       style={{ flex: 1, backgroundColor: t.bg }}
-      contentContainerStyle={{ paddingTop: insets.top + 16, paddingHorizontal: 22, paddingBottom: 32 }}
+      contentContainerStyle={{ paddingTop: insets.top + 14, paddingHorizontal: 20, paddingBottom: TAB_BAR_SPACE + insets.bottom }}
+      showsVerticalScrollIndicator={false}
     >
-      {/* Nagłówek */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-          <Emblem size={40} gold={t.gold} white="#FFFFFF" red={t.red} />
-          <View>
-            <Text style={{ fontFamily: F.displayHeavy, fontSize: 20, letterSpacing: 4.4, color: t.text }}>POLSKA</Text>
-            <Text style={{ fontFamily: F.displayItalicLight, fontSize: 13, color: t.accentText, marginTop: 2 }}>Moja Ojczyzna</Text>
+      {/* Nagłówek: znak + nazwa */}
+      <View style={{ height: 44, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <Emblem size={34} gold={t.gold} white="#FFFFFF" red={t.red} />
+        <Text style={{ fontFamily: F.displayHeavy, fontSize: 15, letterSpacing: 3.6, color: t.text }}>POLSKA</Text>
+      </View>
+
+      {/* Kafel główny: rocznica dnia albo początek historii */}
+      <Kafel
+        href="/os-czasu"
+        label={swieto ? `${swieto.nazwa}. ${lata ? `${lata} ${swieto.podpis ?? 'lat'}` : ''}` : 'Oś czasu: od roku 966'}
+        style={{ marginTop: 20, height: 210, backgroundColor: t.feature }}
+      >
+        <View style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 14 }}>
+          <View style={{ flex: 1, backgroundColor: '#FFFFFF' }} />
+          <View style={{ flex: 1, backgroundColor: t.name === 'biel' ? '#8E0B21' : t.red }} />
+        </View>
+        <Text style={{ position: 'absolute', left: 24, top: 22, fontFamily: F.bodyHeavy, fontSize: 11, letterSpacing: 2, color: t.featureEyebrow }}>
+          {swieto ? `DZIŚ · ${dataKrotka(dzis)}` : 'TU ZACZYNA SIĘ HISTORIA'}
+        </Text>
+        <Text
+          style={{ position: 'absolute', left: 18, right: 64, top: 40, fontFamily: F.displayHeavy, fontSize: 120, lineHeight: 132, letterSpacing: -4, color: t.onFeature }}
+          adjustsFontSizeToFit
+          numberOfLines={1}
+        >
+          {lata ?? 966}
+        </Text>
+        <Text style={{ position: 'absolute', left: 24, bottom: 22, fontFamily: F.displayItalic, fontSize: 22, color: t.featureEyebrow }}>
+          {swieto?.podpis ?? 'chrzest Polski'}
+        </Text>
+        <View style={{ position: 'absolute', right: 34, bottom: 20, width: 48, height: 48, borderRadius: 24, backgroundColor: t.featureButtonBg, alignItems: 'center', justifyContent: 'center' }}>
+          <Icon name="arrowRight" size={20} color={t.featureButtonIcon} strokeWidth={2.2} />
+        </View>
+      </Kafel>
+
+      {/* Postacie | Quiz + Oś czasu */}
+      <View style={{ marginTop: GAP, flexDirection: 'row', gap: GAP }}>
+        <Kafel href="/odkrywaj" label={`Postacie. Postać dnia: ${postac.imie}`} style={{ flex: 1, height: 230, backgroundColor: t.surface, padding: 20, justifyContent: 'space-between' }}>
+          <View style={{ flexDirection: 'row' }}>
+            {stos.map((p, i) => (
+              <View
+                key={p.id}
+                style={{
+                  width: 54, height: 54, borderRadius: 27, marginLeft: i === 0 ? 0 : -16, borderWidth: 1.5, borderColor: t.gold,
+                  backgroundColor: t.medalBg, alignItems: 'center', justifyContent: 'center',
+                }}
+              >
+                <Text style={{ fontFamily: F.display, fontSize: 17, color: t.medalText }}>{p.inicjaly}</Text>
+              </View>
+            ))}
           </View>
-        </View>
-        <View style={{ flexDirection: 'row', gap: 8 }}>
-          <IconButton icon="search" label="Szukaj" />
-          <IconButton icon="settings" label="Ustawienia" onPress={() => router.push('/ustawienia')} />
-        </View>
-      </View>
-
-      {/* Powitanie */}
-      <View style={{ marginTop: 26 }}>
-        <Text style={{ fontFamily: F.bodyBold, fontSize: 12, letterSpacing: 1.9, textTransform: 'uppercase', color: t.textMuted }}>
-          {dataPoPolsku(dzis)}
-        </Text>
-        <Text style={{ marginTop: 8, fontFamily: F.displaySemi, fontSize: 30, lineHeight: 35, color: t.text }}>
-          Odkrywaj historię,{'\n'}
-          <Text style={{ fontFamily: F.displayItalic, color: t.name === 'biel' ? t.red : t.accentText }}>która nas łączy.</Text>
-        </Text>
-      </View>
-
-      {/* Karta dnia: święto albo zaproszenie na oś czasu */}
-      <View style={{ marginTop: 22, borderRadius: 24, backgroundColor: t.feature, padding: 20, overflow: 'hidden' }}>
-        {swieto?.rok && (
-          <Svg width={190} height={120} style={{ position: 'absolute', right: -10, top: -16 }} accessibilityElementsHidden importantForAccessibility="no">
-            <SvgText x={185} y={110} textAnchor="end" fontFamily={F.displayHeavy} fontSize={128} fill="none" stroke={t.gold} strokeWidth={1.5}>
-              {String(dzis.getFullYear() - swieto.rok)}
-            </SvgText>
-          </Svg>
-        )}
-        <Eyebrow color={t.featureEyebrow}>{swieto ? 'Dziś · Święto narodowe' : 'Dziś w aplikacji'}</Eyebrow>
-        <Text style={{ marginTop: 14, maxWidth: 240, fontFamily: F.display, fontSize: 24, lineHeight: 28, color: t.onFeature }}>
-          {swieto ? swieto.nazwa : 'Ponad tysiąc lat historii w kieszeni'}
-        </Text>
-        <Text style={{ marginTop: 10, maxWidth: 290, fontFamily: F.body, fontSize: 14, lineHeight: 21, color: t.onFeatureMuted }}>
-          {swieto ? swieto.opis : 'Od chrztu Polski w 966 r. po dzisiejsze czasy — krok po kroku.'}
-        </Text>
-        <Link href="/os-czasu" asChild>
-          <Pressable
-            accessibilityRole="link"
-            style={({ pressed }) => ({
-              marginTop: 16, alignSelf: 'flex-start', height: 44, paddingHorizontal: 18, borderRadius: 22,
-              backgroundColor: t.featureButtonBg, flexDirection: 'row', alignItems: 'center', gap: 8, opacity: pressed ? 0.8 : 1,
-            })}
-          >
-            <Text style={{ fontFamily: F.bodyBold, fontSize: 14, color: t.featureButtonText }}>
-              {swieto ? 'Poznaj tę historię' : 'Otwórz oś czasu'}
+          <View>
+            <Text style={{ fontFamily: F.display, fontSize: 24, color: t.text }}>Postacie</Text>
+            <Text numberOfLines={1} style={{ marginTop: 4, fontFamily: F.bodySemi, fontSize: 12, color: t.textMuted }}>
+              Postać dnia: {postac.imie.split(' ').slice(-1)[0]}
             </Text>
-            <Icon name="arrowRight" size={16} color={t.featureButtonIcon} strokeWidth={2} />
-          </Pressable>
-        </Link>
-      </View>
+          </View>
+        </Kafel>
 
-      {/* Odkrywaj */}
-      <View style={{ marginTop: 26, flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' }}>
-        <Text accessibilityRole="header" style={{ fontFamily: F.displaySemi, fontSize: 20, color: t.text }}>Odkrywaj</Text>
-        <Link href="/odkrywaj" style={{ fontFamily: F.bodyBold, fontSize: 13, color: t.accentText }}>Wszystko</Link>
-      </View>
-      <View style={{ marginTop: 14, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-        {KAFLE.map((k) => (
-          <Link key={k.label} href={k.href} asChild>
-            <Pressable
-              accessibilityRole="link"
-              style={({ pressed }) => ({
-                flexBasis: '31%', flexGrow: 1, height: 84, borderRadius: 18, padding: 14, justifyContent: 'space-between',
-                backgroundColor: k.highlight ? t.red : t.surface, borderWidth: k.highlight ? 0 : 1, borderColor: t.border,
-                opacity: pressed ? 0.8 : 1,
-              })}
-            >
-              <Icon name={k.icon} size={24} color={k.highlight ? t.onRed : t.accentIcon} strokeWidth={1.7} />
-              <Text style={{ fontFamily: F.bodyBold, fontSize: 13, color: k.highlight ? t.onRed : t.text }}>{k.label}</Text>
-            </Pressable>
-          </Link>
-        ))}
-      </View>
-
-      {/* Postać dnia */}
-      <Card style={{ marginTop: 14, padding: 12, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 14 }} onPress={() => router.push('/odkrywaj')}>
-        <Medallion initials={postac.inicjaly} />
-        <View style={{ flex: 1, gap: 3 }}>
-          <Eyebrow>Postać dnia</Eyebrow>
-          <Text style={{ fontFamily: F.displaySemi, fontSize: 17, color: t.text }}>{postac.imie}</Text>
-          <Text style={{ fontFamily: F.body, fontSize: 12, color: t.textMuted }}>{postac.lata} · {postac.rola}</Text>
+        <View style={{ flex: 1, gap: GAP }}>
+          <Kafel href="/quiz" label="Quiz dnia" style={{ height: 110, backgroundColor: t.red, paddingHorizontal: 18, paddingVertical: 16, justifyContent: 'space-between' }}>
+            <Icon name="quiz" size={24} color={t.onRed} strokeWidth={1.8} />
+            <Text style={{ fontFamily: F.display, fontSize: 20, color: t.onRed }}>Quiz dnia</Text>
+          </Kafel>
+          <Kafel href="/os-czasu" label="Oś czasu" style={{ height: 110, backgroundColor: t.surface, paddingHorizontal: 18, paddingVertical: 16, justifyContent: 'space-between' }}>
+            <View style={{ height: 24, justifyContent: 'center' }}>
+              <View style={{ height: 2, backgroundColor: t.borderStrong }} />
+              <View style={{ position: 'absolute', left: 0, width: '70%', height: 2, backgroundColor: t.gold }} />
+              <View style={{ position: 'absolute', left: 0, width: 10, height: 10, borderRadius: 5, backgroundColor: t.gold }} />
+              <View style={{ position: 'absolute', left: '36%', width: 10, height: 10, borderRadius: 5, backgroundColor: t.gold }} />
+              <View style={{ position: 'absolute', left: '64%', width: 14, height: 14, borderRadius: 7, backgroundColor: t.red, borderWidth: 2, borderColor: t.surface }} />
+              <View style={{ position: 'absolute', right: 0, width: 10, height: 10, borderRadius: 5, backgroundColor: t.borderStrong }} />
+            </View>
+            <Text style={{ fontFamily: F.display, fontSize: 20, color: t.text }}>Oś czasu</Text>
+          </Kafel>
         </View>
-      </Card>
+      </View>
+
+      {/* Miejsca: kropkowa „mapa” */}
+      <Kafel href="/mapa" label="Miejsca" style={{ marginTop: GAP, height: 130, backgroundColor: t.surface }}>
+        <Svg width="100%" height="100%" style={{ position: 'absolute' }} accessibilityElementsHidden importantForAccessibility="no">
+          <Defs>
+            <Pattern id="kropki" width={12} height={12} patternUnits="userSpaceOnUse">
+              <Circle cx={6} cy={6} r={1.2} fill={t.borderStrong} />
+            </Pattern>
+          </Defs>
+          <Rect width="100%" height="100%" fill="url(#kropki)" />
+          <Circle cx="50%" cy={27} r={5} fill={t.gold} />
+          <Circle cx="68%" cy={57} r={5} fill={t.gold} />
+          <Circle cx="84%" cy={39} r={5} fill={t.gold} />
+          <Circle cx="62%" cy={97} r={8} fill={t.red} stroke={t.text} strokeWidth={3} />
+        </Svg>
+        <View style={{ position: 'absolute', left: 20, bottom: 18 }}>
+          <Text style={{ fontFamily: F.display, fontSize: 24, color: t.text }}>Miejsca</Text>
+          <Text style={{ marginTop: 2, fontFamily: F.bodySemi, fontSize: 12, color: t.textMuted }}>Od Bałtyku po Tatry</Text>
+        </View>
+      </Kafel>
     </ScrollView>
   );
 }

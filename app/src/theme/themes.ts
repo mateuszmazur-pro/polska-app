@@ -16,8 +16,9 @@ export type Theme = {
   surface: string;
   border: string;
   borderStrong: string;
-  /** Dolne menu */
-  tabBar: string;
+  /** Pływające dolne menu (pigułka) */
+  navBg: string;
+  navBorder: string;
 
   text: string;
   textSoft: string;
@@ -59,7 +60,8 @@ export const themes: Record<ThemeName, Theme> = {
     surface: '#10214A',
     border: '#1C3166',
     borderStrong: '#22386B',
-    tabBar: '#071025',
+    navBg: '#132654',
+    navBorder: '#22386B',
     text: '#F6F2E8',
     textSoft: '#D5DBE8',
     textMuted: '#A9B4CC',
@@ -89,7 +91,8 @@ export const themes: Record<ThemeName, Theme> = {
     surface: '#FAF6EE',
     border: '#EFE6D4',
     borderStrong: '#E9DFCC',
-    tabBar: '#FFFFFF',
+    navBg: '#FFFFFF',
+    navBorder: '#E9DFCC',
     text: '#16181D',
     textSoft: '#3A3F4B',
     textMuted: '#5C6170',
@@ -119,7 +122,8 @@ export const themes: Record<ThemeName, Theme> = {
     surface: '#1E1F22',
     border: '#2C2E33',
     borderStrong: '#33353A',
-    tabBar: '#0F0F11',
+    navBg: '#232428',
+    navBorder: '#33353A',
     text: '#EDEDEC',
     textSoft: '#D8D8DB',
     textMuted: '#A8A9AE',
