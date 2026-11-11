@@ -1,3 +1,4 @@
+import { useRouter, type Href } from 'expo-router';
 import { Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { F } from '@/theme/fonts';
@@ -16,21 +17,18 @@ export const TAB_META: Record<string, { title: string; icon: IconName }> = {
 };
 
 type Route = { key: string; name: string };
-type Props = {
-  state: { index: number; routes: Route[] };
-  navigation: {
-    emit: (e: { type: 'tabPress'; target: string; canPreventDefault: true }) => { defaultPrevented: boolean };
-    navigate: (name: string) => void;
-  };
-};
+type Props = { state: { index: number; routes: Route[] } };
+
+const sciezka = (name: string): Href => (name === 'index' ? '/' : `/${name}`) as Href;
 
 /**
  * Pływające menu w kształcie pigułki. Aktywna zakładka: złote (w Bieli czerwone) tło + podpis,
  * pozostałe: same ikony z opisem dla czytników ekranu.
  */
-export function FloatingTabBar({ state, navigation }: Props) {
+export function FloatingTabBar({ state }: Props) {
   const { t } = useTheme();
   const insets = useSafeAreaInsets();
+  const router = useRouter();
 
   return (
     <View
@@ -51,8 +49,7 @@ export function FloatingTabBar({ state, navigation }: Props) {
           if (!meta) return null;
           const focused = state.index === i;
           const onPress = () => {
-            const e = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });
-            if (!focused && !e.defaultPrevented) navigation.navigate(route.name);
+            if (!focused) router.navigate(sciezka(route.name));
           };
           return (
             <Pressable

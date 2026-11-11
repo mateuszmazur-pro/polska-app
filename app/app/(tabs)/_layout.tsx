@@ -6,7 +6,7 @@ export default function TabsLayout() {
   const { t } = useTheme();
   return (
     <Tabs
-      tabBar={(props) => <FloatingTabBar state={props.state} navigation={props.navigation as never} />}
+      tabBar={(props) => <FloatingTabBar state={props.state} />}
       screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: t.bg } }}
     >
       {Object.entries(TAB_META).map(([name, meta]) => (
