@@ -1,5 +1,5 @@
-import { Link, type Href } from 'expo-router';
-import type { ReactNode } from 'react';
+import { useRouter, type Href } from 'expo-router';
+import { useState, type ReactNode } from 'react';
 import { Pressable, ScrollView, Text, View, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Pattern, Rect } from 'react-native-svg';
@@ -15,16 +15,19 @@ const GAP = 10;
 
 /** Kafel = cały klikalny prostokąt, prowadzący do sekcji. */
 function Kafel({ href, label, style, children }: { href: Href; label: string; style: ViewStyle; children: ReactNode }) {
+  const router = useRouter();
+  const [wcisniety, setWcisniety] = useState(false);
   return (
-    <Link href={href} asChild>
-      <Pressable
-        accessibilityRole="link"
-        accessibilityLabel={label}
-        style={({ pressed }) => [{ borderRadius: R, overflow: 'hidden', transform: [{ scale: pressed ? 0.98 : 1 }] }, style]}
-      >
-        {children}
-      </Pressable>
-    </Link>
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel={label}
+      onPress={() => router.push(href)}
+      onPressIn={() => setWcisniety(true)}
+      onPressOut={() => setWcisniety(false)}
+      style={[{ borderRadius: R, overflow: 'hidden', transform: [{ scale: wcisniety ? 0.98 : 1 }] }, style]}
+    >
+      {children}
+    </Pressable>
   );
 }
 
@@ -122,7 +125,7 @@ export default function Start() {
 
       {/* Miejsca: kropkowa „mapa” */}
       <Kafel href="/mapa" label="Miejsca" style={{ marginTop: GAP, height: 130, backgroundColor: t.surface }}>
-        <Svg width="100%" height="100%" style={{ position: 'absolute' }} accessibilityElementsHidden importantForAccessibility="no">
+        <Svg width="100%" height="100%" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }} accessibilityElementsHidden importantForAccessibility="no">
           <Defs>
             <Pattern id="kropki" width={12} height={12} patternUnits="userSpaceOnUse">
               <Circle cx={6} cy={6} r={1.2} fill={t.borderStrong} />
