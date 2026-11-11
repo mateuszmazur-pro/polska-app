@@ -2,10 +2,10 @@ import { Image, Text, View, type ViewStyle } from 'react-native';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import type { Postac } from '@/data/postacie';
 import { F } from '@/theme/fonts';
+import { useTheme } from '@/theme/ThemeProvider';
 
 /** Tło szkiców — to samo we wszystkich motywach („okno do muzeum”). */
 export const PORTRET_BG = '#0C1D36';
-const ZLOTO = '#C9A24A';
 const ZLOTO_JASNE = '#E2C47A';
 
 /**
@@ -13,12 +13,13 @@ const ZLOTO_JASNE = '#E2C47A';
  * Kadr szkicu jest stały, więc wystarczy przeskalować i przesunąć ten sam plik.
  */
 export function PortretAvatar({ postac, size = 52 }: { postac: Postac; size?: number }) {
-  const img = size * 1.55; // kadr: cała twarz z włosami
+  const { t } = useTheme();
+  const img = size * 1.4; // kadr: cała twarz z włosami i odrobiną tła
   return (
     <View
       accessibilityElementsHidden
       importantForAccessibility="no"
-      style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden', backgroundColor: PORTRET_BG, borderWidth: 1.5, borderColor: ZLOTO, alignItems: 'center', justifyContent: 'center' }}
+      style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden', backgroundColor: PORTRET_BG, borderWidth: 1.5, borderColor: t.name === 'biel' ? '#B8BDC8' : '#C9CFDA', alignItems: 'center', justifyContent: 'center' }}
     >
       {postac.portret ? (
         <Image
