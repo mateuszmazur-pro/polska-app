@@ -82,7 +82,7 @@ export default function Start() {
 
       {/* Postacie | Quiz + Oś czasu */}
       <View style={{ marginTop: GAP, flexDirection: 'row', gap: GAP }}>
-        <Kafel href="/odkrywaj" label={`Postacie. Postać dnia: ${postac.imie}`} style={{ flex: 1, height: 230, backgroundColor: t.surface, padding: 20, justifyContent: 'space-between' }}>
+        <Kafel href="/postacie" label={`Postacie. Postać dnia: ${postac.imie}`} style={{ flex: 1, height: 230, backgroundColor: t.surface, padding: 20, justifyContent: 'space-between' }}>
           <View style={{ flexDirection: 'row' }}>
             {stos.map((p, i) => (
               <View

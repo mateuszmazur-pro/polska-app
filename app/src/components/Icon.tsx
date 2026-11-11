@@ -2,7 +2,8 @@ import Svg, { Circle, Path } from 'react-native-svg';
 
 export type IconName =
   | 'search' | 'bell' | 'settings' | 'arrowRight' | 'back' | 'person' | 'castle' | 'timeline'
-  | 'crown' | 'music' | 'quiz' | 'home' | 'compass' | 'pin' | 'trophy' | 'check';
+  | 'crown' | 'music' | 'quiz' | 'home' | 'compass' | 'pin' | 'trophy' | 'check'
+  | 'chevron' | 'bookmark' | 'share' | 'swords' | 'flag' | 'calendar' | 'bulb';
 
 type Props = { name: IconName; size?: number; color: string; strokeWidth?: number };
 
@@ -27,6 +28,13 @@ export function Icon({ name, size = 22, color, strokeWidth = 1.8 }: Props) {
       {name === 'pin' && (<><Path d="M12 21s-7-6.2-7-12a7 7 0 0114 0c0 5.8-7 12-7 12z" {...p} /><Circle cx={12} cy={9} r={2.5} {...p} /></>)}
       {name === 'trophy' && <Path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0zM7 6H4a3 3 0 003 4M17 6h3a3 3 0 01-3 4" {...p} />}
       {name === 'check' && <Path d="M5 12.5l4.5 4.5L19 7.5" {...p} />}
+      {name === 'chevron' && <Path d="M9 6l6 6-6 6" {...p} />}
+      {name === 'bookmark' && <Path d="M6 3h12v18l-6-4-6 4z" {...p} />}
+      {name === 'share' && <Path d="M12 15V3M7 8l5-5 5 5M5 13v7h14v-7" {...p} />}
+      {name === 'swords' && <Path d="M5 19L19 5M14 5h5v5M5 5l6 6M13 13l6 6M16 19h3v-3" {...p} />}
+      {name === 'flag' && <Path d="M5 21V4M5 4h11l-2 4 2 4H5" {...p} />}
+      {name === 'calendar' && <Path d="M4 5h16v15H4zM4 10h16M9 3v4M15 3v4" {...p} />}
+      {name === 'bulb' && <Path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z" {...p} />}
     </Svg>
   );
 }

@@ -1,7 +1,10 @@
 /**
  * Dane startowe. Docelowo przyjdą z API (Cloudflare Workers + D1) i będą edytowane w panelu admina.
  */
+import type { ImageSourcePropType } from 'react-native';
+
 export type Kategoria = 'Nauka' | 'Władcy' | 'Sztuka' | 'Wojsko';
+export const KATEGORIE: Kategoria[] = ['Nauka', 'Władcy', 'Sztuka', 'Wojsko'];
 
 export type Postac = {
   id: string;
@@ -10,18 +13,51 @@ export type Postac = {
   lata: string;
   rola: string;
   kategoria: Kategoria;
+  /** Szkic: kwadrat 1:1, tło #0C1D36, popiersie wypełniające kadr */
+  portret?: ImageSourcePropType;
+  opis?: string;
+  zyciorys?: string;
+  kalendarium?: { rok: string; tekst: string }[];
+  ciekawostki?: string[];
+  polecana?: boolean;
 };
 
 export const postacie: Postac[] = [
   { id: 'adam-mickiewicz', imie: 'Adam Mickiewicz', inicjaly: 'AM', lata: '1798–1855', rola: 'poeta, autor „Pana Tadeusza”', kategoria: 'Sztuka' },
   { id: 'boleslaw-chrobry', imie: 'Bolesław Chrobry', inicjaly: 'BC', lata: 'ok. 967–1025', rola: 'pierwszy król Polski', kategoria: 'Władcy' },
-  { id: 'fryderyk-chopin', imie: 'Fryderyk Chopin', inicjaly: 'FC', lata: '1810–1849', rola: 'kompozytor, pianista', kategoria: 'Sztuka' },
+  { id: 'fryderyk-chopin', imie: 'Fryderyk Chopin', inicjaly: 'FC', lata: '1810–1849', rola: 'kompozytor, pianista', kategoria: 'Sztuka', polecana: true },
   { id: 'jan-iii-sobieski', imie: 'Jan III Sobieski', inicjaly: 'JS', lata: '1629–1696', rola: 'król, zwycięzca spod Wiednia', kategoria: 'Władcy' },
   { id: 'jozef-pilsudski', imie: 'Józef Piłsudski', inicjaly: 'JP', lata: '1867–1935', rola: 'Naczelnik Państwa', kategoria: 'Wojsko' },
-  { id: 'maria-sklodowska-curie', imie: 'Maria Skłodowska-Curie', inicjaly: 'MS', lata: '1867–1934', rola: 'fizyczka i chemiczka', kategoria: 'Nauka' },
-  { id: 'mikolaj-kopernik', imie: 'Mikołaj Kopernik', inicjaly: 'MK', lata: '1473–1543', rola: 'astronom, twórca heliocentryzmu', kategoria: 'Nauka' },
+  { id: 'maria-sklodowska-curie', imie: 'Maria Skłodowska-Curie', inicjaly: 'MS', lata: '1867–1934', rola: 'fizyczka i chemiczka', kategoria: 'Nauka', polecana: true },
+  {
+    id: 'mikolaj-kopernik',
+    imie: 'Mikołaj Kopernik',
+    inicjaly: 'MK',
+    lata: '1473–1543',
+    rola: 'astronom, twórca heliocentryzmu',
+    kategoria: 'Nauka',
+    polecana: true,
+    portret: require('../../assets/portrety/mikolaj-kopernik.jpg'),
+    opis: 'Astronom, twórca teorii heliocentrycznej',
+    zyciorys:
+      'Urodził się w Toruniu. Studiował w Krakowie, a potem we Włoszech. W dziele „O obrotach sfer niebieskich” pokazał, że to Ziemia krąży wokół Słońca — i zmienił sposób, w jaki patrzymy na Wszechświat.',
+    kalendarium: [
+      { rok: '1473', tekst: 'Przychodzi na świat w Toruniu, 19 lutego.' },
+      { rok: '1491', tekst: 'Rozpoczyna studia w Akademii Krakowskiej.' },
+      { rok: '1496', tekst: 'Wyjeżdża na studia do Bolonii.' },
+      { rok: '1503', tekst: 'Zostaje doktorem prawa kanonicznego w Ferrarze.' },
+      { rok: '1543', tekst: 'Ukazuje się „O obrotach sfer niebieskich”. Umiera we Fromborku.' },
+    ],
+    ciekawostki: [
+      'Był nie tylko astronomem: zajmował się też medycyną i ekonomią — opisał zjawisko, w którym gorszy pieniądz wypiera lepszy.',
+    ],
+  },
   { id: 'tadeusz-kosciuszko', imie: 'Tadeusz Kościuszko', inicjaly: 'TK', lata: '1746–1817', rola: 'Naczelnik insurekcji 1794', kategoria: 'Wojsko' },
 ];
+
+export function postacPoId(id: string): Postac | undefined {
+  return postacie.find((p) => p.id === id);
+}
 
 /** Postać dnia — na razie rotacja po dniu roku; później ustawiana w panelu admina. */
 export function postacDnia(date: Date): Postac {
