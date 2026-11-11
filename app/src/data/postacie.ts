@@ -39,7 +39,7 @@ export const postacie: Postac[] = [
     kategoria: 'Nauka',
     polecana: true,
     portret: require('../../assets/portrety/maria-sklodowska-curie.jpg'),
-    twarz: { x: 0.51, y: 0.47 },
+    twarz: { x: 0.51, y: 0.49 },
     opis: 'Fizyczka i chemiczka, dwukrotna laureatka Nagrody Nobla',
     zyciorys:
       'Urodziła się w Warszawie, pod zaborem rosyjskim, gdzie kobiety nie mogły studiować. W Paryżu skończyła studia na Sorbonie i razem z mężem, Piotrem Curie, badała promieniotwórczość. Odkryła dwa nowe pierwiastki — polon i rad.',
@@ -66,7 +66,7 @@ export const postacie: Postac[] = [
     kategoria: 'Nauka',
     polecana: true,
     portret: require('../../assets/portrety/mikolaj-kopernik.jpg'),
-    twarz: { x: 0.42, y: 0.45 },
+    twarz: { x: 0.42, y: 0.47 },
     opis: 'Astronom, twórca teorii heliocentrycznej',
     zyciorys:
       'Urodził się w Toruniu. Studiował w Krakowie, a potem we Włoszech. W dziele „O obrotach sfer niebieskich” pokazał, że to Ziemia krąży wokół Słońca — i zmienił sposób, w jaki patrzymy na Wszechświat.',

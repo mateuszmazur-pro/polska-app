@@ -13,7 +13,7 @@ const ZLOTO_JASNE = '#E2C47A';
  * Kadr szkicu jest stały, więc wystarczy przeskalować i przesunąć ten sam plik.
  */
 export function PortretAvatar({ postac, size = 52 }: { postac: Postac; size?: number }) {
-  const img = size * 2.1;
+  const img = size * 1.55; // kadr: cała twarz z włosami
   return (
     <View
       accessibilityElementsHidden
