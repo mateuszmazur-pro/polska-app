@@ -1,0 +1,14 @@
+node_modules/
+.expo/
+dist/
+web-build/
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+# natywne foldery generowane przez `expo prebuild`
+app/android/
+app/ios/
+# Cloudflare
+.wrangler/
