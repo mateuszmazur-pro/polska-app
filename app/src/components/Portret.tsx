@@ -21,7 +21,10 @@ export function PortretAvatar({ postac, size = 52 }: { postac: Postac; size?: nu
       style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden', backgroundColor: PORTRET_BG, borderWidth: 1.5, borderColor: ZLOTO, alignItems: 'center', justifyContent: 'center' }}
     >
       {postac.portret ? (
-        <Image source={postac.portret} style={{ position: 'absolute', width: img, height: img, left: -size * 0.4, top: -size * 0.44 }} />
+        <Image
+          source={postac.portret}
+          style={{ position: 'absolute', width: img, height: img, left: size / 2 - (postac.twarz?.x ?? 0.45) * img, top: size / 2 - (postac.twarz?.y ?? 0.46) * img }}
+        />
       ) : (
         <Text style={{ fontFamily: F.display, fontSize: size * 0.33, color: ZLOTO_JASNE }}>{postac.inicjaly}</Text>
       )}
