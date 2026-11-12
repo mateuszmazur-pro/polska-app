@@ -39,15 +39,13 @@ export function Icon({ name, size = 22, color, strokeWidth = 1.8 }: Props) {
   );
 }
 
-/** Znak aplikacji: biało-czerwone koło w złotej obwódce (bez godła). */
-export function Emblem({ size = 40, gold, white, red }: { size?: number; gold: string; white: string; red: string }) {
-  const inner = size * 0.7;
-  const o = (size - inner) / 2;
+/** Znak aplikacji: biało-czerwone koło (bez godła, bez obwódki). */
+export function Emblem({ size = 40, white, red }: { size?: number; gold?: string; white: string; red: string }) {
+  const r = size / 2;
   return (
     <Svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-      <Circle cx={size / 2} cy={size / 2} r={size / 2 - 0.75} stroke={gold} strokeWidth={1.5} fill="none" />
-      <Path d={`M${o} ${size / 2} a${inner / 2} ${inner / 2} 0 0 1 ${inner} 0 z`} fill={white} />
-      <Path d={`M${o} ${size / 2} a${inner / 2} ${inner / 2} 0 0 0 ${inner} 0 z`} fill={red} />
+      <Path d={`M0 ${r} a${r} ${r} 0 0 1 ${size} 0 z`} fill={white} />
+      <Path d={`M0 ${r} a${r} ${r} 0 0 0 ${size} 0 z`} fill={red} />
     </Svg>
   );
 }

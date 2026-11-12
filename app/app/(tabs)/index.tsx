@@ -5,6 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Pattern, Rect } from 'react-native-svg';
 import { TAB_BAR_SPACE } from '@/components/FloatingTabBar';
 import { Emblem, Icon } from '@/components/Icon';
+import { Ornamenty } from '@/components/Ornamenty';
 import { postacDnia, postacie } from '@/data/postacie';
 import { dataKrotka, swietoNaDzien } from '@/data/swieta';
 import { F } from '@/theme/fonts';
@@ -46,10 +47,16 @@ export default function Start() {
       contentContainerStyle={{ paddingTop: insets.top + 14, paddingHorizontal: 20, paddingBottom: TAB_BAR_SPACE + insets.bottom }}
       showsVerticalScrollIndicator={false}
     >
-      {/* Nagłówek: znak + nazwa */}
-      <View style={{ height: 44, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-        <Emblem size={34} gold={t.gold} white="#FFFFFF" red={t.red} />
-        <Text style={{ fontFamily: F.marka, fontSize: 15, letterSpacing: 3.6, color: t.text }}>POLSKA</Text>
+      {/* Nagłówek: znak + nazwa, w tle zmieniające się ornamenty ludowe */}
+      <View style={{ marginHorizontal: -20, marginTop: -insets.top - 14, paddingTop: insets.top + 14, paddingHorizontal: 20, paddingBottom: 8 }}>
+        <Ornamenty style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: -20 }} />
+        <View style={{ minHeight: 48, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Emblem size={30} white="#FFFFFF" red={t.red} />
+          <View>
+            <Text style={{ fontFamily: F.marka, fontSize: 16, letterSpacing: 3.8, color: t.text }}>POLSKA</Text>
+            <Text style={{ marginTop: 1, fontFamily: F.displayItalic, fontSize: 14, color: t.accentText }}>Moja Ojczyzna</Text>
+          </View>
+        </View>
       </View>
 
       {/* Kafel główny: rocznica dnia albo początek historii */}
