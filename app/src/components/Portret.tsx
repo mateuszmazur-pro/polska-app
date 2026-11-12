@@ -60,25 +60,27 @@ export function Zanik({
   const id = `zanik-${kierunek}-${kolor.replace('#', '')}`;
   const pion = kierunek === 'dol';
   return (
-    <Svg style={style} width="100%" height="100%" pointerEvents="none">
-      <Defs>
-        <LinearGradient id={id} x1="0" y1="0" x2={pion ? '0' : '1'} y2={pion ? '1' : '0'}>
-          {pion ? (
-            <>
-              <Stop offset="0" stopColor={kolor} stopOpacity={0} />
-              <Stop offset="0.45" stopColor={kolor} stopOpacity={0.55} />
-              <Stop offset="0.9" stopColor={kolor} stopOpacity={1} />
-            </>
-          ) : (
-            <>
-              <Stop offset="0" stopColor={kolor} stopOpacity={1} />
-              <Stop offset={String(od)} stopColor={kolor} stopOpacity={1} />
-              <Stop offset="1" stopColor={kolor} stopOpacity={0} />
-            </>
-          )}
-        </LinearGradient>
-      </Defs>
-      <Rect x="0" y="0" width="100%" height="100%" fill={`url(#${id})`} />
-    </Svg>
+    <View style={style} pointerEvents="none">
+      <Svg width="100%" height="100%">
+        <Defs>
+          <LinearGradient id={id} x1="0" y1="0" x2={pion ? '0' : '1'} y2={pion ? '1' : '0'}>
+            {pion ? (
+              <>
+                <Stop offset="0" stopColor={kolor} stopOpacity={0} />
+                <Stop offset="0.45" stopColor={kolor} stopOpacity={0.55} />
+                <Stop offset="0.9" stopColor={kolor} stopOpacity={1} />
+              </>
+            ) : (
+              <>
+                <Stop offset="0" stopColor={kolor} stopOpacity={1} />
+                <Stop offset={String(od)} stopColor={kolor} stopOpacity={1} />
+                <Stop offset="1" stopColor={kolor} stopOpacity={0} />
+              </>
+            )}
+          </LinearGradient>
+        </Defs>
+        <Rect x="0" y="0" width="100%" height="100%" fill={`url(#${id})`} />
+      </Svg>
+    </View>
   );
 }
