@@ -1,5 +1,4 @@
 import { Image, Text, View, type ViewStyle } from 'react-native';
-import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import type { Postac } from '@/data/postacie';
 import { F } from '@/theme/fonts';
 import { useTheme } from '@/theme/ThemeProvider';
@@ -53,34 +52,32 @@ export function PortretWKarcie({ postac, width, height }: { postac: Postac; widt
   );
 }
 
-/** Płynne przejście koloru tła w przezroczystość (do rozmywania krawędzi szkicu). */
+/**
+ * Płynne przejście koloru tła w przezroczystość (do rozmywania krawędzi szkicu).
+ * Zbudowane z cienkich pasków o rosnącym kryciu — działa jednakowo na Androidzie i iOS.
+ */
 export function Zanik({
   kierunek, kolor = PORTRET_BG, style, od = 0.5,
 }: { kierunek: 'dol' | 'prawo'; kolor?: string; style: ViewStyle; od?: number }) {
-  const id = `zanik-${kierunek}-${kolor.replace('#', '')}`;
+  const N = 24;
   const pion = kierunek === 'dol';
+  const paski = Array.from({ length: N }, (_, i) => {
+    const t = (i + 0.5) / N; // 0 → 1 wzdłuż kierunku
+    let krycie: number;
+    if (pion) {
+      // od góry przezroczyście, na dole pełny kolor
+      krycie = t < 0.9 ? Math.pow(t / 0.9, 1.6) : 1;
+    } else {
+      // od lewej pełny kolor, do „od” pełny, potem zanika do zera
+      krycie = t <= od ? 1 : Math.pow(1 - (t - od) / (1 - od), 1.4);
+    }
+    return krycie;
+  });
   return (
-    <View style={style} pointerEvents="none">
-      <Svg width="100%" height="100%">
-        <Defs>
-          <LinearGradient id={id} x1="0" y1="0" x2={pion ? '0' : '1'} y2={pion ? '1' : '0'}>
-            {pion ? (
-              <>
-                <Stop offset="0" stopColor={kolor} stopOpacity={0} />
-                <Stop offset="0.45" stopColor={kolor} stopOpacity={0.55} />
-                <Stop offset="0.9" stopColor={kolor} stopOpacity={1} />
-              </>
-            ) : (
-              <>
-                <Stop offset="0" stopColor={kolor} stopOpacity={1} />
-                <Stop offset={String(od)} stopColor={kolor} stopOpacity={1} />
-                <Stop offset="1" stopColor={kolor} stopOpacity={0} />
-              </>
-            )}
-          </LinearGradient>
-        </Defs>
-        <Rect x="0" y="0" width="100%" height="100%" fill={`url(#${id})`} />
-      </Svg>
+    <View style={[style, { flexDirection: pion ? 'column' : 'row' }]} pointerEvents="none">
+      {paski.map((k, i) => (
+        <View key={i} style={{ flex: 1, backgroundColor: kolor, opacity: k }} />
+      ))}
     </View>
   );
 }
