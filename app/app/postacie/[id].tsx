@@ -70,7 +70,7 @@ export default function PostacSzczegoly() {
             </View>
           </View>
 
-          <View style={{ position: 'absolute', left: 20, right: 20, bottom: 18 }}>
+          <View style={{ position: 'absolute', left: 20, right: 20, bottom: 4 }}>
             <Text style={{ fontFamily: F.bodyHeavy, fontSize: 11, letterSpacing: 1.8, color: t.accentText }}>{postac.lata.replace('–', ' – ')}</Text>
             <View accessible accessibilityRole="header" accessibilityLabel={postac.imie} style={{ marginTop: 8 }}>
               <Text style={{ fontFamily: F.display, fontSize: 34, lineHeight: 34, color: t.text }}>{nazwisko ? imie : ''}</Text>
@@ -86,7 +86,7 @@ export default function PostacSzczegoly() {
           </View>
         </View>
 
-        <Text style={{ marginTop: 6, marginHorizontal: 20, fontFamily: F.body, fontSize: 14, color: t.textMuted }}>{postac.opis ?? postac.rola}</Text>
+        <Text style={{ marginTop: 2, marginHorizontal: 20, fontFamily: F.body, fontSize: 14, color: t.textMuted }}>{postac.opis ?? postac.rola}</Text>
 
         {/* Zakładki */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, gap: 8, marginTop: 20 }} accessibilityRole="tablist">
