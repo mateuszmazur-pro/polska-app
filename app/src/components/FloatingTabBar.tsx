@@ -8,8 +8,6 @@ import { Icon, type IconName } from './Icon';
 
 const WYSOKOSC = 68;
 const MARGINES = 6;
-/** krycie kolejnych pasów poświaty (od góry do dołu) */
-const POSWIATA = Array.from({ length: 14 }, (_, i) => 0.42 * Math.pow((i + 1) / 14, 2.2));
 
 /** Miejsce, które ekrany zostawiają na końcu przewijania pod pływającym menu. */
 export const TAB_BAR_SPACE = WYSOKOSC + 24 + 16;
@@ -27,8 +25,7 @@ type Props = { state: { index: number; routes: Route[] } };
 const sciezka = (name: string): Href => (name === 'index' ? '/' : `/${name}`) as Href;
 
 /**
- * Pływające menu: pod aktywną zakładką przesuwa się pigułka z czerwoną poświatą
- * i kreską światła u dołu (sprężysta animacja jak w iOS). Aktywna ikona — biała.
+ * Pływające menu: pod aktywną zakładką przesuwa się czerwona kreska (sprężysta animacja jak w iOS). Aktywna ikona — biała.
  */
 export function FloatingTabBar({ state }: Props) {
   const { t } = useTheme();
@@ -64,7 +61,7 @@ export function FloatingTabBar({ state }: Props) {
       >
         <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: ciemny ? t.navBg : '#FFFFFF' }} />
 
-        {/* Szklana pigułka pod aktywną zakładką: jasne szkło u góry, czerwona poświata u dołu */}
+        {/* Pigułka pod aktywną zakładką: czerwona kreska u dołu */}
         {kafel > 0 && (
           <Animated.View
             pointerEvents="none"
@@ -74,18 +71,11 @@ export function FloatingTabBar({ state }: Props) {
                             transform: [{ translateX: x }, { scale: nacisk }],
             }}
           >
-            {/* poświata: pasy o rosnącym kryciu ku dołowi */}
-            <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '62%' }}>
-              {POSWIATA.map((k, i) => (
-                <View key={i} style={{ flex: 1, backgroundColor: t.red, opacity: k * (ciemny ? 1 : 0.8) }} />
-              ))}
-            </View>
-            {/* jasna kreska światła na dole */}
+            {/* czerwona kreska na dole — ten sam kolor co kafel Quiz dnia */}
             <View
               style={{
                 position: 'absolute', bottom: 0, alignSelf: 'center', width: '46%', height: 2.5, borderRadius: 2,
-                backgroundColor: '#FF4D66',
-                shadowColor: '#FF1F3D', shadowOpacity: 0.9, shadowRadius: 6, shadowOffset: { width: 0, height: 0 },
+                backgroundColor: t.red,
               }}
             />
           </Animated.View>
