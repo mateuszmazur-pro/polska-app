@@ -4,13 +4,12 @@ import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TAB_BAR_SPACE } from '@/components/FloatingTabBar';
 import { Icon } from '@/components/Icon';
-import { Rycina, type RycinaNazwa } from '@/components/Rycina';
 import { F } from '@/theme/fonts';
 import { useTheme } from '@/theme/ThemeProvider';
 
 const RZYMSKIE = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 
-const SPIS: { t: RycinaNazwa; d: string; href?: Href }[] = [
+const SPIS: { t: string; d: string; href?: Href }[] = [
   { t: 'Wielcy Polacy', d: 'Postacie, które zmieniły świat', href: '/postacie' },
   { t: 'Oś czasu', d: 'Od 966 do dziś', href: '/os-czasu' },
   { t: 'Epoki', d: 'Okresy dziejów' },
@@ -68,7 +67,6 @@ export default function Odkrywaj() {
               <Text style={{ fontFamily: F.display, fontSize: 22, lineHeight: 26, color: t.text }}>{k.t}</Text>
               <Text numberOfLines={1} style={{ marginTop: 3, fontFamily: F.body, fontSize: 12, color: t.textMuted }}>{k.d}</Text>
             </View>
-            <Rycina nazwa={k.t} size={40} color={t.gold} opacity={0.85} />
           </Pressable>
         ))}
       </View>
