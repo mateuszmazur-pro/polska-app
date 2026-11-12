@@ -24,7 +24,7 @@ export function PortretAvatar({ postac, size = 52 }: { postac: Postac; size?: nu
       {postac.portret ? (
         <Image
           source={postac.portret}
-          style={{ position: 'absolute', width: img, height: img, left: size / 2 - (postac.twarz?.x ?? 0.45) * img, top: size / 2 - (postac.twarz?.y ?? 0.46) * img }}
+          style={{ position: 'absolute', opacity: 0.78, width: img, height: img, left: size / 2 - (postac.twarz?.x ?? 0.45) * img, top: size / 2 - (postac.twarz?.y ?? 0.46) * img }}
         />
       ) : (
         <Text style={{ fontFamily: F.display, fontSize: size * 0.33, color: ZLOTO_JASNE }}>{postac.inicjaly}</Text>
