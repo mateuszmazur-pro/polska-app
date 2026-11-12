@@ -66,7 +66,7 @@ export const postacie: Postac[] = [
     kategoria: 'Nauka',
     polecana: true,
     portret: require('../../assets/portrety/mikolaj-kopernik.jpg'),
-    twarz: { x: 0.38, y: 0.48 },
+    twarz: { x: 0.47, y: 0.48 },
     opis: 'Astronom, twórca teorii heliocentrycznej',
     zyciorys:
       'Urodził się w Toruniu. Studiował w Krakowie, a potem we Włoszech. W dziele „O obrotach sfer niebieskich” pokazał, że to Ziemia krąży wokół Słońca — i zmienił sposób, w jaki patrzymy na Wszechświat.',
