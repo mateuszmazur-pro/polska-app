@@ -19,7 +19,7 @@ export function PortretAvatar({ postac, size = 52 }: { postac: Postac; size?: nu
     <View
       accessibilityElementsHidden
       importantForAccessibility="no"
-      style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden', backgroundColor: PORTRET_BG, borderWidth: 1.5, borderColor: t.name === 'biel' ? '#B8BDC8' : '#C9CFDA', alignItems: 'center', justifyContent: 'center' }}
+      style={{ width: size, height: size, borderRadius: size / 2, overflow: 'hidden', backgroundColor: PORTRET_BG, borderWidth: 1.5, borderColor: t.name === 'biel' ? 'rgba(92,97,112,0.28)' : 'rgba(201,207,218,0.28)', alignItems: 'center', justifyContent: 'center' }}
     >
       {postac.portret ? (
         <Image
