@@ -1,33 +1,32 @@
 import { useRouter, type Href } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, ScrollView, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TAB_BAR_SPACE } from '@/components/FloatingTabBar';
-import { Icon, type IconName } from '@/components/Icon';
-import { PORTRET_BG, PortretWKarcie } from '@/components/Portret';
-import { postacPoId } from '@/data/postacie';
+import { Icon } from '@/components/Icon';
+import { Rycina, type RycinaNazwa } from '@/components/Rycina';
 import { F } from '@/theme/fonts';
 import { useTheme } from '@/theme/ThemeProvider';
 
-const KATEGORIE: { t: string; d: string; icon: IconName; href?: Href }[] = [
-  { t: 'Oś czasu', d: 'Od 966 do dziś', icon: 'timeline', href: '/os-czasu' },
-  { t: 'Epoki', d: 'Okresy dziejów', icon: 'crown' },
-  { t: 'Wydarzenia', d: 'Bitwy i przełomy', icon: 'swords' },
-  { t: 'Miejsca', d: 'Zabytki i pamięć', icon: 'castle', href: '/mapa' },
-  { t: 'Kultura', d: 'Sztuka i tradycje', icon: 'music' },
-  { t: 'Symbole', d: 'Flaga, godło, hymn', icon: 'flag' },
-  { t: 'Święta', d: 'Rocznice i obchody', icon: 'calendar' },
-  { t: 'Ciekawostki', d: 'Fakty i rekordy', icon: 'bulb' },
+const RZYMSKIE = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+
+const SPIS: { t: RycinaNazwa; d: string; href?: Href }[] = [
+  { t: 'Wielcy Polacy', d: 'Postacie, które zmieniły świat', href: '/postacie' },
+  { t: 'Oś czasu', d: 'Od 966 do dziś', href: '/os-czasu' },
+  { t: 'Epoki', d: 'Okresy dziejów' },
+  { t: 'Wydarzenia', d: 'Bitwy i przełomy' },
+  { t: 'Miejsca', d: 'Zabytki i pamięć', href: '/mapa' },
+  { t: 'Kultura', d: 'Sztuka i tradycje' },
+  { t: 'Symbole', d: 'Flaga, godło, hymn' },
+  { t: 'Święta', d: 'Rocznice i obchody' },
+  { t: 'Ciekawostki', d: 'Fakty i rekordy' },
 ];
 
 export default function Odkrywaj() {
   const { t } = useTheme();
   const insets = useSafeAreaInsets();
   const router = useRouter();
-  const { width } = useWindowDimensions();
   const [szukaj, setSzukaj] = useState('');
-  const kafelW = width - 40;
-  const twarz = postacPoId('mikolaj-kopernik')!;
 
   return (
     <ScrollView
@@ -36,7 +35,7 @@ export default function Odkrywaj() {
       showsVerticalScrollIndicator={false}
       keyboardShouldPersistTaps="handled"
     >
-      <Text accessibilityRole="header" style={{ fontFamily: F.display, fontSize: 34, color: t.text }}>Odkrywaj</Text>
+      <Text accessibilityRole="header" style={{ fontFamily: F.display, fontSize: 36, lineHeight: 40, color: t.text }}>Odkrywaj</Text>
 
       <View style={{ marginTop: 16, height: 48, borderRadius: 24, backgroundColor: t.surface, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, gap: 10 }}>
         <Icon name="search" size={18} color={t.textMuted} />
@@ -50,41 +49,26 @@ export default function Odkrywaj() {
         />
       </View>
 
-      {/* Wyróżniony kafel: Wielcy Polacy */}
-      <Pressable
-        accessibilityRole="link"
-        accessibilityLabel="Wielcy Polacy"
-        onPress={() => router.push('/postacie')}
-        style={({ pressed }) => ({
-          marginTop: 16, height: 168, borderRadius: 28, overflow: 'hidden', backgroundColor: PORTRET_BG,
-          borderWidth: 1, borderColor: '#1C3166', transform: [{ scale: pressed ? 0.98 : 1 }],
-        })}
-      >
-        <PortretWKarcie postac={twarz} width={kafelW} height={168} />
-        <Text style={{ position: 'absolute', left: 20, top: 20, fontFamily: F.bodyHeavy, fontSize: 11, letterSpacing: 1.8, color: '#E2C47A' }}>POSTACIE</Text>
-        <Text style={{ position: 'absolute', left: 20, bottom: 20, fontFamily: F.display, fontSize: 26, lineHeight: 28, color: '#F6F2E8' }}>Wielcy{'\n'}Polacy</Text>
-      </Pressable>
+      <Text style={{ marginTop: 22, fontFamily: F.bodyHeavy, fontSize: 11, letterSpacing: 2, color: t.accentText }}>SPIS TREŚCI</Text>
 
-      {/* Siatka kategorii */}
-      <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-        {KATEGORIE.map((k) => (
+      <View style={{ marginTop: 6, borderTopWidth: 1, borderTopColor: t.border }}>
+        {SPIS.map((k, i) => (
           <Pressable
             key={k.t}
-            accessibilityRole="button"
+            accessibilityRole="link"
             accessibilityLabel={`${k.t}. ${k.d}`}
             onPress={k.href ? () => router.push(k.href!) : undefined}
             style={({ pressed }) => ({
-              width: (kafelW - 10) / 2, height: 104, borderRadius: 24, padding: 16, justifyContent: 'space-between',
-              backgroundColor: t.surface, opacity: pressed ? 0.85 : 1,
+              height: 76, flexDirection: 'row', alignItems: 'center', gap: 16,
+              borderBottomWidth: 1, borderBottomColor: t.border, opacity: pressed ? 0.6 : 1,
             })}
           >
-            <View style={{ width: 36, height: 36, borderRadius: 12, backgroundColor: t.bg, alignItems: 'center', justifyContent: 'center' }}>
-              <Icon name={k.icon} size={20} color={t.accentIcon} />
+            <Text style={{ width: 44, fontFamily: F.marka, fontSize: 15, letterSpacing: 1, color: t.gold }}>{RZYMSKIE[i]}</Text>
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text style={{ fontFamily: F.display, fontSize: 22, lineHeight: 26, color: t.text }}>{k.t}</Text>
+              <Text numberOfLines={1} style={{ marginTop: 3, fontFamily: F.body, fontSize: 12, color: t.textMuted }}>{k.d}</Text>
             </View>
-            <View>
-              <Text style={{ fontFamily: F.display, fontSize: 17, color: t.text }}>{k.t}</Text>
-              <Text style={{ marginTop: 2, fontFamily: F.bodySemi, fontSize: 11, color: t.textMuted }}>{k.d}</Text>
-            </View>
+            <Rycina nazwa={k.t} size={40} color={t.gold} opacity={0.85} />
           </Pressable>
         ))}
       </View>
