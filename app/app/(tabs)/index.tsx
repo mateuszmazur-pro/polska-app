@@ -1,11 +1,10 @@
 import { useRouter, type Href } from 'expo-router';
 import { useState, type ReactNode } from 'react';
-import { Pressable, ScrollView, Text, View, useWindowDimensions, type ViewStyle } from 'react-native';
+import { Pressable, ScrollView, Text, View, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Pattern, Rect } from 'react-native-svg';
 import { TAB_BAR_SPACE } from '@/components/FloatingTabBar';
 import { Emblem, Icon } from '@/components/Icon';
-import { Wstazka } from '@/components/Wstazka';
 import { postacDnia, postacie } from '@/data/postacie';
 import { dataKrotka, swietoNaDzien } from '@/data/swieta';
 import { F } from '@/theme/fonts';
@@ -35,7 +34,6 @@ function Kafel({ href, label, style, children }: { href: Href; label: string; st
 export default function Start() {
   const { t } = useTheme();
   const insets = useSafeAreaInsets();
-  const { width: W } = useWindowDimensions();
   const dzis = new Date();
   const swieto = swietoNaDzien(dzis);
   const postac = postacDnia(dzis);
@@ -48,22 +46,17 @@ export default function Start() {
       contentContainerStyle={{ paddingTop: insets.top + 14, paddingHorizontal: 20, paddingBottom: TAB_BAR_SPACE + insets.bottom }}
       showsVerticalScrollIndicator={false}
     >
-      {/* Nagłówek: znak + nazwa + powiewająca wstążka */}
-      <View style={{ height: 64, justifyContent: 'center' }}>
-        <View style={{ position: 'absolute', left: 104, right: -20, top: -6 }} pointerEvents="none">
-          <Wstazka width={W - 104} height={76} grubosc={15} />
-        </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-          <Emblem size={34} gold={t.gold} white="#FFFFFF" red={t.red} />
-          <Text style={{ fontFamily: F.marka, fontSize: 15, letterSpacing: 3.6, color: t.text }}>POLSKA</Text>
-        </View>
+      {/* Nagłówek: znak + nazwa */}
+      <View style={{ height: 44, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <Emblem size={34} gold={t.gold} white="#FFFFFF" red={t.red} />
+        <Text style={{ fontFamily: F.marka, fontSize: 15, letterSpacing: 3.6, color: t.text }}>POLSKA</Text>
       </View>
 
       {/* Kafel główny: rocznica dnia albo początek historii */}
       <Kafel
         href="/os-czasu"
         label={swieto ? `${swieto.nazwa}. ${lata ? `${lata} ${swieto.podpis ?? 'lat'}` : ''}` : 'Oś czasu: od roku 966'}
-        style={{ marginTop: 14, height: 210, backgroundColor: t.feature }}
+        style={{ marginTop: 20, height: 210, backgroundColor: t.feature }}
       >
         <View style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 14 }}>
           <View style={{ flex: 1, backgroundColor: '#FFFFFF' }} />
