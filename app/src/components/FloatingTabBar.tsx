@@ -9,6 +9,8 @@ import { Icon, type IconName } from './Icon';
 
 const WYSOKOSC = 68;
 const MARGINES = 6;
+/** krycie kolejnych pasów poświaty (od góry do dołu) */
+const POSWIATA = Array.from({ length: 14 }, (_, i) => 0.42 * Math.pow((i + 1) / 14, 2.2));
 
 /** Miejsce, które ekrany zostawiają na końcu przewijania pod pływającym menu. */
 export const TAB_BAR_SPACE = WYSOKOSC + 24 + 16;
@@ -67,18 +69,32 @@ export function FloatingTabBar({ state }: Props) {
         ) : null}
         <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: Platform.OS === 'ios' ? tlo : ciemny ? '#15305A' : '#FFFFFF' }} />
 
-        {/* Szklana pigułka pod aktywną zakładką */}
+        {/* Szklana pigułka pod aktywną zakładką: jasne szkło u góry, czerwona poświata u dołu */}
         {kafel > 0 && (
           <Animated.View
             pointerEvents="none"
             style={{
               position: 'absolute', top: MARGINES, left: MARGINES, width: kafel, height: WYSOKOSC - MARGINES * 2,
-              borderRadius: (WYSOKOSC - MARGINES * 2) / 2,
-              backgroundColor: ciemny ? 'rgba(246,242,232,0.12)' : 'rgba(200,16,46,0.10)',
-              borderWidth: 1, borderColor: ciemny ? 'rgba(226,196,122,0.45)' : 'rgba(200,16,46,0.25)',
+              borderRadius: (WYSOKOSC - MARGINES * 2) / 2, overflow: 'hidden',
+              backgroundColor: ciemny ? 'rgba(246,242,232,0.10)' : 'rgba(22,24,29,0.05)',
               transform: [{ translateX: x }, { scale: nacisk }],
             }}
-          />
+          >
+            {/* poświata: pasy o rosnącym kryciu ku dołowi */}
+            <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '62%' }}>
+              {POSWIATA.map((k, i) => (
+                <View key={i} style={{ flex: 1, backgroundColor: t.red, opacity: k * (ciemny ? 1 : 0.8) }} />
+              ))}
+            </View>
+            {/* jasna kreska światła na dole */}
+            <View
+              style={{
+                position: 'absolute', bottom: 0, alignSelf: 'center', width: '46%', height: 2.5, borderRadius: 2,
+                backgroundColor: '#FF4D66',
+                shadowColor: '#FF1F3D', shadowOpacity: 0.9, shadowRadius: 6, shadowOffset: { width: 0, height: 0 },
+              }}
+            />
+          </Animated.View>
         )}
 
         <View style={{ flex: 1, flexDirection: 'row', paddingHorizontal: MARGINES }}>
