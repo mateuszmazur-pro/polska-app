@@ -26,6 +26,11 @@ for /f %%i in ('git rev-parse HEAD') do set PO=%%i
 if not "%PRZED%"=="%PO%" (
   echo  [%time:~0,8%] Pobrano nowa wersje:
   git log -1 --format="               %%s"
+  git diff --name-only %PRZED% %PO% | findstr /i "package.json" >nul && (
+    echo.
+    echo  !!! Doszly nowe pakiety. Zamknij oba okna i uruchom ponownie Uruchom.bat
+    echo.
+  )
 )
 timeout /t 15 /nobreak >nul
 goto petla

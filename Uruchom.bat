@@ -9,7 +9,10 @@ git pull --ff-only
 echo.
 echo  Wlaczam automatyczne pobieranie zmian (osobne okno)...
 start "POLSKA - automatyczne aktualizacje" cmd /k ""%~dp0scripts\auto-aktualizacje.bat""
+cd app
+echo  Sprawdzam pakiety (npm install)...
+call npm install --no-audit --no-fund
+echo.
 echo  Uruchamiam serwer Expo...
 echo.
-cd app
 npx expo start -c

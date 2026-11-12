@@ -1,41 +1,44 @@
+import { Cinzel_600SemiBold, Cinzel_700Bold } from '@expo-google-fonts/cinzel';
 import {
-  PlayfairDisplay_500Medium_Italic,
-  PlayfairDisplay_600SemiBold,
-  PlayfairDisplay_600SemiBold_Italic,
-  PlayfairDisplay_700Bold,
-  PlayfairDisplay_800ExtraBold,
-} from '@expo-google-fonts/playfair-display';
-import {
-  Manrope_400Regular,
-  Manrope_500Medium,
-  Manrope_600SemiBold,
-  Manrope_700Bold,
-  Manrope_800ExtraBold,
-} from '@expo-google-fonts/manrope';
+  DMSans_400Regular,
+  DMSans_500Medium,
+  DMSans_600SemiBold,
+  DMSans_700Bold,
+  DMSans_800ExtraBold,
+} from '@expo-google-fonts/dm-sans';
+import { DMSerifDisplay_400Regular, DMSerifDisplay_400Regular_Italic } from '@expo-google-fonts/dm-serif-display';
 
 export const fontAssets = {
-  PlayfairDisplay_500Medium_Italic,
-  PlayfairDisplay_600SemiBold,
-  PlayfairDisplay_600SemiBold_Italic,
-  PlayfairDisplay_700Bold,
-  PlayfairDisplay_800ExtraBold,
-  Manrope_400Regular,
-  Manrope_500Medium,
-  Manrope_600SemiBold,
-  Manrope_700Bold,
-  Manrope_800ExtraBold,
+  Cinzel_600SemiBold,
+  Cinzel_700Bold,
+  DMSans_400Regular,
+  DMSans_500Medium,
+  DMSans_600SemiBold,
+  DMSans_700Bold,
+  DMSans_800ExtraBold,
+  DMSerifDisplay_400Regular,
+  DMSerifDisplay_400Regular_Italic,
 };
 
-/** Playfair Display — nagłówki, daty, nazwiska. Manrope — interfejs i tekst. */
+/**
+ * Typografia:
+ * - DM Serif Display — tytuły, imiona, akcenty w kursywie
+ * - Cinzel — nazwiska (WERSALIKAMI), duże liczby, znak POLSKA
+ * - DM Sans — interfejs i tekst
+ */
 export const F = {
-  display: 'PlayfairDisplay_700Bold',
-  displaySemi: 'PlayfairDisplay_600SemiBold',
-  displayHeavy: 'PlayfairDisplay_800ExtraBold',
-  displayItalic: 'PlayfairDisplay_600SemiBold_Italic',
-  displayItalicLight: 'PlayfairDisplay_500Medium_Italic',
-  body: 'Manrope_400Regular',
-  bodyMedium: 'Manrope_500Medium',
-  bodySemi: 'Manrope_600SemiBold',
-  bodyBold: 'Manrope_700Bold',
-  bodyHeavy: 'Manrope_800ExtraBold',
+  display: 'DMSerifDisplay_400Regular',
+  displaySemi: 'DMSerifDisplay_400Regular',
+  displayItalic: 'DMSerifDisplay_400Regular_Italic',
+  displayItalicLight: 'DMSerifDisplay_400Regular_Italic',
+  /** Cinzel: nazwiska, liczby, znak marki */
+  displayHeavy: 'Cinzel_700Bold',
+  nazwisko: 'Cinzel_700Bold',
+  liczby: 'Cinzel_700Bold',
+  marka: 'Cinzel_600SemiBold',
+  body: 'DMSans_400Regular',
+  bodyMedium: 'DMSans_500Medium',
+  bodySemi: 'DMSans_600SemiBold',
+  bodyBold: 'DMSans_700Bold',
+  bodyHeavy: 'DMSans_800ExtraBold',
 } as const;

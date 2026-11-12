@@ -49,7 +49,7 @@ export default function Start() {
       {/* Nagłówek: znak + nazwa */}
       <View style={{ height: 44, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
         <Emblem size={34} gold={t.gold} white="#FFFFFF" red={t.red} />
-        <Text style={{ fontFamily: F.displayHeavy, fontSize: 15, letterSpacing: 3.6, color: t.text }}>POLSKA</Text>
+        <Text style={{ fontFamily: F.marka, fontSize: 15, letterSpacing: 3.6, color: t.text }}>POLSKA</Text>
       </View>
 
       {/* Kafel główny: rocznica dnia albo początek historii */}
@@ -66,7 +66,7 @@ export default function Start() {
           {swieto ? `DZIŚ · ${dataKrotka(dzis)}` : 'TU ZACZYNA SIĘ HISTORIA'}
         </Text>
         <Text
-          style={{ position: 'absolute', left: 18, right: 64, top: 40, fontFamily: F.displayHeavy, fontSize: 120, lineHeight: 132, letterSpacing: -4, color: t.onFeature }}
+          style={{ position: 'absolute', left: 18, right: 64, top: 40, fontFamily: F.liczby, fontSize: 112, lineHeight: 128, letterSpacing: -1, color: t.onFeature }}
           adjustsFontSizeToFit
           numberOfLines={1}
         >
