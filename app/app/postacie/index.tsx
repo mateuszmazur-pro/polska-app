@@ -45,14 +45,15 @@ export default function Postacie() {
 
       {/* Polecane */}
       <Text style={{ marginTop: 18, marginHorizontal: 20, fontFamily: F.bodyHeavy, fontSize: 12, letterSpacing: 1.9, color: t.accentText }}>POLECANE</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, gap: 12, marginTop: 12 }} snapToInterval={KARTA_W + 12} decelerationRate="fast">
-        {polecane.map((p) => (
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, gap: 12, marginTop: 12 }} snapToInterval={KARTA_W + 25} decelerationRate="fast">
+        {polecane.map((p, i) => (
+          <View key={p.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          {i > 0 && <View style={{ width: 1, height: KARTA_H * 0.6, backgroundColor: 'rgba(246,242,232,0.14)' }} />}
           <Pressable
-            key={p.id}
             accessibilityRole="link"
             accessibilityLabel={`${p.imie}, ${p.lata}`}
             onPress={() => router.push(`/postacie/${p.id}`)}
-            style={({ pressed }) => ({ width: KARTA_W, height: KARTA_H, borderRadius: 28, overflow: 'hidden', backgroundColor: PORTRET_BG, borderWidth: 1, borderColor: '#1C3166', transform: [{ scale: pressed ? 0.98 : 1 }] })}
+            style={({ pressed }) => ({ width: KARTA_W, height: KARTA_H, borderRadius: 28, overflow: 'hidden', backgroundColor: PORTRET_BG, transform: [{ scale: pressed ? 0.98 : 1 }] })}
           >
             <PortretWKarcie postac={p} width={KARTA_W} height={KARTA_H} />
             <Text style={{ position: 'absolute', left: 20, top: 20, fontFamily: F.bodyHeavy, fontSize: 11, letterSpacing: 1.8, color: '#E2C47A' }}>{p.kategoria.toUpperCase()}</Text>
@@ -61,6 +62,7 @@ export default function Postacie() {
               <Text style={{ marginTop: 5, fontFamily: F.bodySemi, fontSize: 12, color: '#A9B4CC' }}>{p.lata}</Text>
             </View>
           </Pressable>
+          </View>
         ))}
       </ScrollView>
 

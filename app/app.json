@@ -6,7 +6,7 @@
     "scheme": "polska",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
-    "backgroundColor": "#0A1630",
+    "backgroundColor": "#0C1D36",
     "ios": {
       "bundleIdentifier": "pl.mojaojczyzna.app",
       "supportsTablet": true
