@@ -73,12 +73,12 @@ export default function PostacSzczegoly() {
           <View style={{ position: 'absolute', left: 20, right: 20, bottom: 18 }}>
             <Text style={{ fontFamily: F.bodyHeavy, fontSize: 11, letterSpacing: 1.8, color: t.accentText }}>{postac.lata.replace('–', ' – ')}</Text>
             <View accessible accessibilityRole="header" accessibilityLabel={postac.imie} style={{ marginTop: 8 }}>
-              <Text style={{ fontFamily: F.display, fontSize: 32, lineHeight: 36, color: t.textSoft }}>{nazwisko ? imie : ''}</Text>
+              <Text style={{ fontFamily: F.display, fontSize: 34, lineHeight: 38, color: t.text }}>{nazwisko ? imie : ''}</Text>
               <Text
                 numberOfLines={1}
                 adjustsFontSizeToFit
                 minimumFontScale={0.6}
-                style={{ fontFamily: F.nazwisko, fontSize: 40, lineHeight: 48, letterSpacing: 1.6, color: t.accentText, textTransform: 'uppercase' }}
+                style={{ fontFamily: F.display, fontSize: 40, lineHeight: 46, color: t.accentText }}
               >
                 {nazwisko || imie}
               </Text>
