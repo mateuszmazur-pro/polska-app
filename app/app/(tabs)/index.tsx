@@ -1,10 +1,10 @@
 import { useRouter, type Href } from 'expo-router';
 import { useState, type ReactNode } from 'react';
-import { Pressable, ScrollView, Text, View, type ViewStyle } from 'react-native';
+import { Pressable, ScrollView, Text, View, useWindowDimensions, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, { Circle, Defs, Pattern, Rect } from 'react-native-svg';
 import { TAB_BAR_SPACE } from '@/components/FloatingTabBar';
 import { Emblem, Icon } from '@/components/Icon';
+import { Krajobrazy } from '@/components/Krajobrazy';
 import { IconButton } from '@/components/ui';
 import { Ornamenty } from '@/components/Ornamenty';
 import { postacDnia, postacie } from '@/data/postacie';
@@ -37,6 +37,7 @@ export default function Start() {
   const { t } = useTheme();
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const { width: W } = useWindowDimensions();
   const dzis = new Date();
   const swieto = swietoNaDzien(dzis);
   const postac = postacDnia(dzis);
@@ -135,23 +136,12 @@ export default function Start() {
         </View>
       </View>
 
-      {/* Miejsca: kropkowa „mapa” */}
-      <Kafel href="/mapa" label="Miejsca" style={{ marginTop: GAP, height: 130, backgroundColor: t.surface }}>
-        <Svg width="100%" height="100%" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }} accessibilityElementsHidden importantForAccessibility="no">
-          <Defs>
-            <Pattern id="kropki" width={12} height={12} patternUnits="userSpaceOnUse">
-              <Circle cx={6} cy={6} r={1.2} fill={t.borderStrong} />
-            </Pattern>
-          </Defs>
-          <Rect width="100%" height="100%" fill="url(#kropki)" />
-          <Circle cx="50%" cy={27} r={5} fill={t.gold} />
-          <Circle cx="68%" cy={57} r={5} fill={t.gold} />
-          <Circle cx="84%" cy={39} r={5} fill={t.gold} />
-          <Circle cx="62%" cy={97} r={8} fill={t.red} stroke={t.text} strokeWidth={3} />
-        </Svg>
-        <View style={{ position: 'absolute', left: 20, bottom: 18 }}>
-          <Text style={{ fontFamily: F.display, fontSize: 24, color: t.text }}>Miejsca</Text>
-          <Text style={{ marginTop: 2, fontFamily: F.bodySemi, fontSize: 12, color: t.textMuted }}>Od Bałtyku po Tatry</Text>
+      {/* Miejsca: zmieniające się krajobrazy */}
+      <Kafel href="/mapa" label="Miejsca" style={{ marginTop: GAP, height: 170, backgroundColor: '#0C1D36' }}>
+        <Krajobrazy width={W - 40} height={170} tlo="#0C1D36" />
+        <View style={{ position: 'absolute', left: 20, bottom: 16 }}>
+          <Text style={{ fontFamily: F.display, fontSize: 26, color: '#F6F2E8' }}>Miejsca</Text>
+          <Text style={{ marginTop: 2, fontFamily: F.bodySemi, fontSize: 12, color: 'rgba(246,242,232,0.8)' }}>Od Bałtyku po Tatry</Text>
         </View>
       </Kafel>
     </ScrollView>
