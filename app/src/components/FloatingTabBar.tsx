@@ -1,7 +1,6 @@
-import { BlurView } from 'expo-blur';
 import { useRouter, type Href } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
-import { Animated, Platform, Pressable, Text, View } from 'react-native';
+import { Animated, Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { F } from '@/theme/fonts';
 import { useTheme } from '@/theme/ThemeProvider';
@@ -28,8 +27,8 @@ type Props = { state: { index: number; routes: Route[] } };
 const sciezka = (name: string): Href => (name === 'index' ? '/' : `/${name}`) as Href;
 
 /**
- * Pływające, „szklane” menu: rozmyte tło, a pod aktywną zakładką
- * przesuwa się świecąca pigułka (sprężysta animacja jak w iOS).
+ * Pływające menu: pod aktywną zakładką przesuwa się pigułka z czerwoną poświatą
+ * i kreską światła u dołu (sprężysta animacja jak w iOS). Aktywna ikona — biała.
  */
 export function FloatingTabBar({ state }: Props) {
   const { t } = useTheme();
@@ -51,7 +50,6 @@ export function FloatingTabBar({ state }: Props) {
   }, [aktywna, kafel, x, nacisk]);
 
   const ciemny = t.statusBar === 'light';
-  const tlo = ciemny ? 'rgba(21,48,90,0.72)' : 'rgba(255,255,255,0.78)';
 
   return (
     <View pointerEvents="box-none" style={{ position: 'absolute', left: 16, right: 16, bottom: Math.max(insets.bottom, 12) + 8 }}>
@@ -64,10 +62,7 @@ export function FloatingTabBar({ state }: Props) {
           shadowColor: '#000', shadowOpacity: ciemny ? 0.45 : 0.15, shadowRadius: 24, shadowOffset: { width: 0, height: 14 }, elevation: 14,
         }}
       >
-        {Platform.OS === 'ios' ? (
-          <BlurView intensity={40} tint={ciemny ? 'dark' : 'light'} style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} />
-        ) : null}
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: Platform.OS === 'ios' ? tlo : ciemny ? '#15305A' : '#FFFFFF' }} />
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: ciemny ? t.navBg : '#FFFFFF' }} />
 
         {/* Szklana pigułka pod aktywną zakładką: jasne szkło u góry, czerwona poświata u dołu */}
         {kafel > 0 && (
@@ -76,8 +71,7 @@ export function FloatingTabBar({ state }: Props) {
             style={{
               position: 'absolute', top: MARGINES, left: MARGINES, width: kafel, height: WYSOKOSC - MARGINES * 2,
               borderRadius: (WYSOKOSC - MARGINES * 2) / 2, overflow: 'hidden',
-              backgroundColor: ciemny ? 'rgba(246,242,232,0.10)' : 'rgba(22,24,29,0.05)',
-              transform: [{ translateX: x }, { scale: nacisk }],
+                            transform: [{ translateX: x }, { scale: nacisk }],
             }}
           >
             {/* poświata: pasy o rosnącym kryciu ku dołowi */}
@@ -101,7 +95,7 @@ export function FloatingTabBar({ state }: Props) {
           {trasy.map((route, i) => {
             const meta = TAB_META[route.name];
             const on = i === aktywna;
-            const kolor = on ? t.active : t.textMuted;
+            const kolor = on ? (ciemny ? '#FFFFFF' : t.text) : t.textMuted;
             return (
               <Pressable
                 key={route.key}
