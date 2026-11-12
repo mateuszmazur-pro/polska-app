@@ -11,6 +11,13 @@ polska-app/
 └── api/      API (Cloudflare Workers) + baza D1 + zdjęcia w R2               [wkrótce]
 ```
 
+## Codzienna praca (Windows)
+
+Kliknij dwukrotnie **`Uruchom.bat`** w głównym folderze projektu. Plik:
+1. pobiera najnowsze zmiany z GitHuba,
+2. otwiera drugie okno, które co 15 s pobiera kolejne zmiany (aplikacja na telefonie odświeża się sama),
+3. uruchamia serwer Expo — na telefonie otwórz projekt w Expo Go.
+
 ## Pierwsze uruchomienie aplikacji
 
 Wymagany Node.js 22.13+ (albo 24.3+).
