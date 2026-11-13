@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
-import { useMemo, useState } from 'react';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { useMemo, useRef, useState } from 'react';
+import { Animated, Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { PasekListy } from '@/components/PasekListy';
 import { Icon } from '@/components/Icon';
@@ -13,6 +13,8 @@ import { useTheme } from '@/theme/ThemeProvider';
 type Filtr = 'Wszyscy' | Kategoria;
 const KARTA_W = 290;
 const KARTA_H = 220;
+const WIERSZ_H = 72;
+const LITERA = 34;
 
 export default function Postacie() {
   const { t } = useTheme();
@@ -22,23 +24,44 @@ export default function Postacie() {
 
   const polecane = postacie.filter((p) => p.polecana).sort((a, b) => Number(!!b.portret) - Number(!!a.portret));
 
-  const grupy = useMemo(() => {
-    const lista = postacie
+  const lista = useMemo(
+    () => postacie
       .filter((p) => filtr === 'Wszyscy' || p.kategoria === filtr)
-      .sort((a, b) => a.imie.localeCompare(b.imie, 'pl'));
-    const wynik: { litera: string; osoby: typeof lista }[] = [];
-    for (const p of lista) {
-      const l = p.imie.charAt(0).toUpperCase();
-      const g = wynik.find((x) => x.litera === l);
-      if (g) g.osoby.push(p);
-      else wynik.push({ litera: l, osoby: [p] });
-    }
-    return wynik;
-  }, [filtr]);
+      .sort((a, b) => a.imie.localeCompare(b.imie, 'pl')),
+    [filtr],
+  );
+  const litery = lista.map((p) => p.imie.charAt(0).toUpperCase());
 
-  let numer = 0;
+  // Pływająca litera z boku (jak w kontaktach iPhone'a): stoi przy pierwszym wierszu,
+  // przykleja się u góry ekranu i zmienia się, gdy lista wchodzi w kolejną literę.
+  const scrollY = useRef(new Animated.Value(0)).current;
+  const [listaY, setListaY] = useState(0);
+  const [idx, setIdx] = useState(0);
+  const litera = litery[Math.min(idx, litery.length - 1)] ?? '';
+  const gora = insets.top + 12;
+  const startLitery = listaY + (WIERSZ_H - LITERA) / 2;
+  const literaY = scrollY.interpolate({
+    inputRange: [0, Math.max(1, startLitery - gora)],
+    outputRange: [startLitery, gora],
+    extrapolate: 'clamp',
+  });
+  const aktualna = (y: number) => {
+    const i = Math.min(lista.length - 1, Math.max(0, Math.floor((y + gora + LITERA / 2 - listaY) / WIERSZ_H)));
+    if (i !== idx) setIdx(i);
+  };
+
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: t.bg }} contentContainerStyle={{ paddingTop: insets.top + 14, paddingBottom: insets.bottom + 40 }} showsVerticalScrollIndicator={false}>
+    <View style={{ flex: 1, backgroundColor: t.bg }}>
+    <Animated.ScrollView
+      style={{ flex: 1 }}
+      contentContainerStyle={{ paddingTop: insets.top + 14, paddingBottom: insets.bottom + 40 }}
+      showsVerticalScrollIndicator={false}
+      scrollEventThrottle={16}
+      onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], {
+        useNativeDriver: true,
+        listener: (e: any) => aktualna(e.nativeEvent.contentOffset.y),
+      })}
+    >
       <View style={{ paddingHorizontal: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
         <IconButton icon="back" label="Wróć" onPress={() => router.back()} />
         <IconButton icon="search" label="Szukaj postaci" />
@@ -86,34 +109,44 @@ export default function Postacie() {
         })}
       </ScrollView>
 
-      {/* Lista A–Z — pasek co drugi wiersz, liczony przez całą listę */}
-      <View style={{ paddingHorizontal: 20, paddingTop: 6 }}>
-        {grupy.map((g) => (
-          <View key={g.litera}>
-            <Text style={{ marginTop: 14, fontFamily: F.display, fontSize: 15, color: t.gold }}>{g.litera}</Text>
-            {g.osoby.map((p) => {
-              const nr = numer++;
-              return (
-              <Pressable
-                key={p.id}
-                accessibilityRole="link"
-                accessibilityLabel={`${p.imie}, ${p.lata}, ${p.rola}`}
-                onPress={() => router.push(`/postacie/${p.id}`)}
-                style={({ pressed }) => ({ height: 68, marginHorizontal: -20, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', gap: 14, opacity: pressed ? 0.7 : 1 })}
-              >
-                {nr % 2 === 1 && <PasekListy />}
-                <PortretAvatar postac={p} />
-                <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={{ fontFamily: F.lista, fontSize: 16, color: t.text }}>{p.imie}</Text>
-                  <Text numberOfLines={1} style={{ marginTop: 2, fontFamily: F.body, fontSize: 12, color: t.textMuted }}>{p.lata} · {p.rola}</Text>
-                </View>
-                <Icon name="chevron" size={18} color={t.textMuted} strokeWidth={2} />
-              </Pressable>
-              );
-            })}
-          </View>
+      {/* Lista A–Z — bez przerywników liter, pasek co drugi wiersz */}
+      <View
+        style={{ marginTop: 14 }}
+        onLayout={(e) => setListaY(e.nativeEvent.layout.y)}
+      >
+        {lista.map((p, nr) => (
+          <Pressable
+            key={p.id}
+            accessibilityRole="link"
+            accessibilityLabel={`${p.imie}, ${p.lata}, ${p.rola}`}
+            onPress={() => router.push(`/postacie/${p.id}`)}
+            style={({ pressed }) => ({ height: WIERSZ_H, paddingLeft: 20, paddingRight: 60, flexDirection: 'row', alignItems: 'center', gap: 14, opacity: pressed ? 0.7 : 1 })}
+          >
+            {nr % 2 === 1 && <PasekListy />}
+            <PortretAvatar postac={p} />
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text numberOfLines={1} style={{ fontFamily: F.lista, fontSize: 18, color: t.text }}>{p.imie}</Text>
+              <Text numberOfLines={1} style={{ marginTop: 2, fontFamily: F.body, fontSize: 12, color: t.textMuted }}>{p.lata} · {p.rola}</Text>
+            </View>
+            <Icon name="chevron" size={18} color={t.textMuted} strokeWidth={2} />
+          </Pressable>
         ))}
       </View>
-    </ScrollView>
+    </Animated.ScrollView>
+
+    {lista.length > 0 && listaY > 0 && (
+      <Animated.View
+        pointerEvents="none"
+        style={{
+          position: 'absolute', right: 14, top: 0, width: LITERA, height: LITERA, borderRadius: LITERA / 2,
+          alignItems: 'center', justifyContent: 'center',
+          backgroundColor: t.surface, borderWidth: 1, borderColor: t.borderStrong,
+          transform: [{ translateY: literaY }],
+        }}
+      >
+        <Text style={{ fontFamily: F.liczby, fontSize: 15, color: t.gold }}>{litera}</Text>
+      </Animated.View>
+    )}
+    </View>
   );
 }
