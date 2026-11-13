@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useMemo, useRef, useState } from 'react';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Platform, Pressable, ScrollView, StatusBar, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TAB_BAR_SPACE } from '@/components/FloatingTabBar';
 import { PortretAvatar } from '@/components/Portret';
@@ -27,10 +27,12 @@ export default function OsCzasu() {
     lista.current?.scrollTo({ y: 0, animated: false });
   };
 
+  // Android: gdy system nie poda wcięcia, bierzemy wysokość paska statusu wprost.
+  const gornyPas = Math.max(insets.top, Platform.OS === 'android' ? StatusBar.currentHeight ?? 0 : 0);
   // Lista zaczyna się pod paskiem statusu (notch, godzina, zasięg), więc przyklejone
   // zakładki epok zatrzymują się tuż pod nim, a nie nachodzą na niego.
   return (
-    <View style={{ flex: 1, backgroundColor: t.bg, paddingTop: insets.top }}>
+    <View style={{ flex: 1, backgroundColor: t.bg, paddingTop: gornyPas }}>
     <ScrollView
       ref={lista}
       style={{ flex: 1 }}
