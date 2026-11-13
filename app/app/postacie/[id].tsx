@@ -48,7 +48,7 @@ export default function PostacSzczegoly() {
     <View style={{ flex: 1, backgroundColor: t.bg }}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: insets.bottom + 110 }}>
         {/* Nagłówek: szkic jako tło całej górnej części */}
-        <View style={{ height: naglowekH, backgroundColor: PORTRET_BG, overflow: 'hidden' }}>
+        <View style={{ height: naglowekH, backgroundColor: postac.tlo ?? PORTRET_BG, overflow: 'hidden' }}>
           {postac.portret ? (
             <Image
               source={postac.portret}

@@ -62,6 +62,8 @@ export const wydarzenia: Wydarzenie[] = [
   { id: 'nobel-sklodowskiej', rok: 1903, tytul: 'Nobel dla Skłodowskiej-Curie', opis: 'Maria Skłodowska-Curie jako pierwsza kobieta otrzymuje Nagrodę Nobla.', epoka: 'zabory', postacie: ['maria-sklodowska-curie'] },
   // II RP
   { id: 'niepodleglosc', rok: 1918, data: '11 listopada', md: '11-11', tytul: 'Odzyskanie niepodległości', opis: 'Józef Piłsudski obejmuje dowództwo nad wojskiem. Po 123 latach Polska znów jest wolna.', epoka: 'ii-rp', wazne: true, postacie: ['jozef-pilsudski'] },
+  { id: 'powstanie-wielkopolskie', rok: 1918, data: '27 grudnia', md: '12-27', tytul: 'Powstanie wielkopolskie', opis: 'Po przyjeździe Paderewskiego do Poznania wybucha zwycięskie powstanie przeciw Niemcom.', epoka: 'ii-rp', postacie: ['ignacy-jan-paderewski'] },
+  { id: 'traktat-wersalski', rok: 1919, data: '28 czerwca', md: '06-28', tytul: 'Traktat wersalski', opis: 'Paderewski i Dmowski podpisują w imieniu Polski traktat kończący I wojnę światową.', epoka: 'ii-rp', postacie: ['ignacy-jan-paderewski', 'roman-dmowski'] },
   { id: 'bitwa-warszawska', rok: 1920, data: '15 sierpnia', md: '08-15', tytul: 'Bitwa Warszawska', opis: 'Wojsko Polskie zatrzymuje Armię Czerwoną pod Warszawą.', epoka: 'ii-rp', wazne: true },
   { id: 'konstytucja-marcowa', rok: 1921, tytul: 'Konstytucja marcowa', opis: 'Pierwsza konstytucja odrodzonej Rzeczypospolitej.', epoka: 'ii-rp' },
   // Wojna

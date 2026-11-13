@@ -3,8 +3,8 @@
  */
 import type { ImageSourcePropType } from 'react-native';
 
-export type Kategoria = 'Nauka' | 'Władcy' | 'Sztuka' | 'Wojsko';
-export const KATEGORIE: Kategoria[] = ['Nauka', 'Władcy', 'Sztuka', 'Wojsko'];
+export type Kategoria = 'Nauka' | 'Władcy' | 'Sztuka' | 'Wojsko' | 'Polityka';
+export const KATEGORIE: Kategoria[] = ['Nauka', 'Władcy', 'Sztuka', 'Wojsko', 'Polityka'];
 
 export type Postac = {
   id: string;
@@ -17,6 +17,8 @@ export type Postac = {
   portret?: ImageSourcePropType;
   /** Środek twarzy na szkicu (0–1), do wycinania okrągłego avatara */
   twarz?: { x: number; y: number };
+  /** Kolor tła szkicu — nagłówek i karta przyjmują dokładnie ten odcień */
+  tlo?: string;
   opis?: string;
   zyciorys?: string;
   kalendarium?: { rok: string; tekst: string }[];
@@ -28,6 +30,30 @@ export const postacie: Postac[] = [
   { id: 'adam-mickiewicz', imie: 'Adam Mickiewicz', inicjaly: 'AM', lata: '1798–1855', rola: 'poeta, autor „Pana Tadeusza”', kategoria: 'Sztuka' },
   { id: 'boleslaw-chrobry', imie: 'Bolesław Chrobry', inicjaly: 'BC', lata: 'ok. 967–1025', rola: 'pierwszy król Polski', kategoria: 'Władcy' },
   { id: 'fryderyk-chopin', imie: 'Fryderyk Chopin', inicjaly: 'FC', lata: '1810–1849', rola: 'kompozytor, pianista', kategoria: 'Sztuka', polecana: true },
+  {
+    id: 'ignacy-jan-paderewski',
+    imie: 'Ignacy Jan Paderewski',
+    inicjaly: 'IP',
+    lata: '1860–1941',
+    rola: 'pianista, kompozytor, mąż stanu',
+    kategoria: 'Polityka',
+    portret: require('../../assets/portrety/ignacy-jan-paderewski.jpg'),
+    twarz: { x: 0.5, y: 0.45 },
+    tlo: '#081B3A',
+    opis: 'Pianista światowej sławy i premier odrodzonej Polski',
+    zyciorys:
+      'Jeden z najsłynniejszych pianistów swoich czasów — koncertował na całym świecie. Swoją sławę i majątek oddał sprawie polskiej: zabiegał o niepodległość w Ameryce, a w 1919 r. został premierem i ministrem spraw zagranicznych odrodzonej Rzeczypospolitej.',
+    kalendarium: [
+      { rok: '1860', tekst: 'Przychodzi na świat w Kuryłówce na Podolu, 18 listopada.' },
+      { rok: '1918', tekst: 'Przyjeżdża do Poznania — jego wizyta poprzedza wybuch powstania wielkopolskiego.' },
+      { rok: '1919', tekst: 'Zostaje premierem i ministrem spraw zagranicznych; podpisuje traktat wersalski.' },
+      { rok: '1941', tekst: 'Umiera w Nowym Jorku.' },
+      { rok: '1992', tekst: 'Jego prochy wracają do Polski, do archikatedry warszawskiej.' },
+    ],
+    ciekawostki: [
+      'Jego Menuet G-dur był jednym z najpopularniejszych utworów fortepianowych swoich czasów.',
+    ],
+  },
   { id: 'jan-iii-sobieski', imie: 'Jan III Sobieski', inicjaly: 'JS', lata: '1629–1696', rola: 'król, zwycięzca spod Wiednia', kategoria: 'Władcy' },
   { id: 'jozef-pilsudski', imie: 'Józef Piłsudski', inicjaly: 'JP', lata: '1867–1935', rola: 'Naczelnik Państwa', kategoria: 'Wojsko' },
   {
@@ -40,6 +66,7 @@ export const postacie: Postac[] = [
     polecana: true,
     portret: require('../../assets/portrety/maria-sklodowska-curie.jpg'),
     twarz: { x: 0.51, y: 0.49 },
+    tlo: '#0A1B37',
     opis: 'Fizyczka i chemiczka, dwukrotna laureatka Nagrody Nobla',
     zyciorys:
       'Urodziła się w Warszawie, pod zaborem rosyjskim, gdzie kobiety nie mogły studiować. W Paryżu skończyła studia na Sorbonie i razem z mężem, Piotrem Curie, badała promieniotwórczość. Odkryła dwa nowe pierwiastki — polon i rad.',
@@ -67,6 +94,7 @@ export const postacie: Postac[] = [
     polecana: true,
     portret: require('../../assets/portrety/mikolaj-kopernik.jpg'),
     twarz: { x: 0.47, y: 0.48 },
+    tlo: '#0C1E36',
     opis: 'Astronom, twórca teorii heliocentrycznej',
     zyciorys:
       'Urodził się w Toruniu. Studiował w Krakowie, a potem we Włoszech. W dziele „O obrotach sfer niebieskich” pokazał, że to Ziemia krąży wokół Słońca — i zmienił sposób, w jaki patrzymy na Wszechświat.',
@@ -80,6 +108,28 @@ export const postacie: Postac[] = [
     ciekawostki: [
       'Był nie tylko astronomem: zajmował się też medycyną i ekonomią — opisał zjawisko, w którym gorszy pieniądz wypiera lepszy.',
     ],
+  },
+  {
+    id: 'roman-dmowski',
+    imie: 'Roman Dmowski',
+    inicjaly: 'RD',
+    lata: '1864–1939',
+    rola: 'polityk, współtwórca niepodległości',
+    kategoria: 'Polityka',
+    portret: require('../../assets/portrety/roman-dmowski.jpg'),
+    twarz: { x: 0.52, y: 0.44 },
+    tlo: '#061937',
+    opis: 'Polityk, przywódca Narodowej Demokracji',
+    zyciorys:
+      'Twórca i przywódca obozu narodowego (Narodowej Demokracji). W czasie I wojny światowej zabiegał na Zachodzie o sprawę polską, a w 1919 r. razem z Paderewskim podpisał traktat wersalski. Jego poglądy polityczne do dziś wywołują spory.',
+    kalendarium: [
+      { rok: '1864', tekst: 'Przychodzi na świat w Kamionku pod Warszawą, 9 sierpnia.' },
+      { rok: '1893', tekst: 'Współtworzy Ligę Narodową.' },
+      { rok: '1917', tekst: 'Staje na czele Komitetu Narodowego Polskiego, uznanego przez państwa Ententy.' },
+      { rok: '1919', tekst: 'Podpisuje traktat wersalski w imieniu Polski.' },
+      { rok: '1939', tekst: 'Umiera w Drozdowie, 2 stycznia.' },
+    ],
+    ciekawostki: ['Z wykształcenia był przyrodnikiem — ukończył studia biologiczne w Warszawie.'],
   },
   { id: 'tadeusz-kosciuszko', imie: 'Tadeusz Kościuszko', inicjaly: 'TK', lata: '1746–1817', rola: 'Naczelnik insurekcji 1794', kategoria: 'Wojsko' },
 ];

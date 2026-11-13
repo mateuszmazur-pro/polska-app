@@ -53,7 +53,7 @@ export default function Postacie() {
             accessibilityRole="link"
             accessibilityLabel={`${p.imie}, ${p.lata}`}
             onPress={() => router.push(`/postacie/${p.id}`)}
-            style={({ pressed }) => ({ width: KARTA_W, height: KARTA_H, borderRadius: 28, overflow: 'hidden', backgroundColor: PORTRET_BG, transform: [{ scale: pressed ? 0.98 : 1 }] })}
+            style={({ pressed }) => ({ width: KARTA_W, height: KARTA_H, borderRadius: 28, overflow: 'hidden', backgroundColor: p.tlo ?? PORTRET_BG, transform: [{ scale: pressed ? 0.98 : 1 }] })}
           >
             <PortretWKarcie postac={p} width={KARTA_W} height={KARTA_H} />
             <Text style={{ position: 'absolute', left: 20, top: 20, fontFamily: F.bodyHeavy, fontSize: 11, letterSpacing: 1.8, color: '#E2C47A' }}>{p.kategoria.toUpperCase()}</Text>

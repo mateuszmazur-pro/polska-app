@@ -47,7 +47,7 @@ export function PortretWKarcie({ postac, width, height }: { postac: Postac; widt
   return (
     <>
       <Image source={postac.portret} style={{ position: 'absolute', width: size, height: size, left: width - size * 0.93, top: height * 0.04 }} />
-      <Zanik kierunek="prawo" style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: width * 0.45 }} />
+      <Zanik kierunek="prawo" kolor={postac.tlo ?? PORTRET_BG} style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: width * 0.45 }} />
     </>
   );
 }
