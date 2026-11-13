@@ -1,6 +1,8 @@
 import { ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
+import * as Updates from 'expo-updates';
 import { ThemePicker } from '@/components/ThemePicker';
 import { Eyebrow, IconButton } from '@/components/ui';
 import { F } from '@/theme/fonts';
@@ -23,6 +25,11 @@ export default function Profil() {
         <Eyebrow>Wygląd</Eyebrow>
       </View>
       <ThemePicker />
+
+      <Text style={{ marginTop: 32, fontFamily: F.body, fontSize: 12, lineHeight: 18, color: t.textMuted, textAlign: 'center' }}>
+        Wersja {Constants.expoConfig?.version ?? '—'}
+        {Updates.createdAt ? ` · aktualizacja z ${Updates.createdAt.toLocaleDateString('pl-PL')}, ${Updates.createdAt.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' })}` : ' · tryb deweloperski'}
+      </Text>
     </ScrollView>
   );
 }
