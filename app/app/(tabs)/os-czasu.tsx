@@ -27,11 +27,14 @@ export default function OsCzasu() {
     lista.current?.scrollTo({ y: 0, animated: false });
   };
 
+  // Lista zaczyna się pod paskiem statusu (notch, godzina, zasięg), więc przyklejone
+  // zakładki epok zatrzymują się tuż pod nim, a nie nachodzą na niego.
   return (
+    <View style={{ flex: 1, backgroundColor: t.bg, paddingTop: insets.top }}>
     <ScrollView
       ref={lista}
-      style={{ flex: 1, backgroundColor: t.bg }}
-      contentContainerStyle={{ paddingTop: insets.top + 18, paddingBottom: TAB_BAR_SPACE + insets.bottom }}
+      style={{ flex: 1 }}
+      contentContainerStyle={{ paddingTop: 18, paddingBottom: TAB_BAR_SPACE + insets.bottom }}
       showsVerticalScrollIndicator={false}
       stickyHeaderIndices={[1]}
     >
@@ -115,5 +118,6 @@ export default function OsCzasu() {
         </Pressable>
       )}
     </ScrollView>
+    </View>
   );
 }
