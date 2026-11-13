@@ -9,7 +9,10 @@
     "backgroundColor": "#0C1D36",
     "ios": {
       "bundleIdentifier": "pl.mojaojczyzna.app",
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "pl.mojaojczyzna.app"
