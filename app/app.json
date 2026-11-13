@@ -29,6 +29,19 @@
     "runtimeVersion": {
       "policy": "appVersion"
     },
-    "owner": "estaloca-studio"
+    "owner": "estaloca-studio",
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "3ee531cc-72a1-4622-a72f-66c37cc6f631"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/3ee531cc-72a1-4622-a72f-66c37cc6f631"
+    }
   }
 }
