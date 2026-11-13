@@ -9,6 +9,9 @@ export type Theme = {
   name: ThemeName;
   label: string;
   statusBar: 'light' | 'dark';
+  /** Naprzemienny pasek na listach: kolor cienia i krycie przy lewej krawędzi */
+  pasek: string;
+  pasekKrycie: number;
 
   /** Tło ekranu */
   bg: string;
@@ -56,6 +59,8 @@ export const themes: Record<ThemeName, Theme> = {
     name: 'granat',
     label: 'Granat',
     statusBar: 'light',
+    pasek: '#000000',
+    pasekKrycie: 0.42,
     bg: '#0C1D36',
     surface: '#132A4D',
     border: '#1E365E',
@@ -87,6 +92,8 @@ export const themes: Record<ThemeName, Theme> = {
     name: 'biel',
     label: 'Biel',
     statusBar: 'dark',
+    pasek: '#0C1D36',
+    pasekKrycie: 0.07,
     bg: '#FFFFFF',
     surface: '#FAF6EE',
     border: '#EFE6D4',
@@ -118,6 +125,8 @@ export const themes: Record<ThemeName, Theme> = {
     name: 'grafit',
     label: 'Grafit',
     statusBar: 'light',
+    pasek: '#000000',
+    pasekKrycie: 0.42,
     bg: '#141416',
     surface: '#1E1F22',
     border: '#2C2E33',

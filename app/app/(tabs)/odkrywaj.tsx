@@ -4,6 +4,7 @@ import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TAB_BAR_SPACE } from '@/components/FloatingTabBar';
 import { Icon } from '@/components/Icon';
+import { PasekListy } from '@/components/PasekListy';
 import { F } from '@/theme/fonts';
 import { useTheme } from '@/theme/ThemeProvider';
 
@@ -50,7 +51,7 @@ export default function Odkrywaj() {
 
       <Text style={{ marginTop: 22, fontFamily: F.bodyHeavy, fontSize: 11, letterSpacing: 2, color: t.accentText }}>SPIS TREŚCI</Text>
 
-      <View style={{ marginTop: 6, borderTopWidth: 1, borderTopColor: t.border }}>
+      <View style={{ marginTop: 6, marginHorizontal: -20 }}>
         {SPIS.map((k, i) => (
           <Pressable
             key={k.t}
@@ -59,12 +60,13 @@ export default function Odkrywaj() {
             onPress={k.href ? () => router.push(k.href!) : undefined}
             style={({ pressed }) => ({
               height: 76, flexDirection: 'row', alignItems: 'center', gap: 16,
-              borderBottomWidth: 1, borderBottomColor: t.border, opacity: pressed ? 0.6 : 1,
+              paddingHorizontal: 20, opacity: pressed ? 0.6 : 1,
             })}
           >
+            {i % 2 === 1 && <PasekListy />}
             <Text style={{ width: 44, fontFamily: F.marka, fontSize: 15, letterSpacing: 1, color: t.gold }}>{RZYMSKIE[i]}</Text>
             <View style={{ flex: 1, minWidth: 0 }}>
-              <Text style={{ fontFamily: F.display, fontSize: 22, lineHeight: 26, color: t.text }}>{k.t}</Text>
+              <Text style={{ fontFamily: F.lista, fontSize: 19, lineHeight: 24, color: t.text }}>{k.t}</Text>
               <Text numberOfLines={1} style={{ marginTop: 3, fontFamily: F.body, fontSize: 12, color: t.textMuted }}>{k.d}</Text>
             </View>
           </Pressable>

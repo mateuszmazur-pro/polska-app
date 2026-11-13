@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { PasekListy } from '@/components/PasekListy';
 import { Icon } from '@/components/Icon';
 import { PORTRET_BG, PortretAvatar, PortretWKarcie } from '@/components/Portret';
 import { IconButton } from '@/components/ui';
@@ -35,6 +36,7 @@ export default function Postacie() {
     return wynik;
   }, [filtr]);
 
+  let numer = 0;
   return (
     <ScrollView style={{ flex: 1, backgroundColor: t.bg }} contentContainerStyle={{ paddingTop: insets.top + 14, paddingBottom: insets.bottom + 40 }} showsVerticalScrollIndicator={false}>
       <View style={{ paddingHorizontal: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -84,27 +86,31 @@ export default function Postacie() {
         })}
       </ScrollView>
 
-      {/* Lista A–Z */}
+      {/* Lista A–Z — pasek co drugi wiersz, liczony przez całą listę */}
       <View style={{ paddingHorizontal: 20, paddingTop: 6 }}>
         {grupy.map((g) => (
           <View key={g.litera}>
             <Text style={{ marginTop: 14, fontFamily: F.display, fontSize: 15, color: t.gold }}>{g.litera}</Text>
-            {g.osoby.map((p) => (
+            {g.osoby.map((p) => {
+              const nr = numer++;
+              return (
               <Pressable
                 key={p.id}
                 accessibilityRole="link"
                 accessibilityLabel={`${p.imie}, ${p.lata}, ${p.rola}`}
                 onPress={() => router.push(`/postacie/${p.id}`)}
-                style={({ pressed }) => ({ height: 68, flexDirection: 'row', alignItems: 'center', gap: 14, borderBottomWidth: 1, borderBottomColor: t.border, opacity: pressed ? 0.7 : 1 })}
+                style={({ pressed }) => ({ height: 68, marginHorizontal: -20, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', gap: 14, opacity: pressed ? 0.7 : 1 })}
               >
+                {nr % 2 === 1 && <PasekListy />}
                 <PortretAvatar postac={p} />
                 <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={{ fontFamily: F.displaySemi, fontSize: 17, color: t.text }}>{p.imie}</Text>
+                  <Text style={{ fontFamily: F.lista, fontSize: 16, color: t.text }}>{p.imie}</Text>
                   <Text numberOfLines={1} style={{ marginTop: 2, fontFamily: F.body, fontSize: 12, color: t.textMuted }}>{p.lata} · {p.rola}</Text>
                 </View>
                 <Icon name="chevron" size={18} color={t.textMuted} strokeWidth={2} />
               </Pressable>
-            ))}
+              );
+            })}
           </View>
         ))}
       </View>

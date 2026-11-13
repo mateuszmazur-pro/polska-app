@@ -47,7 +47,7 @@ export default function OsCzasu() {
             const on = e.id === epokaId;
             return (
               <Pressable key={e.id} accessibilityRole="tab" accessibilityState={{ selected: on }} onPress={() => wybierz(e.id)} style={{ paddingTop: 6, paddingBottom: 12 }}>
-                <Text style={{ fontFamily: F.display, fontSize: 17, color: on ? t.text : t.textMuted }}>{e.nazwa}</Text>
+                <Text style={{ fontFamily: F.lista, fontSize: 16, color: on ? t.text : t.textMuted }}>{e.nazwa}</Text>
                 <Text style={{ marginTop: 2, fontFamily: F.bodySemi, fontSize: 11, color: on ? t.accentText : t.textMuted }}>
                   {e.od}–{e.do ?? 'dziś'}
                 </Text>
@@ -89,7 +89,7 @@ export default function OsCzasu() {
                   backgroundColor: w.wazne ? t.surface : 'transparent', opacity: pressed ? 0.7 : 1,
                 })}
               >
-                <Text style={{ fontFamily: F.display, fontSize: 18, lineHeight: 22, color: t.text }}>{w.tytul}</Text>
+                <Text style={{ fontFamily: F.lista, fontSize: 17, lineHeight: 22, color: t.text }}>{w.tytul}</Text>
                 <Text style={{ marginTop: 4, fontFamily: F.body, fontSize: 13, lineHeight: 19, color: t.textMuted }}>{w.opis}</Text>
                 {osoby.map((p) => (
                   <Pressable

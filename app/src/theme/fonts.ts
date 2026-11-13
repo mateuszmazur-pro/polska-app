@@ -9,6 +9,7 @@ import {
 import { DMSerifDisplay_400Regular, DMSerifDisplay_400Regular_Italic } from '@expo-google-fonts/dm-serif-display';
 
 export const fontAssets = {
+  Lora_600SemiBold: require('../../assets/fonts/Lora_600SemiBold.ttf'),
   Cinzel_600SemiBold,
   Cinzel_700Bold,
   DMSans_400Regular,
@@ -22,7 +23,8 @@ export const fontAssets = {
 
 /**
  * Typografia:
- * - DM Serif Display — tytuły, imiona, akcenty w kursywie
+ * - DM Serif Display — duże tytuły, kafelki, imiona na ekranie postaci
+ * - Lora — mniejsze nagłówki na listach (lepsza czytelność)
  * - Cinzel — nazwiska (WERSALIKAMI), duże liczby, znak POLSKA
  * - DM Sans — interfejs i tekst
  */
@@ -31,6 +33,8 @@ export const F = {
   displaySemi: 'DMSerifDisplay_400Regular',
   displayItalic: 'DMSerifDisplay_400Regular_Italic',
   displayItalicLight: 'DMSerifDisplay_400Regular_Italic',
+  /** Lora — mniejsze nagłówki: nazwy na listach, tytuły wydarzeń */
+  lista: 'Lora_600SemiBold',
   /** Cinzel: nazwiska, liczby, znak marki */
   displayHeavy: 'Cinzel_700Bold',
   nazwisko: 'Cinzel_700Bold',
