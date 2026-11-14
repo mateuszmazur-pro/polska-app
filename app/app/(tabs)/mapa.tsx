@@ -1,15 +1,18 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, Image, Linking, Platform, Pressable, ScrollView, Text, View } from 'react-native';
+import { Animated, Image, Linking, Modal, useWindowDimensions, Platform, Pressable, ScrollView, Text, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icon, type IconName } from '@/components/Icon';
 import { mapaHtml } from '@/components/mapaHtml';
 import { KATEGORIE_MIEJSC, miejsca, type KategoriaMiejsca } from '@/data/miejsca';
 import { szlaki, wyprawy } from '@/data/trasy';
+import ZDJECIA from '@/data/zdjeciaMiejsc.json';
 import { F } from '@/theme/fonts';
 import { useTheme } from '@/theme/ThemeProvider';
 
 type Tryb = 'punkty' | 'szlaki' | 'wyprawy';
+type Zdjecie = { url: string; autor: string; licencja: string; licencjaUrl: string; strona: string };
+const zdjeciaMiejsca = (id: string): Zdjecie[] => (ZDJECIA as Record<string, Zdjecie[]>)[id] ?? [];
 
 // Mapa zawsze w granacie — jak rycina, niezależnie od motywu aplikacji.
 const K = { tlo: '#0C1D36', lad: '#132A4D', woda: '#071222', zloto: '#C9A24A', czerwien: '#C8102E', tekst: '#F6F2E8', tekstCichy: '#8E9BB3' };
@@ -41,6 +44,8 @@ export default function Mapa() {
   const [wyprawaId, setWyprawaId] = useState<string | null>(null);
   const [etap, setEtap] = useState(0);
   const [gra, setGra] = useState(false);
+  const [podglad, setPodglad] = useState<{ lista: Zdjecie[]; i: number } | null>(null);
+  const { width: W } = useWindowDimensions();
 
   // Płynna pigułka pod aktywną kategorią — jak w głównym menu.
   const aktywnyIdx = tryb === 'szlaki' ? KATEGORIE_MIEJSC.length : tryb === 'wyprawy' ? KATEGORIE_MIEJSC.length + 1
@@ -121,7 +126,7 @@ export default function Mapa() {
         onMessage={(e) => {
           try {
             const d = JSON.parse(e.nativeEvent.data);
-            if (d.typ === 'gotowa') { setGotowa(true); js(`window.ustawDol(${Math.round(dolPanelu + 270)})`); }
+            if (d.typ === 'gotowa') { setGotowa(true); js(`window.ustawDol(${Math.round(dolPanelu + 340)})`); }
             if (d.typ === 'wybor') setWybrany(d.id);
             if (d.typ === 'przystanek') setPrzystanek(d.i);
             if (d.typ === 'etap') setEtap(d.i);
@@ -177,12 +182,19 @@ export default function Mapa() {
             <Text style={{ marginTop: 1, fontFamily: F.bodySemi, fontSize: 13, color: '#8E9BB3' }}>{m.miasto}</Text>
             <Text style={{ marginTop: 10, fontFamily: F.body, fontSize: 14.5, lineHeight: 21, color: '#D5DBE8' }}>{m.opis}</Text>
             {!!m.wiecej && <Text style={{ marginTop: 6, fontFamily: F.body, fontSize: 14, lineHeight: 21, color: '#A9B4CC' }}>{m.wiecej}</Text>}
-            {!!m.zdjecia?.length && (
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8 }} style={{ marginTop: 14 }}>
-                {m.zdjecia.map((z, i) => (
-                  <Image key={i} source={z} style={{ width: 116, height: 82, borderRadius: 14 }} resizeMode="cover" />
-                ))}
-              </ScrollView>
+            {zdjeciaMiejsca(m.id).length > 0 && (
+              <>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8 }} style={{ marginTop: 14 }}>
+                  {zdjeciaMiejsca(m.id).map((z, i) => (
+                    <Pressable key={z.url} accessibilityRole="imagebutton" accessibilityLabel={`Zdjęcie ${i + 1}, autor ${z.autor}`} onPress={() => setPodglad({ lista: zdjeciaMiejsca(m.id), i })}>
+                      <Image source={{ uri: z.url }} style={{ width: 116, height: 82, borderRadius: 14, backgroundColor: K.lad }} resizeMode="cover" />
+                    </Pressable>
+                  ))}
+                </ScrollView>
+                <Text numberOfLines={1} style={{ marginTop: 6, fontFamily: F.body, fontSize: 10.5, color: '#6F7E99' }}>
+                  Fot. {Array.from(new Set(zdjeciaMiejsca(m.id).map((z) => z.autor))).join(', ')} · Wikimedia Commons
+                </Text>
+              </>
             )}
             <View style={{ flexDirection: 'row', gap: 10, marginTop: 16 }}>
               <Przycisk glowny ikona="pin" tekst="Prowadź" onPress={() => nawigacja(m.lat, m.lon, m.nazwa)} />
@@ -292,6 +304,40 @@ export default function Mapa() {
           </View>
         </View>
       )}
+
+      {/* Podgląd zdjęcia z podpisem autora i licencji (wymóg licencji CC) */}
+      <Modal visible={!!podglad} transparent animationType="fade" onRequestClose={() => setPodglad(null)}>
+        <View style={{ flex: 1, backgroundColor: 'rgba(3,9,18,0.97)', justifyContent: 'center' }}>
+          {podglad && (
+            <>
+              <ScrollView
+                horizontal pagingEnabled showsHorizontalScrollIndicator={false}
+                contentOffset={{ x: podglad.i * W, y: 0 }}
+                onMomentumScrollEnd={(e) => setPodglad({ ...podglad, i: Math.round(e.nativeEvent.contentOffset.x / W) })}
+              >
+                {podglad.lista.map((z) => (
+                  <Image key={z.url} source={{ uri: z.url }} style={{ width: W, height: W * 1.1 }} resizeMode="contain" />
+                ))}
+              </ScrollView>
+              <View style={{ paddingHorizontal: 24, marginTop: 16 }}>
+                <Text style={{ fontFamily: F.bodySemi, fontSize: 13, color: K.tekst }}>Fot. {podglad.lista[podglad.i].autor}</Text>
+                <Text style={{ marginTop: 2, fontFamily: F.body, fontSize: 12, color: '#8E9BB3' }}>
+                  {podglad.lista[podglad.i].licencja} · Wikimedia Commons · {podglad.i + 1}/{podglad.lista.length}
+                </Text>
+                <Pressable onPress={() => Linking.openURL(podglad.lista[podglad.i].strona)} style={{ marginTop: 8 }}>
+                  <Text style={{ fontFamily: F.bodySemi, fontSize: 12, color: t.gold }}>Źródło i licencja ›</Text>
+                </Pressable>
+              </View>
+            </>
+          )}
+          <Pressable
+            accessibilityRole="button" accessibilityLabel="Zamknij zdjęcie" onPress={() => setPodglad(null)}
+            style={{ position: 'absolute', top: insets.top + 12, right: 18, width: 40, height: 40, borderRadius: 20, backgroundColor: K.lad, alignItems: 'center', justifyContent: 'center' }}
+          >
+            <Icon name="close" size={18} color={K.tekst} strokeWidth={2} />
+          </Pressable>
+        </View>
+      </Modal>
 
       {/* Pasek kategorii — w kolorach głównego menu */}
       <View
