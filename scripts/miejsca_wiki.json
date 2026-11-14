@@ -1,0 +1,542 @@
+[
+ {
+  "id": "wawel",
+  "nazwa": "Wawel",
+  "miasto": "Kraków",
+  "wiki": null
+ },
+ {
+  "id": "zamek-w-malborku",
+  "nazwa": "Zamek w Malborku",
+  "miasto": "Malbork",
+  "wiki": null
+ },
+ {
+  "id": "zamek-krolewski-w-warszawie",
+  "nazwa": "Zamek Królewski w Warszawie",
+  "miasto": "Warszawa",
+  "wiki": null
+ },
+ {
+  "id": "palac-w-wilanowie",
+  "nazwa": "Pałac w Wilanowie",
+  "miasto": "Warszawa",
+  "wiki": null
+ },
+ {
+  "id": "zamek-ksiaz",
+  "nazwa": "Zamek Książ",
+  "miasto": "Wałbrzych",
+  "wiki": null
+ },
+ {
+  "id": "zamek-w-lancucie",
+  "nazwa": "Zamek w Łańcucie",
+  "miasto": "Łańcut",
+  "wiki": null
+ },
+ {
+  "id": "zamek-ogrodzieniec",
+  "nazwa": "Zamek Ogrodzieniec",
+  "miasto": "Podzamcze",
+  "wiki": null
+ },
+ {
+  "id": "zamek-w-lidzbarku-warminskim",
+  "nazwa": "Zamek w Lidzbarku Warmińskim",
+  "miasto": "Lidzbark Warmiński",
+  "wiki": null
+ },
+ {
+  "id": "cedynia",
+  "nazwa": "Cedynia",
+  "miasto": "Cedynia",
+  "wiki": null
+ },
+ {
+  "id": "legnickie-pole",
+  "nazwa": "Legnickie Pole",
+  "miasto": "Legnickie Pole",
+  "wiki": null
+ },
+ {
+  "id": "pola-grunwaldu",
+  "nazwa": "Pola Grunwaldu",
+  "miasto": "Stębark",
+  "wiki": null
+ },
+ {
+  "id": "raclawice",
+  "nazwa": "Racławice",
+  "miasto": "Racławice",
+  "wiki": null
+ },
+ {
+  "id": "olszynka-grochowska",
+  "nazwa": "Olszynka Grochowska",
+  "miasto": "Warszawa",
+  "wiki": null
+ },
+ {
+  "id": "ossow",
+  "nazwa": "Ossów",
+  "miasto": "Ossów",
+  "wiki": null
+ },
+ {
+  "id": "westerplatte",
+  "nazwa": "Westerplatte",
+  "miasto": "Gdańsk",
+  "wiki": null
+ },
+ {
+  "id": "wizna",
+  "nazwa": "Wizna",
+  "miasto": "Wizna",
+  "wiki": null
+ },
+ {
+  "id": "auschwitz-birkenau",
+  "nazwa": "Auschwitz-Birkenau",
+  "miasto": "Oświęcim",
+  "wiki": null
+ },
+ {
+  "id": "majdanek",
+  "nazwa": "Majdanek",
+  "miasto": "Lublin",
+  "wiki": null
+ },
+ {
+  "id": "treblinka",
+  "nazwa": "Treblinka",
+  "miasto": "Wólka Okrąglik",
+  "wiki": null
+ },
+ {
+  "id": "grob-nieznanego-zolnierza",
+  "nazwa": "Grób Nieznanego Żołnierza",
+  "miasto": "Warszawa",
+  "wiki": null
+ },
+ {
+  "id": "pomnik-powstania-warszawskiego",
+  "nazwa": "Pomnik Powstania Warszawskiego",
+  "miasto": "Warszawa",
+  "wiki": null
+ },
+ {
+  "id": "stare-powazki",
+  "nazwa": "Stare Powązki",
+  "miasto": "Warszawa",
+  "wiki": null
+ },
+ {
+  "id": "kopiec-kosciuszki",
+  "nazwa": "Kopiec Kościuszki",
+  "miasto": "Kraków",
+  "wiki": null
+ },
+ {
+  "id": "pomnik-poleglych-stoczniowcow",
+  "nazwa": "Pomnik Poległych Stoczniowców",
+  "miasto": "Gdańsk",
+  "wiki": null
+ },
+ {
+  "id": "muzeum-powstania-warszawskiego",
+  "nazwa": "Muzeum Powstania Warszawskiego",
+  "miasto": "Warszawa",
+  "wiki": null
+ },
+ {
+  "id": "muzeum-historii-zydow-polskich-polin",
+  "nazwa": "Muzeum Historii Żydów Polskich POLIN",
+  "miasto": "Warszawa",
+  "wiki": null
+ },
+ {
+  "id": "muzeum-ii-wojny-swiatowej",
+  "nazwa": "Muzeum II Wojny Światowej",
+  "miasto": "Gdańsk",
+  "wiki": null
+ },
+ {
+  "id": "europejskie-centrum-solidarnosci",
+  "nazwa": "Europejskie Centrum Solidarności",
+  "miasto": "Gdańsk",
+  "wiki": null
+ },
+ {
+  "id": "kopalnia-soli-wieliczka",
+  "nazwa": "Kopalnia Soli „Wieliczka”",
+  "miasto": "Wieliczka",
+  "wiki": null
+ },
+ {
+  "id": "dom-mikolaja-kopernika",
+  "nazwa": "Dom Mikołaja Kopernika",
+  "miasto": "Toruń",
+  "wiki": null
+ },
+ {
+  "id": "muzeum-fryderyka-chopina",
+  "nazwa": "Muzeum Fryderyka Chopina",
+  "miasto": "Warszawa",
+  "wiki": null
+ },
+ {
+  "id": "muzeum-marii-sklodowskiej-curie",
+  "nazwa": "Muzeum Marii Skłodowskiej-Curie",
+  "miasto": "Warszawa",
+  "wiki": null
+ },
+ {
+  "id": "katedra-gnieznienska",
+  "nazwa": "Katedra Gnieźnieńska",
+  "miasto": "Gniezno",
+  "wiki": null
+ },
+ {
+  "id": "jasna-gora",
+  "nazwa": "Jasna Góra",
+  "miasto": "Częstochowa",
+  "wiki": null
+ },
+ {
+  "id": "bazylika-mariacka",
+  "nazwa": "Bazylika Mariacka",
+  "miasto": "Kraków",
+  "wiki": null
+ },
+ {
+  "id": "katedra-poznanska",
+  "nazwa": "Katedra Poznańska",
+  "miasto": "Poznań",
+  "wiki": null
+ },
+ {
+  "id": "kosciol-pokoju",
+  "nazwa": "Kościół Pokoju",
+  "miasto": "Świdnica",
+  "wiki": null
+ },
+ {
+  "id": "kalwaria-zebrzydowska",
+  "nazwa": "Kalwaria Zebrzydowska",
+  "miasto": "Kalwaria Zebrzydowska",
+  "wiki": null
+ },
+ {
+  "id": "cerkiew-w-kwiatoniu",
+  "nazwa": "Cerkiew w Kwiatoniu",
+  "miasto": "Kwiatoń",
+  "wiki": null
+ },
+ {
+  "id": "swieta-gora-grabarka",
+  "nazwa": "Święta Góra Grabarka",
+  "miasto": "Grabarka",
+  "wiki": null
+ },
+ {
+  "id": "stara-synagoga",
+  "nazwa": "Stara Synagoga",
+  "miasto": "Kraków",
+  "wiki": null
+ },
+ {
+  "id": "meczet-w-kruszynianach",
+  "nazwa": "Meczet w Kruszynianach",
+  "miasto": "Kruszyniany",
+  "wiki": null
+ },
+ {
+  "id": "stare-miasto-w-krakowie",
+  "nazwa": "Stare Miasto w Krakowie",
+  "miasto": "Kraków",
+  "wiki": null
+ },
+ {
+  "id": "stare-miasto-w-warszawie",
+  "nazwa": "Stare Miasto w Warszawie",
+  "miasto": "Warszawa",
+  "wiki": null
+ },
+ {
+  "id": "zespol-staromiejski-torunia",
+  "nazwa": "Zespół staromiejski Torunia",
+  "miasto": "Toruń",
+  "wiki": null
+ },
+ {
+  "id": "zamosc",
+  "nazwa": "Zamość",
+  "miasto": "Zamość",
+  "wiki": null
+ },
+ {
+  "id": "glowne-miasto-w-gdansku",
+  "nazwa": "Główne Miasto w Gdańsku",
+  "miasto": "Gdańsk",
+  "wiki": null
+ },
+ {
+  "id": "rynek-we-wroclawiu",
+  "nazwa": "Rynek we Wrocławiu",
+  "miasto": "Wrocław",
+  "wiki": null
+ },
+ {
+  "id": "stary-rynek-w-poznaniu",
+  "nazwa": "Stary Rynek w Poznaniu",
+  "miasto": "Poznań",
+  "wiki": null
+ },
+ {
+  "id": "sandomierz",
+  "nazwa": "Sandomierz",
+  "miasto": "Sandomierz",
+  "wiki": null
+ },
+ {
+  "id": "kazimierz-dolny",
+  "nazwa": "Kazimierz Dolny",
+  "miasto": "Kazimierz Dolny",
+  "wiki": null
+ },
+ {
+  "id": "kaszubski-park-etnograficzny",
+  "nazwa": "Kaszubski Park Etnograficzny",
+  "miasto": "Wdzydze Kiszewskie",
+  "wiki": null
+ },
+ {
+  "id": "skansen-w-sanoku",
+  "nazwa": "Skansen w Sanoku",
+  "miasto": "Sanok",
+  "wiki": null
+ },
+ {
+  "id": "muzeum-wsi-lubelskiej",
+  "nazwa": "Muzeum Wsi Lubelskiej",
+  "miasto": "Lublin",
+  "wiki": null
+ },
+ {
+  "id": "park-etnograficzny-w-tokarni",
+  "nazwa": "Park Etnograficzny w Tokarni",
+  "miasto": "Tokarnia",
+  "wiki": null
+ },
+ {
+  "id": "muzeum-wsi-mazowieckiej",
+  "nazwa": "Muzeum Wsi Mazowieckiej",
+  "miasto": "Sierpc",
+  "wiki": null
+ },
+ {
+  "id": "orawski-park-etnograficzny",
+  "nazwa": "Orawski Park Etnograficzny",
+  "miasto": "Zubrzyca Górna",
+  "wiki": null
+ },
+ {
+  "id": "zalipie",
+  "nazwa": "Zalipie",
+  "miasto": "Zalipie",
+  "wiki": null
+ },
+ {
+  "id": "psie-pole",
+  "nazwa": "Psie Pole",
+  "miasto": "Wrocław",
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Psim_Polem"
+ },
+ {
+  "id": "plowce",
+  "nazwa": "Płowce",
+  "miasto": "Płowce",
+  "wiki": "https://en.wikipedia.org/wiki/P%C5%82owce"
+ },
+ {
+  "id": "bitwa-pod-oliwa",
+  "nazwa": "Bitwa pod Oliwą",
+  "miasto": "Gdańsk",
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Oliwą"
+ },
+ {
+  "id": "warka",
+  "nazwa": "Warka",
+  "miasto": "Warka",
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Warką"
+ },
+ {
+  "id": "maciejowice",
+  "nazwa": "Maciejowice",
+  "miasto": "Maciejowice",
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Maciejowicami"
+ },
+ {
+  "id": "raszyn",
+  "nazwa": "Raszyn",
+  "miasto": "Raszyn",
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Raszynem"
+ },
+ {
+  "id": "ostroleka",
+  "nazwa": "Ostrołęka",
+  "miasto": "Ostrołęka",
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Ostrołęką_(1831)"
+ },
+ {
+  "id": "radzymin",
+  "nazwa": "Radzymin",
+  "miasto": "Radzymin",
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Radzyminem_(1920)"
+ },
+ {
+  "id": "mokra",
+  "nazwa": "Mokra",
+  "miasto": "Mokra (gm. Miedźno)",
+  "wiki": null
+ },
+ {
+  "id": "poczta-polska-w-gdansku",
+  "nazwa": "Poczta Polska w Gdańsku",
+  "miasto": "Gdańsk",
+  "wiki": "https://pl.wikipedia.org/wiki/Obrona_Poczty_Polskiej_w_Gdańsku"
+ },
+ {
+  "id": "bitwa-nad-bzura",
+  "nazwa": "Bitwa nad Bzurą",
+  "miasto": "Kutno",
+  "wiki": null
+ },
+ {
+  "id": "obrona-helu",
+  "nazwa": "Obrona Helu",
+  "miasto": "Hel",
+  "wiki": "https://pl.wikipedia.org/wiki/Obrona_Helu"
+ },
+ {
+  "id": "kock",
+  "nazwa": "Kock",
+  "miasto": "Kock",
+  "wiki": null
+ },
+ {
+  "id": "studzianki",
+  "nazwa": "Studzianki",
+  "miasto": "Studzianki Pancerne",
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Studziankami"
+ },
+ {
+  "id": "kolobrzeg",
+  "nazwa": "Kołobrzeg",
+  "miasto": "Kołobrzeg",
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_o_Kołobrzeg_(1945)"
+ },
+ {
+  "id": "stutthof",
+  "nazwa": "Stutthof",
+  "miasto": "Sztutowo",
+  "wiki": "https://pl.wikipedia.org/wiki/KL_Stutthof"
+ },
+ {
+  "id": "gross-rosen",
+  "nazwa": "Gross-Rosen",
+  "miasto": "Rogoźnica",
+  "wiki": "https://pl.wikipedia.org/wiki/KL_Gross-Rosen"
+ },
+ {
+  "id": "belzec",
+  "nazwa": "Bełżec",
+  "miasto": "Bełżec",
+  "wiki": "https://pl.wikipedia.org/wiki/Bełżec_(obóz_zagłady)"
+ },
+ {
+  "id": "sobibor",
+  "nazwa": "Sobibór",
+  "miasto": "Sobibór",
+  "wiki": "https://pl.wikipedia.org/wiki/Sobibór_(obóz_zagłady)"
+ },
+ {
+  "id": "chelmno-nad-nerem",
+  "nazwa": "Chełmno nad Nerem",
+  "miasto": "Chełmno",
+  "wiki": "https://pl.wikipedia.org/wiki/Kulmhof_am_Ner"
+ },
+ {
+  "id": "palmiry",
+  "nazwa": "Palmiry",
+  "miasto": "Palmiry",
+  "wiki": "https://pl.wikipedia.org/wiki/Zbrodnia_w_Palmirach"
+ },
+ {
+  "id": "piasnica",
+  "nazwa": "Piaśnica",
+  "miasto": "Wielka Piaśnica",
+  "wiki": "https://en.wikipedia.org/wiki/Pia%C5%9Bnica"
+ },
+ {
+  "id": "pawiak",
+  "nazwa": "Pawiak",
+  "miasto": "Warszawa",
+  "wiki": "https://pl.wikipedia.org/wiki/Pawiak"
+ },
+ {
+  "id": "umschlagplatz",
+  "nazwa": "Umschlagplatz",
+  "miasto": "Warszawa",
+  "wiki": "https://pl.wikipedia.org/wiki/Umschlagplatz_w_Warszawie"
+ },
+ {
+  "id": "pomnik-bohaterow-getta",
+  "nazwa": "Pomnik Bohaterów Getta",
+  "miasto": "Warszawa",
+  "wiki": "https://pl.wikipedia.org/wiki/Pomnik_Bohaterów_Getta_w_Warszawie"
+ },
+ {
+  "id": "mauzoleum-walki-i-meczenstwa",
+  "nazwa": "Mauzoleum Walki i Męczeństwa",
+  "miasto": "Warszawa",
+  "wiki": "https://pl.wikipedia.org/wiki/Mauzoleum_Walki_i_Męczeństwa"
+ },
+ {
+  "id": "muzeum-katynskie",
+  "nazwa": "Muzeum Katyńskie",
+  "miasto": "Warszawa",
+  "wiki": "https://pl.wikipedia.org/wiki/Muzeum_Katyńskie"
+ },
+ {
+  "id": "laczka-na-powazkach-wojskowych",
+  "nazwa": "„Łączka” na Powązkach Wojskowych",
+  "miasto": "Warszawa",
+  "wiki": "https://pl.wikipedia.org/wiki/Kwatera_Ł_na_Cmentarzu_Wojskowym_na_Powązkach"
+ },
+ {
+  "id": "muzeum-zolnierzy-wykletych",
+  "nazwa": "Muzeum Żołnierzy Wyklętych",
+  "miasto": "Warszawa",
+  "wiki": "https://pl.wikipedia.org/wiki/Muzeum_Żołnierzy_Wyklętych_i_Więźniów_Politycznych_PRL"
+ },
+ {
+  "id": "kopiec-pilsudskiego",
+  "nazwa": "Kopiec Piłsudskiego",
+  "miasto": "Kraków",
+  "wiki": "https://pl.wikipedia.org/wiki/Kopiec_Józefa_Piłsudskiego_w_Krakowie"
+ },
+ {
+  "id": "poznanskie-krzyze",
+  "nazwa": "Poznańskie Krzyże",
+  "miasto": "Poznań",
+  "wiki": "https://pl.wikipedia.org/wiki/Pomnik_Ofiar_Czerwca_1956"
+ },
+ {
+  "id": "krzyz-przy-kopalni-wujek",
+  "nazwa": "Krzyż przy kopalni Wujek",
+  "miasto": "Katowice",
+  "wiki": null
+ }
+]
