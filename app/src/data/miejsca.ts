@@ -11,6 +11,10 @@ export type Miejsce = {
   lon: number;
   opis: string;
   unesco?: boolean;
+  /** Dłuższy opis do karty miejsca (opcjonalnie). */
+  wiecej?: string;
+  /** Zdjęcia do mini-galerii — tylko z licencją na użycie w aplikacji. */
+  zdjecia?: number[];
 };
 
 export const KATEGORIE_MIEJSC: { id: KategoriaMiejsca; nazwa: string; ikona: 'castle' | 'swords' | 'flame' | 'museum' | 'church' | 'houses' | 'hut' }[] = [

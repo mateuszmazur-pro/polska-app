@@ -136,7 +136,14 @@ function rysujPostep(){
  if(e!==aktywny){aktywny=e;map.getSource('stacje').setData(stacje(pkt,e));wyslij({typ:'etap',i:e})}
 }
 
-window.punkty=(o)=>{tryb='punkty';Object.assign(filtr,o||{});czysc();rysujPunkty()};
+let dolKarty=420;
+window.ustawDol=(v)=>{dolKarty=v};
+window.punkty=(o)=>{
+ o=o||{};
+ const zmiana=('kategoria' in o&&o.kategoria!==filtr.kategoria)||('unesco' in o&&o.unesco!==filtr.unesco)||tryb!=='punkty';
+ tryb='punkty';Object.assign(filtr,o);czysc();rysujPunkty();
+ if(zmiana)map.fitBounds(POLSKA,{padding:{top:GORA,bottom:DOL,left:14,right:14},duration:800});
+};
 window.szlak=(id)=>{
  czysc();tryb=id?'szlak':'punkty';rysujPunkty();
  if(!id){map.fitBounds(POLSKA,{padding:{top:GORA,bottom:DOL,left:14,right:14},duration:800});return}
@@ -172,7 +179,9 @@ map.on('click',(e)=>{
   return;
  }
  const f=map.queryRenderedFeatures(box,{layers:['punkty']});
- if(f.length){filtr.wybrany=f[0].properties.id;rysujPunkty();wyslij({typ:'wybor',id:filtr.wybrany});}
+ if(f.length){filtr.wybrany=f[0].properties.id;rysujPunkty();wyslij({typ:'wybor',id:filtr.wybrany});
+  // przesuń mapę tak, by pinezka stała nad kartą z opisem
+  map.easeTo({center:f[0].geometry.coordinates,zoom:Math.max(map.getZoom(),8),padding:{top:GORA,bottom:dolKarty,left:20,right:20},duration:700});}
 });
 map.on('error',(e)=>wyslij({typ:'blad',tekst:String(e&&e.error&&e.error.message||e)}));
 </script></body></html>`;

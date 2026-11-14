@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, Linking, Platform, Pressable, ScrollView, Text, View } from 'react-native';
+import { Animated, Image, Linking, Platform, Pressable, ScrollView, Text, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icon, type IconName } from '@/components/Icon';
@@ -121,7 +121,7 @@ export default function Mapa() {
         onMessage={(e) => {
           try {
             const d = JSON.parse(e.nativeEvent.data);
-            if (d.typ === 'gotowa') setGotowa(true);
+            if (d.typ === 'gotowa') { setGotowa(true); js(`window.ustawDol(${Math.round(dolPanelu + 270)})`); }
             if (d.typ === 'wybor') setWybrany(d.id);
             if (d.typ === 'przystanek') setPrzystanek(d.i);
             if (d.typ === 'etap') setEtap(d.i);
@@ -159,20 +159,38 @@ export default function Mapa() {
         </View>
       )}
 
-      {/* Karta miejsca */}
-      {tryb === 'punkty' && m && (
-        <View style={{ position: 'absolute', left: 14, right: 14, bottom: dolPanelu, backgroundColor: PANEL, borderRadius: 24, padding: 16 }}>
-          <Text style={{ fontFamily: F.bodyHeavy, fontSize: 10.5, letterSpacing: 1.6, color: t.gold }}>
-            {m.miasto.toUpperCase()}{m.unesco ? ' · UNESCO' : ''}
-          </Text>
-          <Text style={{ marginTop: 3, fontFamily: F.lista, fontSize: 19, color: K.tekst }}>{m.nazwa}</Text>
-          <Text style={{ marginTop: 3, fontFamily: F.body, fontSize: 13, lineHeight: 18, color: '#A9B4CC' }}>{m.opis}</Text>
-          <View style={{ flexDirection: 'row', gap: 10, marginTop: 14 }}>
-            <Przycisk glowny ikona="pin" tekst="Prowadź" onPress={() => nawigacja(m.lat, m.lon, m.nazwa)} />
-            <Okragly ikona="close" etykieta="Zamknij" onPress={() => { setWybrany(null); js(`window.punkty({wybrany:''})`); }} />
+      {/* Karta miejsca — w kolorach menu */}
+      {tryb === 'punkty' && m && (() => {
+        const kat = KATEGORIE_MIEJSC.find((c) => c.id === m.kategoria)!;
+        return (
+          <View style={{ position: 'absolute', left: 16, right: 16, bottom: dolPanelu, backgroundColor: NAV_BG, borderRadius: 26, borderWidth: 1, borderColor: 'rgba(246,242,232,0.14)', padding: 18 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+              <Icon name={kat.ikona} size={15} color={t.gold} strokeWidth={1.9} />
+              <Text style={{ flex: 1, fontFamily: F.bodyHeavy, fontSize: 10.5, letterSpacing: 1.6, color: t.gold }}>{kat.nazwa.toUpperCase()}</Text>
+              {m.unesco && (
+                <View style={{ paddingHorizontal: 8, height: 20, borderRadius: 10, justifyContent: 'center', borderWidth: 1, borderColor: 'rgba(201,162,74,0.5)' }}>
+                  <Text style={{ fontFamily: F.bodyHeavy, fontSize: 9.5, letterSpacing: 1.2, color: t.gold }}>UNESCO</Text>
+                </View>
+              )}
+            </View>
+            <Text style={{ marginTop: 8, fontFamily: F.lista, fontSize: 22, lineHeight: 27, color: K.tekst }}>{m.nazwa}</Text>
+            <Text style={{ marginTop: 1, fontFamily: F.bodySemi, fontSize: 13, color: '#8E9BB3' }}>{m.miasto}</Text>
+            <Text style={{ marginTop: 10, fontFamily: F.body, fontSize: 14.5, lineHeight: 21, color: '#D5DBE8' }}>{m.opis}</Text>
+            {!!m.wiecej && <Text style={{ marginTop: 6, fontFamily: F.body, fontSize: 14, lineHeight: 21, color: '#A9B4CC' }}>{m.wiecej}</Text>}
+            {!!m.zdjecia?.length && (
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8 }} style={{ marginTop: 14 }}>
+                {m.zdjecia.map((z, i) => (
+                  <Image key={i} source={z} style={{ width: 116, height: 82, borderRadius: 14 }} resizeMode="cover" />
+                ))}
+              </ScrollView>
+            )}
+            <View style={{ flexDirection: 'row', gap: 10, marginTop: 16 }}>
+              <Przycisk glowny ikona="pin" tekst="Prowadź" onPress={() => nawigacja(m.lat, m.lon, m.nazwa)} />
+              <Okragly ikona="close" etykieta="Zamknij" onPress={() => { setWybrany(null); js(`window.punkty({wybrany:''})`); }} />
+            </View>
           </View>
-        </View>
-      )}
+        );
+      })()}
 
       {/* Lista szlaków / wypraw */}
       {((tryb === 'szlaki' && !szlak) || (tryb === 'wyprawy' && !wyprawa)) && (
