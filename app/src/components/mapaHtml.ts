@@ -1,5 +1,6 @@
 import type { Miejsce } from '@/data/miejsca';
 import type { Szlak, Wyprawa } from '@/data/trasy';
+import { KONTUR_POLSKI } from '@/data/konturPolski';
 
 export type KoloryMapy = { tlo: string; lad: string; woda: string; zloto: string; czerwien: string; tekst: string; tekstCichy: string };
 
@@ -26,6 +27,8 @@ export function mapaHtml(miejsca: Miejsce[], szlaki: Szlak[], wyprawy: Wyprawa[]
       })),
     },
     szlaki: Object.fromEntries(szlaki.map((s) => [s.id, s.przystanki.map((p) => [p.lon, p.lat])])),
+    maska: { type: 'Feature', geometry: { type: 'Polygon', coordinates: [[[-60, 10], [80, 10], [80, 75], [-60, 75], [-60, 10]], KONTUR_POLSKI] } },
+    polska: { type: 'Feature', geometry: { type: 'LineString', coordinates: KONTUR_POLSKI } },
     wyprawy: Object.fromEntries(wyprawy.map((w) => [w.id, w.etapy.map((e) => [e.lon, e.lat])])),
   };
   return `<!DOCTYPE html><html><head>
@@ -50,6 +53,8 @@ const map=new maplibregl.Map({container:'m',attributionControl:{compact:false},
  style:{version:8,glyphs:'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf',
   sources:{t:{type:'vector',url:'https://tiles.openfreemap.org/planet'},
    p:{type:'geojson',data:D.punkty},
+   maska:{type:'geojson',data:D.maska},
+   polska:{type:'geojson',data:D.polska},
    trasa:{type:'geojson',data:PUSTE},
    postep:{type:'geojson',data:PUSTE},
    stacje:{type:'geojson',data:PUSTE},
@@ -64,16 +69,17 @@ const map=new maplibregl.Map({container:'m',attributionControl:{compact:false},
    {id:'budynki',type:'fill',source:'t','source-layer':'building',minzoom:13,paint:{'fill-color':'${k.tlo}','fill-opacity':0.6}},
    {id:'wojewodztwa',type:'line',source:'t','source-layer':'boundary',filter:['all',['==',['get','admin_level'],4],['!=',['get','maritime'],1]],
     paint:{'line-color':'${k.zloto}','line-opacity':0.25,'line-width':0.8,'line-dasharray':[3,2]}},
-   {id:'granica-poswiata',type:'line',source:'t','source-layer':'boundary',filter:['all',['==',['get','admin_level'],2],['!=',['get','maritime'],1]],
-    paint:{'line-color':'${k.zloto}','line-opacity':0.25,'line-width':6,'line-blur':3}},
-   {id:'granica',type:'line',source:'t','source-layer':'boundary',filter:['all',['==',['get','admin_level'],2],['!=',['get','maritime'],1]],
-    paint:{'line-color':'${k.zloto}','line-width':1.6}},
+   {id:'granice',type:'line',source:'t','source-layer':'boundary',filter:['all',['==',['get','admin_level'],2],['!=',['get','maritime'],1]],
+    paint:{'line-color':'${k.tekstCichy}','line-opacity':0.35,'line-width':0.8}},
    {id:'miasta',type:'symbol',source:'t','source-layer':'place',filter:['in',['get','class'],['literal',['city','town','village']]],
     layout:{'text-field':nazwa,'text-font':['Noto Sans Regular'],'text-size':['match',['get','class'],'city',13,'town',11,10]},
     paint:{'text-color':'${k.tekstCichy}','text-halo-color':'${k.lad}','text-halo-width':1.4}},
    {id:'kraje',type:'symbol',source:'t','source-layer':'place',filter:['==',['get','class'],'country'],maxzoom:7,
     layout:{'text-field':['upcase',nazwa],'text-font':['Noto Sans Regular'],'text-size':11,'text-letter-spacing':0.3},
     paint:{'text-color':'${k.tekstCichy}','text-opacity':0.6}},
+   {id:'maska',type:'fill',source:'maska',paint:{'fill-color':'#030912','fill-opacity':0.62}},
+   {id:'polska-poswiata',type:'line',source:'polska',layout:{'line-join':'round'},paint:{'line-color':'${k.zloto}','line-opacity':0.3,'line-width':7,'line-blur':4}},
+   {id:'polska',type:'line',source:'polska',layout:{'line-join':'round'},paint:{'line-color':'${k.zloto}','line-width':1.8}},
    {id:'trasa-tlo',type:'line',source:'trasa',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'${k.zloto}','line-width':3,'line-opacity':0.9,'line-dasharray':[2,1.6]}},
    {id:'postep',type:'line',source:'postep',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'${k.czerwien}','line-width':4}},
    {id:'stacje',type:'circle',source:'stacje',paint:{'circle-radius':11,'circle-color':['case',['==',['get','on'],1],'${k.czerwien}','${k.zloto}'],'circle-stroke-color':'${k.tlo}','circle-stroke-width':2.5}},

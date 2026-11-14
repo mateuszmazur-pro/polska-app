@@ -2,7 +2,6 @@ import { useMemo, useRef, useState } from 'react';
 import { Linking, Platform, Pressable, ScrollView, Text, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { TAB_BAR_SPACE } from '@/components/FloatingTabBar';
 import { Icon, type IconName } from '@/components/Icon';
 import { mapaHtml } from '@/components/mapaHtml';
 import { KATEGORIE_MIEJSC, miejsca, type KategoriaMiejsca } from '@/data/miejsca';
@@ -15,7 +14,8 @@ type Tryb = 'punkty' | 'szlaki' | 'wyprawy';
 // Mapa zawsze w granacie — jak rycina, niezależnie od motywu aplikacji.
 const K = { tlo: '#0C1D36', lad: '#132A4D', woda: '#071222', zloto: '#C9A24A', czerwien: '#C8102E', tekst: '#F6F2E8', tekstCichy: '#8E9BB3' };
 const PANEL = 'rgba(19,42,77,0.97)';
-const PASEK_H = 66;
+const PASEK_H = 62;
+const NAV_BG = '#071222';
 
 const nawigacja = (lat: number, lon: number, nazwa: string) =>
   Linking.openURL(
@@ -68,7 +68,8 @@ export default function Mapa() {
   const graj = () => { if (gra) { setGra(false); js('window.pauza()'); } else { setGra(true); js('window.graj()'); } };
   const idzDoEtapu = (i: number) => { if (!wyprawa) return; const n = Math.max(0, Math.min(i, wyprawa.etapy.length - 1)); setGra(false); setEtap(n); js(`window.etap(${n})`); };
 
-  const dolPaska = TAB_BAR_SPACE + insets.bottom - 6;
+  // Pasek kategorii tuż nad głównym menu (menu: dół = max(insets,12)+8, wysokość 68).
+  const dolPaska = Math.max(insets.bottom, 12) + 8 + 68 + 8;
   const dolPanelu = dolPaska + PASEK_H + 10;
 
   const Kafel = ({ on, ikona, nazwa, onPress }: { on: boolean; ikona: IconName; nazwa: string; onPress: () => void }) => (
@@ -77,12 +78,12 @@ export default function Mapa() {
       accessibilityState={{ selected: on }}
       onPress={onPress}
       style={({ pressed }) => ({
-        width: 64, height: PASEK_H, borderRadius: 18, alignItems: 'center', justifyContent: 'center', gap: 4,
-        backgroundColor: on ? K.tekst : PANEL, opacity: pressed ? 0.85 : 1,
+        width: 62, height: PASEK_H - 12, borderRadius: (PASEK_H - 12) / 2, alignItems: 'center', justifyContent: 'center', gap: 2,
+        backgroundColor: on ? K.tekst : 'transparent', opacity: pressed ? 0.7 : 1,
       })}
     >
-      <Icon name={ikona} size={22} color={on ? K.czerwien : K.zloto} strokeWidth={1.7} />
-      <Text numberOfLines={1} style={{ fontFamily: on ? F.bodyHeavy : F.bodySemi, fontSize: 10.5, color: on ? K.tlo : '#C9D1E0' }}>{nazwa}</Text>
+      <Icon name={ikona} size={20} color={on ? K.czerwien : t.textMuted} strokeWidth={on ? 2 : 1.8} />
+      <Text numberOfLines={1} style={{ fontFamily: on ? F.bodyHeavy : F.bodySemi, fontSize: 10, color: on ? K.tlo : t.textMuted }}>{nazwa}</Text>
     </Pressable>
   );
 
@@ -256,26 +257,28 @@ export default function Mapa() {
         </View>
       )}
 
-      {/* Pasek kategorii */}
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={{ position: 'absolute', left: 0, right: 0, bottom: dolPaska, height: PASEK_H }}
-        contentContainerStyle={{ paddingHorizontal: 14, gap: 6, alignItems: 'center' }}
+      {/* Pasek kategorii — w kolorach głównego menu */}
+      <View
+        style={{
+          position: 'absolute', left: 16, right: 16, bottom: dolPaska, height: PASEK_H, borderRadius: PASEK_H / 2, overflow: 'hidden',
+          backgroundColor: NAV_BG, borderWidth: 1, borderColor: 'rgba(246,242,232,0.14)',
+        }}
       >
-        <Kafel on={tryb === 'szlaki'} ikona="route" nazwa="Szlaki" onPress={() => (tryb === 'szlaki' ? pokazPunkty(null) : otworzSzlaki())} />
-        <Kafel on={tryb === 'wyprawy'} ikona="march" nazwa="Wyprawy" onPress={() => (tryb === 'wyprawy' ? pokazPunkty(null) : otworzWyprawy())} />
-        <View style={{ width: 1, height: 36, marginHorizontal: 4, backgroundColor: '#26416E' }} />
-        {KATEGORIE_MIEJSC.map((c) => (
-          <Kafel
-            key={c.id}
-            on={tryb === 'punkty' && kategoria === c.id}
-            ikona={c.ikona}
-            nazwa={c.nazwa}
-            onPress={() => pokazPunkty(tryb === 'punkty' && kategoria === c.id ? null : c.id)}
-          />
-        ))}
-      </ScrollView>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 6, alignItems: 'center' }}>
+          {KATEGORIE_MIEJSC.map((c) => (
+            <Kafel
+              key={c.id}
+              on={tryb === 'punkty' && kategoria === c.id}
+              ikona={c.ikona}
+              nazwa={c.nazwa}
+              onPress={() => pokazPunkty(tryb === 'punkty' && kategoria === c.id ? null : c.id)}
+            />
+          ))}
+          <View style={{ width: 1, height: 30, marginHorizontal: 6, backgroundColor: 'rgba(246,242,232,0.14)' }} />
+          <Kafel on={tryb === 'szlaki'} ikona="route" nazwa="Szlaki" onPress={() => (tryb === 'szlaki' ? pokazPunkty(null) : otworzSzlaki())} />
+          <Kafel on={tryb === 'wyprawy'} ikona="march" nazwa="Wyprawy" onPress={() => (tryb === 'wyprawy' ? pokazPunkty(null) : otworzWyprawy())} />
+        </ScrollView>
+      </View>
     </View>
   );
 }
