@@ -81,7 +81,7 @@
   "id": "ossow",
   "nazwa": "Ossów",
   "miasto": "Ossów",
-  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Ossowem"
+  "wiki": "https://pl.wikipedia.org/wiki/Ossów"
  },
  {
   "id": "westerplatte",
@@ -93,7 +93,7 @@
   "id": "wizna",
   "nazwa": "Wizna",
   "miasto": "Wizna",
-  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Wizną"
+  "wiki": "https://pl.wikipedia.org/wiki/Góra_Strękowa"
  },
  {
   "id": "auschwitz-birkenau",
@@ -129,7 +129,7 @@
   "id": "stare-powazki",
   "nazwa": "Stare Powązki",
   "miasto": "Warszawa",
-  "wiki": "https://pl.wikipedia.org/wiki/Cmentarz_Powązkowski_w_Warszawie"
+  "wiki": "https://pl.wikipedia.org/wiki/Cmentarz_Powązkowski"
  },
  {
   "id": "kopiec-kosciuszki",
@@ -195,7 +195,7 @@
   "id": "katedra-gnieznienska",
   "nazwa": "Katedra Gnieźnieńska",
   "miasto": "Gniezno",
-  "wiki": "https://pl.wikipedia.org/wiki/Bazylika_archikatedralna_Wniebowzięcia_Najświętszej_Maryi_Panny_i_św._Wojciecha_w_Gnieźnie"
+  "wiki": "https://pl.wikipedia.org/wiki/Bazylika_archikatedralna_w_Gnieźnie"
  },
  {
   "id": "jasna-gora",
@@ -207,7 +207,7 @@
   "id": "bazylika-mariacka",
   "nazwa": "Bazylika Mariacka",
   "miasto": "Kraków",
-  "wiki": "https://pl.wikipedia.org/wiki/Kościół_Wniebowzięcia_Najświętszej_Maryi_Panny_w_Krakowie"
+  "wiki": "https://pl.wikipedia.org/wiki/Bazylika_Mariacka_w_Krakowie"
  },
  {
   "id": "katedra-poznanska",
@@ -267,7 +267,7 @@
   "id": "zespol-staromiejski-torunia",
   "nazwa": "Zespół staromiejski Torunia",
   "miasto": "Toruń",
-  "wiki": "https://pl.wikipedia.org/wiki/Toruń"
+  "wiki": "https://pl.wikipedia.org/wiki/Zespół_Staromiejski_w_Toruniu"
  },
  {
   "id": "zamosc",
@@ -279,7 +279,7 @@
   "id": "glowne-miasto-w-gdansku",
   "nazwa": "Główne Miasto w Gdańsku",
   "miasto": "Gdańsk",
-  "wiki": "https://pl.wikipedia.org/wiki/Główne_Miasto_(Gdańsk)"
+  "wiki": "https://pl.wikipedia.org/wiki/Długi_Targ"
  },
  {
   "id": "rynek-we-wroclawiu",
@@ -345,7 +345,7 @@
   "id": "zalipie",
   "nazwa": "Zalipie",
   "miasto": "Zalipie",
-  "wiki": "https://pl.wikipedia.org/wiki/Zalipie"
+  "wiki": "https://pl.wikipedia.org/wiki/Zalipie_(województwo_małopolskie)"
  },
  {
   "id": "psie-pole",
@@ -417,7 +417,7 @@
   "id": "obrona-helu",
   "nazwa": "Obrona Helu",
   "miasto": "Hel",
-  "wiki": "https://pl.wikipedia.org/wiki/Obrona_Helu"
+  "wiki": "https://pl.wikipedia.org/wiki/Hel"
  },
  {
   "id": "kock",
