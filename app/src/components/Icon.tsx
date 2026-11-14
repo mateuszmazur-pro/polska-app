@@ -3,7 +3,8 @@ import Svg, { Circle, Path } from 'react-native-svg';
 export type IconName =
   | 'search' | 'bell' | 'settings' | 'arrowRight' | 'back' | 'person' | 'castle' | 'timeline'
   | 'crown' | 'music' | 'quiz' | 'home' | 'compass' | 'pin' | 'trophy' | 'check'
-  | 'chevron' | 'bookmark' | 'share' | 'swords' | 'flag' | 'calendar' | 'bulb';
+  | 'chevron' | 'bookmark' | 'share' | 'swords' | 'flag' | 'calendar' | 'bulb'
+  | 'route' | 'march' | 'flame' | 'museum' | 'church' | 'houses' | 'hut' | 'play' | 'pause' | 'close' | 'prev' | 'next';
 
 type Props = { name: IconName; size?: number; color: string; strokeWidth?: number };
 
@@ -35,6 +36,18 @@ export function Icon({ name, size = 22, color, strokeWidth = 1.8 }: Props) {
       {name === 'flag' && <Path d="M5 21V4M5 4h11l-2 4 2 4H5" {...p} />}
       {name === 'calendar' && <Path d="M4 5h16v15H4zM4 10h16M9 3v4M15 3v4" {...p} />}
       {name === 'bulb' && <Path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z" {...p} />}
+      {name === 'route' && (<><Circle cx={6} cy={18} r={2.2} {...p} /><Circle cx={18} cy={6} r={2.2} {...p} /><Path d="M8 18h7a3 3 0 000-6H9a3 3 0 010-6h7" {...p} /></>)}
+      {name === 'march' && (<><Path d="M5 21V4" {...p} /><Path d="M5 4h10l-2 3.5L15 11H5" {...p} /><Path d="M14 21l3-6 3 6" {...p} /></>)}
+      {name === 'flame' && <Path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 01-10 0c0-2.5 1.5-4 2.5-5 .3 1.8 1.2 2.8 2.5 3-.5-3 .2-5.5 0-8zM10 21h4" {...p} />}
+      {name === 'museum' && <Path d="M3 9l9-5 9 5M4 9h16M6 9v8M10 9v8M14 9v8M18 9v8M3 20h18M4 17h16" {...p} />}
+      {name === 'church' && <Path d="M12 2v4M10 4h4M8 21v-9l4-4 4 4v9M4 21v-6l4-3M20 21v-6l-4-3M3 21h18M11 21v-3h2v3" {...p} />}
+      {name === 'houses' && <Path d="M3 21V10l4-3 4 3v11M11 21V7l5-4 5 4v14M2 21h20M6 13h2M15 10h2M15 14h2M6 17h2" {...p} />}
+      {name === 'hut' && <Path d="M2 12l10-8 10 8M5 10v11h14V10M10 21v-5h4v5M8 13h1M15 13h1" {...p} />}
+      {name === 'play' && <Path d="M8 5l11 7-11 7z" {...p} />}
+      {name === 'pause' && <Path d="M8 5v14M16 5v14" {...p} />}
+      {name === 'close' && <Path d="M6 6l12 12M18 6L6 18" {...p} />}
+      {name === 'prev' && <Path d="M6 5v14M18 6l-8 6 8 6z" {...p} />}
+      {name === 'next' && <Path d="M18 5v14M6 6l8 6-8 6z" {...p} />}
     </Svg>
   );
 }

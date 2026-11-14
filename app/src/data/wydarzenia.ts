@@ -46,7 +46,11 @@ export const wydarzenia: Wydarzenie[] = [
   { id: 'unia-lubelska', rok: 1569, tytul: 'Unia lubelska', opis: 'Powstaje Rzeczpospolita Obojga Narodów.', epoka: 'jagiellonowie', wazne: true },
   // Rzeczpospolita
   { id: 'pierwsza-wolna-elekcja', rok: 1573, tytul: 'Pierwsza wolna elekcja', opis: 'Szlachta po raz pierwszy wybiera króla. Powstają artykuły henrykowskie.', epoka: 'rzeczpospolita' },
+  { id: 'kircholm', rok: 1605, data: '27 września', md: '09-27', tytul: 'Bitwa pod Kircholmem', opis: 'Husaria hetmana Chodkiewicza rozbija liczniejszą armię szwedzką pod Rygą.', epoka: 'rzeczpospolita' },
+  { id: 'kluszyn', rok: 1610, data: '4 lipca', md: '07-04', tytul: 'Bitwa pod Kłuszynem', opis: 'Hetman Żółkiewski pokonuje wojska rosyjsko-szwedzkie, droga na Moskwę stoi otworem.', epoka: 'rzeczpospolita' },
+  { id: 'chocim-1621', rok: 1621, tytul: 'Obrona Chocimia', opis: 'Wojska Rzeczypospolitej powstrzymują nad Dniestrem wielką armię osmańską.', epoka: 'rzeczpospolita' },
   { id: 'obrona-jasnej-gory', rok: 1655, tytul: 'Obrona Jasnej Góry', opis: 'W czasie potopu szwedzkiego klasztor częstochowski nie poddaje się oblężeniu.', epoka: 'rzeczpospolita' },
+  { id: 'chocim-1673', rok: 1673, data: '11 listopada', md: '11-11', tytul: 'Bitwa pod Chocimiem', opis: 'Hetman Jan Sobieski rozbija armię turecką — rok później zostaje królem.', epoka: 'rzeczpospolita', postacie: ['jan-iii-sobieski'] },
   { id: 'odsiecz-wiedenska', rok: 1683, data: '12 września', md: '09-12', tytul: 'Odsiecz wiedeńska', opis: 'Jan III Sobieski rozbija pod Wiedniem armię osmańską.', epoka: 'rzeczpospolita', wazne: true, postacie: ['jan-iii-sobieski'] },
   { id: 'pierwszy-rozbior', rok: 1772, tytul: 'I rozbiór', opis: 'Rosja, Prusy i Austria zabierają Rzeczypospolitej blisko jedną trzecią terytorium.', epoka: 'rzeczpospolita' },
   { id: 'konstytucja-3-maja', rok: 1791, data: '3 maja', md: '05-03', tytul: 'Konstytucja 3 maja', opis: 'Pierwsza w Europie i druga na świecie nowoczesna konstytucja.', epoka: 'rzeczpospolita', wazne: true },
@@ -55,6 +59,7 @@ export const wydarzenia: Wydarzenie[] = [
   // Zabory
   { id: 'legiony-dabrowskiego', rok: 1797, tytul: 'Legiony Dąbrowskiego', opis: 'We Włoszech powstają Legiony Polskie, a z nimi pieśń, która stanie się hymnem.', epoka: 'zabory' },
   { id: 'ksiestwo-warszawskie', rok: 1807, tytul: 'Księstwo Warszawskie', opis: 'Z woli Napoleona powstaje polskie państwo zależne od Francji.', epoka: 'zabory' },
+  { id: 'somosierra', rok: 1808, data: '30 listopada', md: '11-30', tytul: 'Somosierra', opis: 'Szarża polskich szwoleżerów w Hiszpanii otwiera Napoleonowi drogę na Madryt.', epoka: 'zabory' },
   { id: 'urodziny-chopina', rok: 1810, tytul: 'Urodziny Chopina', opis: 'W Żelazowej Woli przychodzi na świat Fryderyk Chopin.', epoka: 'zabory', postacie: ['fryderyk-chopin'] },
   { id: 'powstanie-listopadowe', rok: 1830, data: '29 listopada', md: '11-29', tytul: 'Powstanie listopadowe', opis: 'Zryw przeciw Rosji; po jego upadku tysiące Polaków wyjeżdża na emigrację.', epoka: 'zabory', wazne: true },
   { id: 'pan-tadeusz', rok: 1834, tytul: '„Pan Tadeusz”', opis: 'W Paryżu ukazuje się epopeja narodowa Adama Mickiewicza.', epoka: 'zabory', postacie: ['adam-mickiewicz'] },
@@ -70,6 +75,7 @@ export const wydarzenia: Wydarzenie[] = [
   { id: 'wybuch-wojny', rok: 1939, data: '1 września', md: '09-01', tytul: 'Wybuch II wojny światowej', opis: 'Niemcy atakują Polskę, a 17 września — Związek Sowiecki.', epoka: 'wojna', wazne: true },
   { id: 'zbrodnia-katynska', rok: 1940, tytul: 'Zbrodnia katyńska', opis: 'Na rozkaz władz sowieckich zostają zamordowani tysiące polskich oficerów.', epoka: 'wojna' },
   { id: 'powstanie-w-getcie', rok: 1943, data: '19 kwietnia', md: '04-19', tytul: 'Powstanie w getcie warszawskim', opis: 'Żydowscy bojownicy podejmują walkę z Niemcami.', epoka: 'wojna' },
+  { id: 'lenino', rok: 1943, data: '12 października', md: '10-12', tytul: 'Bitwa pod Lenino', opis: 'Pierwsza bitwa 1. Dywizji im. Tadeusza Kościuszki, utworzonej w ZSRS.', epoka: 'wojna' },
   { id: 'monte-cassino', rok: 1944, data: '18 maja', md: '05-18', tytul: 'Monte Cassino', opis: 'Żołnierze 2. Korpusu Polskiego zdobywają klasztor na Monte Cassino.', epoka: 'wojna' },
   { id: 'powstanie-warszawskie', rok: 1944, data: '1 sierpnia', md: '08-01', tytul: 'Powstanie Warszawskie', opis: '63 dni walki o wolną stolicę.', epoka: 'wojna', wazne: true },
   // PRL
