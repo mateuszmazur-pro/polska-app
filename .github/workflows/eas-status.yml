@@ -19,5 +19,9 @@ jobs:
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
       - run: eas build:list --limit 6 --non-interactive --json | jq -r '.[] | [.platform, .status, .appVersion, .runtimeVersion, .createdAt, (.error.message // ""), (.artifacts.buildUrl // "")] | @tsv'
       - run: eas update:list --branch preview --limit 5 --non-interactive --json | jq -r '.currentPage[]? | [.runtimeVersion, .message, .createdAt] | @tsv' || true
