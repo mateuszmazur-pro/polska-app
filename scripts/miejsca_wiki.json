@@ -3,349 +3,349 @@
   "id": "wawel",
   "nazwa": "Wawel",
   "miasto": "Kraków",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Wawel"
  },
  {
   "id": "zamek-w-malborku",
   "nazwa": "Zamek w Malborku",
   "miasto": "Malbork",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Zamek_w_Malborku"
  },
  {
   "id": "zamek-krolewski-w-warszawie",
   "nazwa": "Zamek Królewski w Warszawie",
   "miasto": "Warszawa",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Zamek_Królewski_w_Warszawie"
  },
  {
   "id": "palac-w-wilanowie",
   "nazwa": "Pałac w Wilanowie",
   "miasto": "Warszawa",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Pałac_w_Wilanowie"
  },
  {
   "id": "zamek-ksiaz",
   "nazwa": "Zamek Książ",
   "miasto": "Wałbrzych",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Zamek_Książ"
  },
  {
   "id": "zamek-w-lancucie",
   "nazwa": "Zamek w Łańcucie",
   "miasto": "Łańcut",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Zamek_w_Łańcucie"
  },
  {
   "id": "zamek-ogrodzieniec",
   "nazwa": "Zamek Ogrodzieniec",
   "miasto": "Podzamcze",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Zamek_Ogrodzieniec"
  },
  {
   "id": "zamek-w-lidzbarku-warminskim",
   "nazwa": "Zamek w Lidzbarku Warmińskim",
   "miasto": "Lidzbark Warmiński",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Zamek_biskupów_warmińskich_w_Lidzbarku_Warmińskim"
  },
  {
   "id": "cedynia",
   "nazwa": "Cedynia",
   "miasto": "Cedynia",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Cedynią"
  },
  {
   "id": "legnickie-pole",
   "nazwa": "Legnickie Pole",
   "miasto": "Legnickie Pole",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Legnicą"
  },
  {
   "id": "pola-grunwaldu",
   "nazwa": "Pola Grunwaldu",
   "miasto": "Stębark",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Grunwaldem"
  },
  {
   "id": "raclawice",
   "nazwa": "Racławice",
   "miasto": "Racławice",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Racławicami"
  },
  {
   "id": "olszynka-grochowska",
   "nazwa": "Olszynka Grochowska",
   "miasto": "Warszawa",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_o_Olszynkę_Grochowską"
  },
  {
   "id": "ossow",
   "nazwa": "Ossów",
   "miasto": "Ossów",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Ossowem"
  },
  {
   "id": "westerplatte",
   "nazwa": "Westerplatte",
   "miasto": "Gdańsk",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Westerplatte"
  },
  {
   "id": "wizna",
   "nazwa": "Wizna",
   "miasto": "Wizna",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Bitwa_pod_Wizną"
  },
  {
   "id": "auschwitz-birkenau",
   "nazwa": "Auschwitz-Birkenau",
   "miasto": "Oświęcim",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/KL_Auschwitz"
  },
  {
   "id": "majdanek",
   "nazwa": "Majdanek",
   "miasto": "Lublin",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/KL_Lublin"
  },
  {
   "id": "treblinka",
   "nazwa": "Treblinka",
   "miasto": "Wólka Okrąglik",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Treblinka_(obóz_zagłady)"
  },
  {
   "id": "grob-nieznanego-zolnierza",
   "nazwa": "Grób Nieznanego Żołnierza",
   "miasto": "Warszawa",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Grób_Nieznanego_Żołnierza_w_Warszawie"
  },
  {
   "id": "pomnik-powstania-warszawskiego",
   "nazwa": "Pomnik Powstania Warszawskiego",
   "miasto": "Warszawa",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Pomnik_Powstania_Warszawskiego"
  },
  {
   "id": "stare-powazki",
   "nazwa": "Stare Powązki",
   "miasto": "Warszawa",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Cmentarz_Powązkowski_w_Warszawie"
  },
  {
   "id": "kopiec-kosciuszki",
   "nazwa": "Kopiec Kościuszki",
   "miasto": "Kraków",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Kopiec_Kościuszki_w_Krakowie"
  },
  {
   "id": "pomnik-poleglych-stoczniowcow",
   "nazwa": "Pomnik Poległych Stoczniowców",
   "miasto": "Gdańsk",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Pomnik_Poległych_Stoczniowców_1970_w_Gdańsku"
  },
  {
   "id": "muzeum-powstania-warszawskiego",
   "nazwa": "Muzeum Powstania Warszawskiego",
   "miasto": "Warszawa",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Muzeum_Powstania_Warszawskiego"
  },
  {
   "id": "muzeum-historii-zydow-polskich-polin",
   "nazwa": "Muzeum Historii Żydów Polskich POLIN",
   "miasto": "Warszawa",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Muzeum_Historii_Żydów_Polskich_POLIN"
  },
  {
   "id": "muzeum-ii-wojny-swiatowej",
   "nazwa": "Muzeum II Wojny Światowej",
   "miasto": "Gdańsk",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Muzeum_II_Wojny_Światowej_w_Gdańsku"
  },
  {
   "id": "europejskie-centrum-solidarnosci",
   "nazwa": "Europejskie Centrum Solidarności",
   "miasto": "Gdańsk",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Europejskie_Centrum_Solidarności"
  },
  {
   "id": "kopalnia-soli-wieliczka",
   "nazwa": "Kopalnia Soli „Wieliczka”",
   "miasto": "Wieliczka",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Kopalnia_soli_w_Wieliczce"
  },
  {
   "id": "dom-mikolaja-kopernika",
   "nazwa": "Dom Mikołaja Kopernika",
   "miasto": "Toruń",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Dom_Mikołaja_Kopernika_w_Toruniu"
  },
  {
   "id": "muzeum-fryderyka-chopina",
   "nazwa": "Muzeum Fryderyka Chopina",
   "miasto": "Warszawa",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Muzeum_Fryderyka_Chopina_w_Warszawie"
  },
  {
   "id": "muzeum-marii-sklodowskiej-curie",
   "nazwa": "Muzeum Marii Skłodowskiej-Curie",
   "miasto": "Warszawa",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Muzeum_Marii_Skłodowskiej-Curie_w_Warszawie"
  },
  {
   "id": "katedra-gnieznienska",
   "nazwa": "Katedra Gnieźnieńska",
   "miasto": "Gniezno",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Bazylika_archikatedralna_Wniebowzięcia_Najświętszej_Maryi_Panny_i_św._Wojciecha_w_Gnieźnie"
  },
  {
   "id": "jasna-gora",
   "nazwa": "Jasna Góra",
   "miasto": "Częstochowa",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Jasna_Góra"
  },
  {
   "id": "bazylika-mariacka",
   "nazwa": "Bazylika Mariacka",
   "miasto": "Kraków",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Kościół_Wniebowzięcia_Najświętszej_Maryi_Panny_w_Krakowie"
  },
  {
   "id": "katedra-poznanska",
   "nazwa": "Katedra Poznańska",
   "miasto": "Poznań",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Bazylika_archikatedralna_Świętych_Apostołów_Piotra_i_Pawła_w_Poznaniu"
  },
  {
   "id": "kosciol-pokoju",
   "nazwa": "Kościół Pokoju",
   "miasto": "Świdnica",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Kościół_Pokoju_w_Świdnicy"
  },
  {
   "id": "kalwaria-zebrzydowska",
   "nazwa": "Kalwaria Zebrzydowska",
   "miasto": "Kalwaria Zebrzydowska",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Kalwaria_Zebrzydowska_(sanktuarium)"
  },
  {
   "id": "cerkiew-w-kwiatoniu",
   "nazwa": "Cerkiew w Kwiatoniu",
   "miasto": "Kwiatoń",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Cerkiew_św._Paraskewy_w_Kwiatoniu"
  },
  {
   "id": "swieta-gora-grabarka",
   "nazwa": "Święta Góra Grabarka",
   "miasto": "Grabarka",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Święta_Góra_Grabarka"
  },
  {
   "id": "stara-synagoga",
   "nazwa": "Stara Synagoga",
   "miasto": "Kraków",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Stara_Synagoga_w_Krakowie"
  },
  {
   "id": "meczet-w-kruszynianach",
   "nazwa": "Meczet w Kruszynianach",
   "miasto": "Kruszyniany",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Meczet_w_Kruszynianach"
  },
  {
   "id": "stare-miasto-w-krakowie",
   "nazwa": "Stare Miasto w Krakowie",
   "miasto": "Kraków",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Stare_Miasto_w_Krakowie"
  },
  {
   "id": "stare-miasto-w-warszawie",
   "nazwa": "Stare Miasto w Warszawie",
   "miasto": "Warszawa",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Stare_Miasto_w_Warszawie"
  },
  {
   "id": "zespol-staromiejski-torunia",
   "nazwa": "Zespół staromiejski Torunia",
   "miasto": "Toruń",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Toruń"
  },
  {
   "id": "zamosc",
   "nazwa": "Zamość",
   "miasto": "Zamość",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Zamość"
  },
  {
   "id": "glowne-miasto-w-gdansku",
   "nazwa": "Główne Miasto w Gdańsku",
   "miasto": "Gdańsk",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Główne_Miasto_(Gdańsk)"
  },
  {
   "id": "rynek-we-wroclawiu",
   "nazwa": "Rynek we Wrocławiu",
   "miasto": "Wrocław",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Rynek_we_Wrocławiu"
  },
  {
   "id": "stary-rynek-w-poznaniu",
   "nazwa": "Stary Rynek w Poznaniu",
   "miasto": "Poznań",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Stary_Rynek_w_Poznaniu"
  },
  {
   "id": "sandomierz",
   "nazwa": "Sandomierz",
   "miasto": "Sandomierz",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Sandomierz"
  },
  {
   "id": "kazimierz-dolny",
   "nazwa": "Kazimierz Dolny",
   "miasto": "Kazimierz Dolny",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Kazimierz_Dolny"
  },
  {
   "id": "kaszubski-park-etnograficzny",
   "nazwa": "Kaszubski Park Etnograficzny",
   "miasto": "Wdzydze Kiszewskie",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Kaszubski_Park_Etnograficzny_im._Teodory_i_Izydora_Gulgowskich_we_Wdzydzach_Kiszewskich"
  },
  {
   "id": "skansen-w-sanoku",
   "nazwa": "Skansen w Sanoku",
   "miasto": "Sanok",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Muzeum_Budownictwa_Ludowego_w_Sanoku"
  },
  {
   "id": "muzeum-wsi-lubelskiej",
   "nazwa": "Muzeum Wsi Lubelskiej",
   "miasto": "Lublin",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Muzeum_Wsi_Lubelskiej"
  },
  {
   "id": "park-etnograficzny-w-tokarni",
   "nazwa": "Park Etnograficzny w Tokarni",
   "miasto": "Tokarnia",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Muzeum_Wsi_Kieleckiej"
  },
  {
   "id": "muzeum-wsi-mazowieckiej",
   "nazwa": "Muzeum Wsi Mazowieckiej",
   "miasto": "Sierpc",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Muzeum_Wsi_Mazowieckiej_w_Sierpcu"
  },
  {
   "id": "orawski-park-etnograficzny",
   "nazwa": "Orawski Park Etnograficzny",
   "miasto": "Zubrzyca Górna",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Orawski_Park_Etnograficzny"
  },
  {
   "id": "zalipie",
   "nazwa": "Zalipie",
   "miasto": "Zalipie",
-  "wiki": null
+  "wiki": "https://pl.wikipedia.org/wiki/Zalipie"
  },
  {
   "id": "psie-pole",
