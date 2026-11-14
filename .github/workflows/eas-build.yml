@@ -1,0 +1,47 @@
+name: Budowa aplikacji (EAS Build)
+
+# Buduje nową wersję aplikacji (iPhone + Android, profil „preview”) bez komputera.
+# Uruchamia się, gdy zmieni się plik app/.budowa (albo ręcznie z zakładki Actions).
+# Opcjonalnie najpierw dodaje moduły natywne wpisane w app/.budowa (linia „moduly: …”).
+on:
+  push:
+    branches: [main]
+    paths: ['app/.budowa']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - run: npm install --no-audit --no-fund
+
+      - name: Dodaj moduły natywne (jeśli wpisane)
+        run: |
+          MODULY=$(grep '^moduly:' .budowa | sed 's/^moduly://' | xargs || true)
+          if [ -n "$MODULY" ]; then
+            npx expo install $MODULY
+            git config user.name "github-actions[bot]"
+            git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+            git add package.json package-lock.json
+            git diff --cached --quiet || { git commit -m "Moduły natywne: $MODULY"; git push; }
+          fi
+
+      - name: Zbuduj iPhone i Android
+        run: eas build --platform all --profile preview --non-interactive --no-wait

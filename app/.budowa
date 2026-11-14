@@ -1,0 +1,3 @@
+# Zmiana tego pliku uruchamia budowę nowej wersji aplikacji (GitHub → EAS Build).
+moduly: react-native-webview
+nr: 1
