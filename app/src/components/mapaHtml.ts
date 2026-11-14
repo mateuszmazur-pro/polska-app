@@ -106,6 +106,9 @@ function rysujPunkty(){
  map.setFilter('punkty-halo',['==',['get','id'],filtr.wybrany||'']);
  map.setPaintProperty('punkty','circle-color',['case',['==',['get','id'],filtr.wybrany||''],'${k.czerwien}','${k.zloto}']);
 }
+// easeTo z padding zostawia stały margines kamery, który dodaje się do fitBounds — zerujemy go przed każdym dopasowaniem.
+const ZERO={top:0,bottom:0,left:0,right:0};
+function calaPolska(){map.stop();map.setPadding(ZERO);map.fitBounds(POLSKA,{padding:{top:GORA,bottom:DOL,left:14,right:14},duration:800})}
 function czysc(){
  clearInterval(gra);gra=null;
  ['trasa','postep','stacje','znacznik'].forEach(s=>map.getSource(s).setData(PUSTE));
@@ -114,6 +117,7 @@ function czysc(){
 function linia(c){return {type:'Feature',geometry:{type:'LineString',coordinates:c}}}
 function stacje(c,on){return {type:'FeatureCollection',features:c.map((x,i)=>({type:'Feature',properties:{nr:i+1,i:i,on:i===on?1:0},geometry:{type:'Point',coordinates:x}}))}}
 function dopasuj(c){
+ map.stop();map.setPadding(ZERO);
  const b=c.reduce((b,x)=>b.extend(x),new maplibregl.LngLatBounds(c[0],c[0]));
  map.fitBounds(b,{padding:{top:GORA,bottom:DOL+40,left:40,right:40},maxZoom:12,duration:900});
 }
@@ -140,19 +144,19 @@ let dolKarty=420;
 window.ustawDol=(v)=>{dolKarty=v};
 window.punkty=(o)=>{
  o=o||{};
- const zmiana=('kategoria' in o&&o.kategoria!==filtr.kategoria)||('unesco' in o&&o.unesco!==filtr.unesco)||tryb!=='punkty';
+ const zmiana=('kategoria' in o&&o.kategoria!==filtr.kategoria)||('unesco' in o&&o.unesco!==filtr.unesco)||tryb!=='punkty'||('wybrany' in o&&!o.wybrany&&!!filtr.wybrany);
  tryb='punkty';Object.assign(filtr,o);czysc();rysujPunkty();
- if(zmiana)map.fitBounds(POLSKA,{padding:{top:GORA,bottom:DOL,left:14,right:14},duration:800});
+ if(zmiana)calaPolska();
 };
 window.szlak=(id)=>{
  czysc();tryb=id?'szlak':'punkty';rysujPunkty();
- if(!id){map.fitBounds(POLSKA,{padding:{top:GORA,bottom:DOL,left:14,right:14},duration:800});return}
+ if(!id){calaPolska();return}
  const c=D.szlaki[id];trasaId=id;
  map.getSource('trasa').setData(linia(c));map.getSource('stacje').setData(stacje(c,-1));dopasuj(c);
 };
 window.wyprawa=(id)=>{
  czysc();tryb=id?'wyprawa':'punkty';rysujPunkty();
- if(!id){map.fitBounds(POLSKA,{padding:{top:GORA,bottom:DOL,left:14,right:14},duration:800});return}
+ if(!id){calaPolska();return}
  const c=D.wyprawy[id];trasaId=id;przelicz(c);postep=0;
  map.getSource('trasa').setData(linia(c));dopasuj(c);rysujPostep();
 };
