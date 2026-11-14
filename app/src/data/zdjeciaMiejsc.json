@@ -179,6 +179,15 @@
    "strona": "https://commons.wikimedia.org/wiki/File:Kossak_Battle_of_Olszynka_Grochowska.jpg"
   }
  ],
+ "ossow": [
+  {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Smole%C5%84sk_Monument_in_Oss%C3%B3w_5.jpg/960px-Smole%C5%84sk_Monument_in_Oss%C3%B3w_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Happa",
+   "licencja": "CC BY 3.0",
+   "licencjaUrl": "https://creativecommons.org/licenses/by/3.0",
+   "strona": "https://commons.wikimedia.org/wiki/File:Smole%C5%84sk_Monument_in_Oss%C3%B3w_5.jpg"
+  }
+ ],
  "westerplatte": [
   {
    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Gda%C5%84sk_Westerplatte_pla%C5%BCa_%282010%29.JPG/960px-Gda%C5%84sk_Westerplatte_pla%C5%BCa_%282010%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -200,6 +209,15 @@
    "licencja": "Public domain",
    "licencjaUrl": "",
    "strona": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk_Nowy_Port_i_Twierdza_Wis%C5%82ouj%C5%9Bcie_(XVIII_wiek).JPG"
+  }
+ ],
+ "wizna": [
+  {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Podlaskie_-_Zawady_-_G%C3%B3ra_Str%C4%99kowa_-_wzniesienie_-_SE_-_rzut_na_wie%C5%9B_-_v-E.JPG/960px-Podlaskie_-_Zawady_-_G%C3%B3ra_Str%C4%99kowa_-_wzniesienie_-_SE_-_rzut_na_wie%C5%9B_-_v-E.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Krzysztof Kundzicz",
+   "licencja": "CC BY-SA 3.0",
+   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "strona": "https://commons.wikimedia.org/wiki/File:Podlaskie_-_Zawady_-_G%C3%B3ra_Str%C4%99kowa_-_wzniesienie_-_SE_-_rzut_na_wie%C5%9B_-_v-E.JPG"
   }
  ],
  "auschwitz-birkenau": [
@@ -448,25 +466,25 @@
  ],
  "bazylika-mariacka": [
   {
-   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Bazylika_Mariacka_DSC01870.jpg/960px-Bazylika_Mariacka_DSC01870.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "autor": "Gyddanyzc",
-   "licencja": "CC0",
-   "licencjaUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-   "strona": "https://commons.wikimedia.org/wiki/File:Bazylika_Mariacka_DSC01870.jpg"
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Church_of_Our_Lady_Assumed_into_Heaven%2C_5_Mariacki_square%2C_Old_Town%2C_Krak%C3%B3w%2C_Poland.jpg/960px-Church_of_Our_Lady_Assumed_into_Heaven%2C_5_Mariacki_square%2C_Old_Town%2C_Krak%C3%B3w%2C_Poland.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Zygmunt Put",
+   "licencja": "CC BY-SA 4.0",
+   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "strona": "https://commons.wikimedia.org/wiki/File:Church_of_Our_Lady_Assumed_into_Heaven,_5_Mariacki_square,_Old_Town,_Krak%C3%B3w,_Poland.jpg"
   },
   {
-   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/DAN-61-Bank_von_Danzig-25_Gulden_%281931%29.jpg/960px-DAN-61-Bank_von_Danzig-25_Gulden_%281931%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "autor": "National Museum of American History",
-   "licencja": "Public domain",
-   "licencjaUrl": "",
-   "strona": "https://commons.wikimedia.org/wiki/File:DAN-61-Bank_von_Danzig-25_Gulden_(1931).jpg"
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Bazylika_Mariacka_p.w._Wniebowzi%C4%99cia_NMP_w_Krakowie.jpg/960px-Bazylika_Mariacka_p.w._Wniebowzi%C4%99cia_NMP_w_Krakowie.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Zbigniew Pietrzykowski",
+   "licencja": "CC BY-SA 3.0 pl",
+   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/3.0/pl/deed.en",
+   "strona": "https://commons.wikimedia.org/wiki/File:Bazylika_Mariacka_p.w._Wniebowzi%C4%99cia_NMP_w_Krakowie.jpg"
   },
   {
-   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Danzig-Marienkirche.jpg/960px-Danzig-Marienkirche.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "autor": "sendker",
-   "licencja": "Public domain",
-   "licencjaUrl": "",
-   "strona": "https://commons.wikimedia.org/wiki/File:Danzig-Marienkirche.jpg"
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Church_of_Our_Lady_Assumed_into_Heaven%2C_St._Mary%27s_%28Main%29_Altar_%281489_by_Veit_Stoss%29%2C_5_Mariacki_square%2C_Old_Town%2C_Krak%C3%B3w%2C_Poland.jpg/960px-Church_of_Our_Lady_Assumed_into_Heaven%2C_St._Mary%27s_%28Main%29_Altar_%281489_by_Veit_Stoss%29%2C_5_Mariacki_square%2C_Old_Town%2C_Krak%C3%B3w%2C_Poland.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Zygmunt Put",
+   "licencja": "CC BY-SA 4.0",
+   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "strona": "https://commons.wikimedia.org/wiki/File:Church_of_Our_Lady_Assumed_into_Heaven,_St._Mary%27s_(Main)_Altar_(1489_by_Veit_Stoss),_5_Mariacki_square,_Old_Town,_Krak%C3%B3w,_Poland.jpg"
   }
  ],
  "katedra-poznanska": [
@@ -476,20 +494,6 @@
    "licencja": "CC BY-SA 4.0",
    "licencjaUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "strona": "https://commons.wikimedia.org/wiki/File:Catedral_de_Poznan,_Poznan,_Polonia,_2014-09-18,_DD_10.jpg"
-  },
-  {
-   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Antoni_Baraniak.jpg/960px-Antoni_Baraniak.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "autor": "Klapi",
-   "licencja": "CC BY 2.5 pl",
-   "licencjaUrl": "https://creativecommons.org/licenses/by/2.5/pl/deed.en",
-   "strona": "https://commons.wikimedia.org/wiki/File:Antoni_Baraniak.jpg"
-  },
-  {
-   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Catedral_de_Poznan%2C_Poznan%2C_Polonia%2C_2014-09-18%2C_DD_01-03_HDR.jpg/960px-Catedral_de_Poznan%2C_Poznan%2C_Polonia%2C_2014-09-18%2C_DD_01-03_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "autor": "Diego Delso",
-   "licencja": "CC BY-SA 4.0",
-   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "strona": "https://commons.wikimedia.org/wiki/File:Catedral_de_Poznan,_Poznan,_Polonia,_2014-09-18,_DD_01-03_HDR.jpg"
   }
  ],
  "kosciol-pokoju": [
@@ -606,6 +610,29 @@
    "strona": "https://commons.wikimedia.org/wiki/File:Old_Town_in_Warsaw_view_from_Vistula_2019a.jpg"
   }
  ],
+ "zespol-staromiejski-torunia": [
+  {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/602979_Toru%C5%84_wn%C4%99trza_ratusza_06.JPG/960px-602979_Toru%C5%84_wn%C4%99trza_ratusza_06.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Dawid Galus",
+   "licencja": "CC BY-SA 3.0 pl",
+   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/3.0/pl/deed.en",
+   "strona": "https://commons.wikimedia.org/wiki/File:602979_Toru%C5%84_wn%C4%99trza_ratusza_06.JPG"
+  },
+  {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/AGAD_Henryk_von_Plauen%2C_wielki_mistrz_zakonu_krzyzackiego%2C_zawiera_pokoj_z_Wladys%C5%82awem_Jagiello%2C_krolem_polskim_i_Witoldem%2C_wielkim_ksieciem_litewskim.jpg/960px-AGAD_Henryk_von_Plauen%2C_wielki_mistrz_zakonu_krzyzackiego%2C_zawiera_pokoj_z_Wladys%C5%82awem_Jagiello%2C_krolem_polskim_i_Witoldem%2C_wielkim_ksieciem_litewskim.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Henryk von Plauen, wielki mistrz zakonu krzyżackiego",
+   "licencja": "Public domain",
+   "licencjaUrl": "",
+   "strona": "https://commons.wikimedia.org/wiki/File:AGAD_Henryk_von_Plauen,_wielki_mistrz_zakonu_krzyzackiego,_zawiera_pokoj_z_Wladys%C5%82awem_Jagiello,_krolem_polskim_i_Witoldem,_wielkim_ksieciem_litewskim.jpg"
+  },
+  {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Budynek_Arsena%C5%82u_-_Muzeum_Etnograficzne_w_Toruniu.jpg/960px-Budynek_Arsena%C5%82u_-_Muzeum_Etnograficzne_w_Toruniu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Olebart",
+   "licencja": "CC BY-SA 4.0",
+   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "strona": "https://commons.wikimedia.org/wiki/File:Budynek_Arsena%C5%82u_-_Muzeum_Etnograficzne_w_Toruniu.jpg"
+  }
+ ],
  "zamosc": [
   {
    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Zamojski_ratusz_2026.jpg/960px-Zamojski_ratusz_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -617,25 +644,11 @@
  ],
  "glowne-miasto-w-gdansku": [
   {
-   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/2012-08-30_pano_gdansk_sm2.jpg/960px-2012-08-30_pano_gdansk_sm2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "autor": "Pjama",
-   "licencja": "CC BY-SA 3.0",
-   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-   "strona": "https://commons.wikimedia.org/wiki/File:2012-08-30_pano_gdansk_sm2.jpg"
-  },
-  {
-   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/31WE-028%2B027%2C_Gda%C5%84sk_G%C5%82%C3%B3wny%2C_2016-11-18.jpg/960px-31WE-028%2B027%2C_Gda%C5%84sk_G%C5%82%C3%B3wny%2C_2016-11-18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "autor": "RUNAWAYTRAIN",
-   "licencja": "CC BY-SA 3.0",
-   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-   "strona": "https://commons.wikimedia.org/wiki/File:31WE-028%2B027,_Gda%C5%84sk_G%C5%82%C3%B3wny,_2016-11-18.jpg"
-  },
-  {
-   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Arthur_Schopenhauer_by_J_Sch%C3%A4fer%2C_1859b.jpg/960px-Arthur_Schopenhauer_by_J_Sch%C3%A4fer%2C_1859b.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "autor": "Johann Schäfer",
-   "licencja": "Public domain",
-   "licencjaUrl": "",
-   "strona": "https://commons.wikimedia.org/wiki/File:Arthur_Schopenhauer_by_J_Sch%C3%A4fer,_1859b.jpg"
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Gda%C5%84sk%2C_D%C5%82ugi_Targ_%28HB1%29.jpg/960px-Gda%C5%84sk%2C_D%C5%82ugi_Targ_%28HB1%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Henryk Bielamowicz",
+   "licencja": "CC BY-SA 4.0",
+   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "strona": "https://commons.wikimedia.org/wiki/File:Gda%C5%84sk,_D%C5%82ugi_Targ_(HB1).jpg"
   }
  ],
  "rynek-we-wroclawiu": [
@@ -824,6 +837,29 @@
    "licencja": "CC BY 4.0",
    "licencjaUrl": "https://creativecommons.org/licenses/by/4.0",
    "strona": "https://commons.wikimedia.org/wiki/File:Cha%C5%82upa_Kotta;_fot._Leszek_Janiszewski.jpg"
+  }
+ ],
+ "zalipie": [
+  {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Zalipie%2C_Dom_Malarek_%28HB1%29.jpg/960px-Zalipie%2C_Dom_Malarek_%28HB1%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Henryk Bielamowicz",
+   "licencja": "CC BY-SA 4.0",
+   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "strona": "https://commons.wikimedia.org/wiki/File:Zalipie,_Dom_Malarek_(HB1).jpg"
+  },
+  {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Fragment_powa%C5%82y.jpg/960px-Fragment_powa%C5%82y.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "Unknown authorUnknown author",
+   "licencja": "CC BY 4.0",
+   "licencjaUrl": "https://creativecommons.org/licenses/by/4.0",
+   "strona": "https://commons.wikimedia.org/wiki/File:Fragment_powa%C5%82y.jpg"
+  },
+  {
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/JKRUK_20110521_ZAGRODA_FELICJI_CURY%C5%81OWEJ_MUZEUM_IMG_9192.jpg/960px-JKRUK_20110521_ZAGRODA_FELICJI_CURY%C5%81OWEJ_MUZEUM_IMG_9192.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "autor": "This image is a work by Wikipedia and Wikimedia Commons user Jarosław Kruk (Jrkr",
+   "licencja": "CC BY-SA 4.0",
+   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "strona": "https://commons.wikimedia.org/wiki/File:JKRUK_20110521_ZAGRODA_FELICJI_CURY%C5%81OWEJ_MUZEUM_IMG_9192.jpg"
   }
  ],
  "psie-pole": [
@@ -1310,20 +1346,6 @@
    "licencja": "CC BY 3.0 pl",
    "licencjaUrl": "https://creativecommons.org/licenses/by/3.0/pl/deed.en",
    "strona": "https://commons.wikimedia.org/wiki/File:Kaponiera_po%C5%82udniowa_Cytadeli_Warszawskiej_2026.jpg"
-  },
-  {
-   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Brama_Nowomiejska_Cytadeli_Warszawskiej_2017.jpg/960px-Brama_Nowomiejska_Cytadeli_Warszawskiej_2017.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "autor": "Adrian Grycuk",
-   "licencja": "CC BY-SA 3.0 pl",
-   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/3.0/pl/deed.en",
-   "strona": "https://commons.wikimedia.org/wiki/File:Brama_Nowomiejska_Cytadeli_Warszawskiej_2017.jpg"
-  },
-  {
-   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Muzeum_Katy%C5%84skie_w_Warszawie_01.jpg/960px-Muzeum_Katy%C5%84skie_w_Warszawie_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "autor": "Adrian Grycuk",
-   "licencja": "CC BY-SA 3.0 pl",
-   "licencjaUrl": "https://creativecommons.org/licenses/by-sa/3.0/pl/deed.en",
-   "strona": "https://commons.wikimedia.org/wiki/File:Muzeum_Katy%C5%84skie_w_Warszawie_01.jpg"
   }
  ],
  "laczka-na-powazkach-wojskowych": [
