@@ -23,5 +23,6 @@ jobs:
         with:
           node-version: 22
       - run: npm install --no-audit --no-fund
-      - run: eas build:list --limit 6 --non-interactive --json | jq -r '.[] | [.platform, .status, .appVersion, .runtimeVersion, .createdAt, (.error.message // ""), (.artifacts.buildUrl // "")] | @tsv'
-      - run: eas update:list --branch preview --limit 5 --non-interactive --json | jq -r '.currentPage[]? | [.runtimeVersion, .message, .createdAt] | @tsv' || true
+      - run: eas build:list --limit 6 --non-interactive --json | jq -r '.[] | [.platform, .status, .appVersion, .runtimeVersion, .createdAt, (.error.message // ""), (.artifacts.buildUrl // ""), .completedAt, .gitCommitHash, .channel, .runtimeVersion] | @tsv'
+      - run: eas update:list --branch preview --limit 5 --non-interactive --json | jq -c '.currentPage[]? | {runtimeVersion, createdAt, platforms, group, gitCommitHash}' || true
+      - run: eas channel:view preview --non-interactive --json | jq -c '.' | cut -c1-1500 || true
