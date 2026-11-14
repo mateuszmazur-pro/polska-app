@@ -1,0 +1,23 @@
+name: Stan budów (EAS)
+
+# Wypisuje ostatnie budowy i aktualizacje — do diagnozy bez komputera.
+on:
+  push:
+    branches: [main]
+    paths: ['.github/status']
+  workflow_dispatch:
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - run: eas build:list --limit 6 --non-interactive --json | jq -r '.[] | [.platform, .status, .appVersion, .runtimeVersion, .createdAt, (.error.message // ""), (.artifacts.buildUrl // "")] | @tsv'
+      - run: eas update:list --branch preview --limit 5 --non-interactive --json | jq -r '.currentPage[]? | [.runtimeVersion, .message, .createdAt] | @tsv' || true
