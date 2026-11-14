@@ -12,7 +12,8 @@ import { useTheme } from '@/theme/ThemeProvider';
 
 type Tryb = 'punkty' | 'szlaki' | 'wyprawy';
 type Zdjecie = { url: string; autor: string; licencja: string; licencjaUrl: string; strona: string };
-const zdjeciaMiejsca = (id: string): Zdjecie[] => (ZDJECIA as Record<string, Zdjecie[]>)[id] ?? [];
+const zdjeciaMiejsca = (id: string): Zdjecie[] =>
+  ((ZDJECIA as Record<string, Zdjecie[]>)[id] ?? []).map((z) => ({ ...z, autor: /unknown author|nieznany/i.test(z.autor) ? 'autor nieznany' : z.autor }));
 
 // Mapa zawsze w granacie — jak rycina, niezależnie od motywu aplikacji.
 const K = { tlo: '#0C1D36', lad: '#132A4D', woda: '#071222', zloto: '#C9A24A', czerwien: '#C8102E', tekst: '#F6F2E8', tekstCichy: '#8E9BB3' };
