@@ -1,5 +1,5 @@
-import { useMemo, useRef, useState } from 'react';
-import { Linking, Platform, Pressable, ScrollView, Text, View } from 'react-native';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Animated, Linking, Platform, Pressable, ScrollView, Text, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icon, type IconName } from '@/components/Icon';
@@ -16,6 +16,9 @@ const K = { tlo: '#0C1D36', lad: '#132A4D', woda: '#071222', zloto: '#C9A24A', c
 const PANEL = 'rgba(19,42,77,0.97)';
 const PASEK_H = 62;
 const NAV_BG = '#071222';
+const KAFEL_W = 62;
+const ODSTEP = 6;
+const SEPARATOR = 13; // kreska + marginesy przed Szlakami
 
 const nawigacja = (lat: number, lon: number, nazwa: string) =>
   Linking.openURL(
@@ -38,6 +41,21 @@ export default function Mapa() {
   const [wyprawaId, setWyprawaId] = useState<string | null>(null);
   const [etap, setEtap] = useState(0);
   const [gra, setGra] = useState(false);
+
+  // Płynna pigułka pod aktywną kategorią — jak w głównym menu.
+  const aktywnyIdx = tryb === 'szlaki' ? KATEGORIE_MIEJSC.length : tryb === 'wyprawy' ? KATEGORIE_MIEJSC.length + 1
+    : kategoria ? KATEGORIE_MIEJSC.findIndex((c) => c.id === kategoria) : -1;
+  const pigulkaX = useRef(new Animated.Value(ODSTEP)).current;
+  const pigulkaWidac = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    if (aktywnyIdx >= 0) {
+      const x = ODSTEP + aktywnyIdx * KAFEL_W + (aktywnyIdx >= KATEGORIE_MIEJSC.length ? SEPARATOR : 0);
+      Animated.spring(pigulkaX, { toValue: x, useNativeDriver: true, speed: 14, bounciness: 6 }).start();
+      Animated.timing(pigulkaWidac, { toValue: 1, duration: 160, useNativeDriver: true }).start();
+    } else {
+      Animated.timing(pigulkaWidac, { toValue: 0, duration: 160, useNativeDriver: true }).start();
+    }
+  }, [aktywnyIdx, pigulkaX, pigulkaWidac]);
 
   const html = useMemo(() => mapaHtml(miejsca, szlaki, wyprawy, K), []);
   const js = (kod: string) => web.current?.injectJavaScript(`${kod}; true;`);
@@ -78,8 +96,8 @@ export default function Mapa() {
       accessibilityState={{ selected: on }}
       onPress={onPress}
       style={({ pressed }) => ({
-        width: 62, height: PASEK_H - 12, borderRadius: (PASEK_H - 12) / 2, alignItems: 'center', justifyContent: 'center', gap: 2,
-        backgroundColor: on ? K.tekst : 'transparent', opacity: pressed ? 0.7 : 1,
+        width: KAFEL_W, height: PASEK_H - 12, borderRadius: (PASEK_H - 12) / 2, alignItems: 'center', justifyContent: 'center', gap: 2,
+        backgroundColor: 'transparent', opacity: pressed ? 0.7 : 1,
       })}
     >
       <Icon name={ikona} size={20} color={on ? K.czerwien : t.textMuted} strokeWidth={on ? 2 : 1.8} />
@@ -264,7 +282,15 @@ export default function Mapa() {
           backgroundColor: NAV_BG, borderWidth: 1, borderColor: 'rgba(246,242,232,0.14)',
         }}
       >
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 6, alignItems: 'center' }}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: ODSTEP, alignItems: 'center' }}>
+          <Animated.View
+            pointerEvents="none"
+            style={{
+              position: 'absolute', left: 0, top: 6, width: KAFEL_W, height: PASEK_H - 12, borderRadius: (PASEK_H - 12) / 2,
+              backgroundColor: K.tekst, opacity: pigulkaWidac,
+              transform: [{ translateX: pigulkaX }, { scale: pigulkaWidac.interpolate({ inputRange: [0, 1], outputRange: [0.85, 1] }) }],
+            }}
+          />
           {KATEGORIE_MIEJSC.map((c) => (
             <Kafel
               key={c.id}
@@ -274,7 +300,7 @@ export default function Mapa() {
               onPress={() => pokazPunkty(tryb === 'punkty' && kategoria === c.id ? null : c.id)}
             />
           ))}
-          <View style={{ width: 1, height: 30, marginHorizontal: 6, backgroundColor: 'rgba(246,242,232,0.14)' }} />
+          <View style={{ width: 1, height: 30, marginHorizontal: (SEPARATOR - 1) / 2, backgroundColor: 'rgba(246,242,232,0.14)' }} />
           <Kafel on={tryb === 'szlaki'} ikona="route" nazwa="Szlaki" onPress={() => (tryb === 'szlaki' ? pokazPunkty(null) : otworzSzlaki())} />
           <Kafel on={tryb === 'wyprawy'} ikona="march" nazwa="Wyprawy" onPress={() => (tryb === 'wyprawy' ? pokazPunkty(null) : otworzWyprawy())} />
         </ScrollView>
