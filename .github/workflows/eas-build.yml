@@ -44,4 +44,9 @@ jobs:
           fi
 
       - name: Zbuduj iPhone i Android
-        run: eas build --platform all --profile preview --non-interactive --no-wait
+        run: eas build --platform all --profile preview --non-interactive
+
+      # Aktualizacja starsza niż budowa jest przez telefon pomijana, więc po budowie
+      # wysyłamy świeżą — nowa wersja od razu pokazuje najnowszy kod.
+      - name: Świeża aktualizacja po budowie
+        run: eas update --branch preview --message "Po budowie nowej wersji" --non-interactive
