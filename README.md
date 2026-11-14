@@ -44,3 +44,7 @@ nigdy wpisanych na sztywno wartości — dzięki temu nowy motyw to tylko nowy s
 
 - `app/app.json` → `ios.bundleIdentifier` i `android.package` (identyfikator aplikacji w sklepach, nie da się go potem zmienić).
 - Ikona i ekran startowy (`app/assets/`).
+
+## Dane i projekty pod ręką
+
+- **Dane do mapy** (miejsca, szlaki, wyprawy — do przejrzenia przed wgraniem do aplikacji): https://claude.ai/artifact/MhL3GeiebUG6dQQNAs6ngt
